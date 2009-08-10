@@ -23,30 +23,46 @@ namespace Doctrine\Common\Util;
 
 /**
  * Static class containing most used debug methods.
- * @author Giorgio Sironi <piccoloprincipeazzurro@gmail.com>
- * @since 2.0
+ *
+ * @license http://www.opensource.org/licenses/lgpl-license.php LGPL
+ * @link    www.doctrine-project.org
+ * @since   2.0
+ * @version $Revision: 3938 $
+ * @author  Guilherme Blanco <guilhermeblanco@hotmail.com>
+ * @author  Jonathan Wage <jonwage@gmail.com>
+ * @author  Roman Borschel <roman@code-factory.org>
+ * @author  Giorgio Sironi <piccoloprincipeazzurro@gmail.com>
  */
 final class Debug
 {
+    /**
+     * Private constructor (prevents from instantiation)
+     *
+     */
     private function __construct() {}
 
     /**
      * Prints a dump of the public, protected and private properties of $var.
      * To print a meaningful dump, whose depth is limited, requires xdebug 
      * php extension.
+     *
+     * @static
      * @link http://xdebug.org/
      * @param mixed $var
-     * @param integer $maxDepth     maximum nesting level for object properties
+     * @param integer $maxDepth Maximum nesting level for object properties
      */
     public static function dump($var, $maxDepth = 2)
     {
         ini_set('html_errors', 'On');
         ini_set('xdebug.var_display_max_depth', $maxDepth);
+        
         ob_start();
         var_dump($var);
         $dump = ob_get_contents();
         ob_end_clean();
+        
         echo strip_tags(html_entity_decode($dump));
+        
         ini_set('html_errors', 'Off');
     }
 }
