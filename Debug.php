@@ -54,6 +54,26 @@ final class Debug
     public static function dump($var, $maxDepth = 2)
     {
         ini_set('html_errors', 'On');
+        
+        if (extension_loaded('xdebug')) {
+            $dump = self::_dumpWithXDebug($var, $maxDepth);
+        } else {
+            $dump = self::_dumpWithReflection($var, $maxDepth);
+            
+            ob_start();
+            var_dump($dump);
+            $dump = ob_get_contents();
+            ob_end_clean();
+        }
+        
+        echo strip_tags(html_entity_decode($dump));
+        
+        ini_set('html_errors', 'Off');
+    }
+    
+    
+    private static function _dumpWithXDebug($var, $maxDepth)
+    {
         ini_set('xdebug.var_display_max_depth', $maxDepth);
         
         ob_start();
@@ -61,8 +81,41 @@ final class Debug
         $dump = ob_get_contents();
         ob_end_clean();
         
-        echo strip_tags(html_entity_decode($dump));
-        
-        ini_set('html_errors', 'Off');
+        return $dump;
+    }
+    
+    private static function _dumpWithReflection($var, $maxDepth)
+    {
+        $disallowedDumpableClasses = array(
+            'Doctrine\ORM\EntityManager',
+        );
+    
+        $reflClass = new \ReflectionClass(get_class($var));
+        $arr = array();
+
+        foreach ($reflClass->getProperties() as $reflProperty) {
+            $reflProperty->setAccessible(true);
+            $value = $reflProperty->getValue($var);
+
+            if ($maxDepth) {
+                if (is_object($value)) {
+                    if (in_array('Doctrine\Common\Collections\Collection', class_implements($value))) {
+                        $value = $value->toArray();
+
+                        foreach ($value as $k => $v) {
+                            $value[$k] = self::_dumpWithReflection($v, $maxDepth - 1);
+                        }
+                    } else if (in_array(get_class($value), $disallowedDumpableClasses)) {
+                        $value = get_class($value);
+                    }
+                }
+            } else {
+                $value = is_object($value) ? get_class($value) : $value;
+            }
+
+            $arr[$reflProperty->getName()] = $value;
+        }
+
+        return $arr;
     }
 }
