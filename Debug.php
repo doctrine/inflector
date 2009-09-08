@@ -56,66 +56,58 @@ final class Debug
         ini_set('html_errors', 'On');
         
         if (extension_loaded('xdebug')) {
-            $dump = self::_dumpWithXDebug($var, $maxDepth);
-        } else {
-            $dump = self::_dumpWithReflection($var, $maxDepth);
-            
-            ob_start();
-            var_dump($dump);
-            $dump = ob_get_contents();
-            ob_end_clean();
+            ini_set('xdebug.var_display_max_depth', $maxDepth);
         }
         
-        echo strip_tags(html_entity_decode($dump));
-        
-        ini_set('html_errors', 'Off');
-    }
-    
-    
-    private static function _dumpWithXDebug($var, $maxDepth)
-    {
-        ini_set('xdebug.var_display_max_depth', $maxDepth);
+        $var = self::_dumpWithReflection($var, $maxDepth++);
         
         ob_start();
         var_dump($var);
         $dump = ob_get_contents();
         ob_end_clean();
         
-        return $dump;
+        echo strip_tags(html_entity_decode($dump));
+        
+        ini_set('html_errors', 'Off');
     }
     
     private static function _dumpWithReflection($var, $maxDepth)
     {
-        $disallowedDumpableClasses = array(
-            'Doctrine\ORM\EntityManager',
-        );
+        $return = null;
+        $isObj = is_object($var);
     
-        $reflClass = new \ReflectionClass(get_class($var));
-        $arr = array();
-
-        foreach ($reflClass->getProperties() as $reflProperty) {
-            $reflProperty->setAccessible(true);
-            $value = $reflProperty->getValue($var);
-
-            if ($maxDepth) {
-                if (is_object($value)) {
-                    if (in_array('Doctrine\Common\Collections\Collection', class_implements($value))) {
-                        $value = $value->toArray();
-
-                        foreach ($value as $k => $v) {
-                            $value[$k] = self::_dumpWithReflection($v, $maxDepth - 1);
-                        }
-                    } else if (in_array(get_class($value), $disallowedDumpableClasses)) {
-                        $value = get_class($value);
-                    }
+        if ($isObj && in_array('Doctrine\Common\Collections\Collection', class_implements($var))) {
+            $var = $var->toArray();
+        }
+        
+        if ($maxDepth) {
+            if (is_array($var)) {
+                $return = array();
+            
+                foreach ($var as $k => $v) {
+                    $return[$k] = self::_dumpWithReflection($v, $maxDepth - 1);
+                }
+            } else if ($isObj) {
+                $reflClass = new \ReflectionClass(get_class($var));
+                $return = new \stdclass();
+                $return->{'__CLASS__'} = get_class($var);
+                
+                foreach ($reflClass->getProperties() as $reflProperty) {
+                    $reflProperty->setAccessible(true);
+                    
+                    $name  = $reflProperty->getName();
+                    $value = $reflProperty->getValue($var);
+                    
+                    $return->$name = self::_dumpWithReflection($value, $maxDepth - 1);
                 }
             } else {
-                $value = is_object($value) ? get_class($value) : $value;
+                $return = $var;
             }
-
-            $arr[$reflProperty->getName()] = $value;
+        } else {
+            $return = is_object($var) ? get_class($var) 
+                : (is_array($var) ? 'Array(' . count($var) . ')' : $var);
         }
-
-        return $arr;
+        
+        return $return;
     }
 }
