@@ -56,19 +56,7 @@ class Inflector
      */
     public static function classify($word)
     {
-        $word = preg_replace('/[$]/', '', $word);
-        return preg_replace_callback('~(_?)(_)([\w])~', array(__CLASS__, "classifyCallback"), ucfirst(strtolower($word)));
-    }
-
-    /**
-     * Callback function to classify a classname properly.
-     *
-     * @param  array  $matches  An array of matches from a pcre_replace call
-     * @return string $string   A string with matches 1 and mathces 3 in upper case.
-     */
-    public static function classifyCallback($matches)
-    {
-        return $matches[1] . strtoupper($matches[3]);
+        return str_replace(" ", "", ucwords(strtr($word, "_-", "  ")));
     }
 
     /**
