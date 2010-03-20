@@ -59,7 +59,7 @@ final class Debug
             ini_set('xdebug.var_display_max_depth', $maxDepth);
         }
         
-        $var = self::_dumpWithReflection($var, $maxDepth++);
+        $var = self::export($var, $maxDepth++);
         
         ob_start();
         var_dump($var);
@@ -71,7 +71,7 @@ final class Debug
         ini_set('html_errors', 'Off');
     }
     
-    private static function _dumpWithReflection($var, $maxDepth)
+    public static function export($var, $maxDepth)
     {
         $return = null;
         $isObj = is_object($var);
@@ -85,20 +85,40 @@ final class Debug
                 $return = array();
             
                 foreach ($var as $k => $v) {
-                    $return[$k] = self::_dumpWithReflection($v, $maxDepth - 1);
+                    $return[$k] = self::export($v, $maxDepth - 1);
                 }
             } else if ($isObj) {
-                $reflClass = new \ReflectionClass(get_class($var));
-                $return = new \stdclass();
-                $return->{'__CLASS__'} = get_class($var);
-                
-                foreach ($reflClass->getProperties() as $reflProperty) {
-                    $reflProperty->setAccessible(true);
-                    
-                    $name  = $reflProperty->getName();
-                    $value = $reflProperty->getValue($var);
-                    
-                    $return->$name = self::_dumpWithReflection($value, $maxDepth - 1);
+                if ($var instanceof \DateTime) {
+                    $return = $var->format('c');
+                } else {
+                    $reflClass = new \ReflectionClass(get_class($var));
+                    $return = new \stdclass();
+                    $return->{'__CLASS__'} = get_class($var);
+
+                    if ($var instanceof \Doctrine\ORM\Proxy\Proxy && ! $var->__isInitialized__) {
+                        $reflProperty = $reflClass->getProperty('_identifier');
+                        $reflProperty->setAccessible(true);
+
+                        foreach ($reflProperty->getValue($var) as $name => $value) {
+                            $return->$name = self::export($value, $maxDepth - 1);
+                        }
+                    } else {
+                        $excludeProperties = array();
+
+                        if ($var instanceof \Doctrine\ORM\Proxy\Proxy) {
+                            $excludeProperties = array('_entityPersister', '__isInitialized__', '_identifier');
+                        }
+
+                        foreach ($reflClass->getProperties() as $reflProperty) {
+                            $name  = $reflProperty->getName();
+
+                            if ( ! in_array($name, $excludeProperties)) {
+                                $reflProperty->setAccessible(true);
+
+                                $return->$name = self::export($reflProperty->getValue($var), $maxDepth - 1);
+                            }
+                        }
+                    }
                 }
             } else {
                 $return = $var;
