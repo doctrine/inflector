@@ -43,8 +43,6 @@ final class Debug
 
     /**
      * Prints a dump of the public, protected and private properties of $var.
-     * To print a meaningful dump, whose depth is limited, requires xdebug 
-     * php extension.
      *
      * @static
      * @link http://xdebug.org/
