@@ -42,7 +42,7 @@ class ClassUtils
             return $class;
         }
 
-        return substr($class, $pos + strlen(Proxy::MARKER) + 2);
+        return substr($class, $pos + Proxy::MARKER_LENGTH + 2);
     }
 
     /**
@@ -98,6 +98,6 @@ class ClassUtils
      */
     public static function generateProxyClassName($className, $proxyNamespace)
     {
-        return rtrim($proxyNamespace, '\\') . '\\__CG__\\' . ltrim($className, '\\');
+        return rtrim($proxyNamespace, '\\') . '\\'.Proxy::MARKER.'\\' . ltrim($className, '\\');
     }
 }
