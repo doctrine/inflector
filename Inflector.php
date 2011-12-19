@@ -23,9 +23,9 @@ namespace Doctrine\Common\Util;
 
 /**
  * Doctrine inflector has static methods for inflecting text
- * 
+ *
  * The methods in these classes are from several different sources collected
- * across several different php projects and several different authors. The 
+ * across several different php projects and several different authors. The
  * original author names and emails are not known
  *
  * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
