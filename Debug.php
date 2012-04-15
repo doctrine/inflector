@@ -67,6 +67,14 @@ final class Debug
         ini_set('html_errors', 'Off');
     }
 
+    /**
+     * Export
+     *
+     * @static
+     * @param $var
+     * @param $maxDepth
+     * @return array|null|\stdClass|string
+     */
     public static function export($var, $maxDepth)
     {
         $return = null;
@@ -116,6 +124,13 @@ final class Debug
         return $return;
     }
 
+    /**
+     * Convert to string
+     *
+     * @static
+     * @param $obj
+     * @return string
+     */
     public static function toString($obj)
     {
         return method_exists('__toString', $obj) ? (string) $obj : get_class($obj) . '@' . spl_object_hash($obj);

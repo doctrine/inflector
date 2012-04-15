@@ -71,7 +71,7 @@ class ClassUtils
      * Create a new reflection class
      *
      * @param string
-     * @return ReflectionClass
+     * @return \ReflectionClass
      */
     public static function newReflectionClass($class)
     {
@@ -82,7 +82,7 @@ class ClassUtils
      * Create a new reflection object
      *
      * @param object
-     * @return ReflectionObject
+     * @return \ReflectionObject
      */
     public static function newReflectionObject($object)
     {
