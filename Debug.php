@@ -41,7 +41,6 @@ final class Debug
     /**
      * Prints a dump of the public, protected and private properties of $var.
      *
-     * @static
      * @link http://xdebug.org/
      * @param mixed $var
      * @param integer $maxDepth Maximum nesting level for object properties
@@ -70,10 +69,9 @@ final class Debug
     /**
      * Export
      *
-     * @static
      * @param $var
      * @param $maxDepth
-     * @return array|null|\stdClass|string
+     * @return mixed
      */
     public static function export($var, $maxDepth)
     {
@@ -127,7 +125,6 @@ final class Debug
     /**
      * Convert to string
      *
-     * @static
      * @param $obj
      * @return string
      */
