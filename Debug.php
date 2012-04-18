@@ -69,8 +69,8 @@ final class Debug
     /**
      * Export
      *
-     * @param $var
-     * @param $maxDepth
+     * @param mixed $var
+     * @param int $maxDepth
      * @return mixed
      */
     public static function export($var, $maxDepth)
@@ -125,7 +125,7 @@ final class Debug
     /**
      * Convert to string
      *
-     * @param $obj
+     * @param object $obj
      * @return string
      */
     public static function toString($obj)
