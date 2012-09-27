@@ -30,6 +30,6 @@ class DebugTest extends DoctrineTestCase
         $obj = new \ArrayObject(array('foobar'));
 
         $var = Debug::export($obj, 2);
-        $this->assertSame('foobar', $var->__STORAGE__[0]);
+        $this->assertContains('foobar', $var->__STORAGE__);
     }
 }
