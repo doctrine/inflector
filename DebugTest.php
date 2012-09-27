@@ -27,9 +27,9 @@ class DebugTest extends DoctrineTestCase
 
     public function testExportArrayObject()
     {
-        $obj = new \ArrayObject( array('foobar') );
+        $obj = new \ArrayObject(array('foobar'));
 
-        $var = Debug::export( $obj, 2 );
+        $var = Debug::export($obj, 2);
         $this->assertSame('foobar', $var->__STORAGE__[0]);
     }
 }
