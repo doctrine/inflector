@@ -24,4 +24,12 @@ class DebugTest extends DoctrineTestCase
         $var = Debug::export( $obj, 2 );
         $this->assertEquals( "DateTime", $var->__CLASS__ );
     }
+
+    public function testExportArrayObject()
+    {
+        $obj = new \ArrayObject( array('foobar') );
+
+        $var = Debug::export( $obj, 2 );
+        $this->assertSame('foobar', $var->__STORAGE__[0]);
+    }
 }
