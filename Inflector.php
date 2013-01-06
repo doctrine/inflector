@@ -44,7 +44,7 @@ class Inflector
      *
      * @var array
      */
-    protected static $plural = array(
+    private static $plural = array(
         'rules' => array(
             '/(s)tatus$/i' => '\1\2tatuses',
             '/(quiz)$/i' => '\1zes',
@@ -113,7 +113,7 @@ class Inflector
      *
      * @var array
      */
-    protected static $singular = array(
+    private static $singular = array(
         'rules' => array(
             '/(s)tatuses$/i' => '\1\2tatus',
             '/^(.*)(menu)s$/i' => '\1\2',
@@ -165,7 +165,7 @@ class Inflector
      *
      * @var array
      */
-    protected static $uninflected = array(
+    private static $uninflected = array(
         'Amoyese', 'bison', 'Borghese', 'bream', 'breeches', 'britches', 'buffalo', 'cantus',
         'carp', 'chassis', 'clippers', 'cod', 'coitus', 'Congoese', 'contretemps', 'corps',
         'debris', 'diabetes', 'djinn', 'eland', 'elk', 'equipment', 'Faroese', 'flounder',
@@ -185,14 +185,14 @@ class Inflector
      *
      * @var array
      */
-    protected static $cache = array();
+    private static $cache = array();
 
     /**
      * The initial state of Inflector so reset() works.
      *
      * @var array
      */
-    protected static $initialState = array();
+    private static $initialState = array();
 
     /**
      * Convert word in to the format for a Doctrine table name. Converts 'ModelName' to 'model_name'
