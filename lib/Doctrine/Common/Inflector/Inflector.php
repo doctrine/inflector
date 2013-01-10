@@ -1,7 +1,5 @@
 <?php
 /*
- *  $Id: Inflector.php 3189 2007-11-18 20:37:44Z meus $
- *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -19,7 +17,7 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace Doctrine\Common\Util;
+namespace Doctrine\Common\Inflector;
 
 /**
  * Doctrine inflector has static methods for inflecting text
@@ -30,10 +28,8 @@ namespace Doctrine\Common\Util;
  *
  * Plurialize & Singularize implementation are borrowed from CakePHP with some modifications.
  *
- * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
  * @link        www.doctrine-project.org
  * @since       1.0
- * @version     $Revision: 3189 $
  * @author      Konsta Vesterinen <kvesteri@cc.hut.fi>
  * @author      Jonathan H. Wage <jonwage@gmail.com>
  */
