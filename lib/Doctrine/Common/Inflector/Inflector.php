@@ -20,7 +20,7 @@
 namespace Doctrine\Common\Inflector;
 
 /**
- * Doctrine inflector has static methods for inflecting text
+ * Doctrine inflector has static methods for inflecting text.
  *
  * The methods in these classes are from several different sources collected
  * across several different php projects and several different authors. The
@@ -28,15 +28,15 @@ namespace Doctrine\Common\Inflector;
  *
  * Plurialize & Singularize implementation are borrowed from CakePHP with some modifications.
  *
- * @link        www.doctrine-project.org
- * @since       1.0
- * @author      Konsta Vesterinen <kvesteri@cc.hut.fi>
- * @author      Jonathan H. Wage <jonwage@gmail.com>
+ * @link   www.doctrine-project.org
+ * @since  1.0
+ * @author Konsta Vesterinen <kvesteri@cc.hut.fi>
+ * @author Jonathan H. Wage <jonwage@gmail.com>
  */
 class Inflector
 {
     /**
-     * Plural inflector rules
+     * Plural inflector rules.
      *
      * @var array
      */
@@ -105,7 +105,7 @@ class Inflector
     );
 
     /**
-     * Singular inflector rules
+     * Singular inflector rules.
      *
      * @var array
      */
@@ -157,7 +157,7 @@ class Inflector
     );
 
     /**
-     * Words that should not be inflected
+     * Words that should not be inflected.
      *
      * @var array
      */
@@ -191,10 +191,11 @@ class Inflector
     private static $initialState = array();
 
     /**
-     * Convert word in to the format for a Doctrine table name. Converts 'ModelName' to 'model_name'
+     * Converts a word into the format for a Doctrine table name. Converts 'ModelName' to 'model_name'.
      *
-     * @param  string $word  Word to tableize
-     * @return string $word  Tableized word
+     * @param string $word The word to tableize.
+     *
+     * @return string The tableized word.
      */
     public static function tableize($word)
     {
@@ -202,10 +203,11 @@ class Inflector
     }
 
     /**
-     * Convert a word in to the format for a Doctrine class name. Converts 'table_name' to 'TableName'
+     * Converts a word into the format for a Doctrine class name. Converts 'table_name' to 'TableName'.
      *
-     * @param string  $word  Word to classify
-     * @return string $word  Classified word
+     * @param string $word The word to classify.
+     *
+     * @return string The classified word.
      */
     public static function classify($word)
     {
@@ -213,10 +215,11 @@ class Inflector
     }
 
     /**
-     * Camelize a word. This uses the classify() method and turns the first character to lowercase
+     * Camelizes a word. This uses the classify() method and turns the first character to lowercase.
      *
-     * @param string $word
-     * @return string $word
+     * @param string $word The word to camelize.
+     *
+     * @return string The camelized word.
      */
     public static function camelize($word)
     {
@@ -224,7 +227,7 @@ class Inflector
     }
 
     /**
-     * Clears Inflectors inflected value caches. And resets the inflection
+     * Clears Inflectors inflected value caches, and resets the inflection
      * rules to the initial values.
      *
      * @return void
@@ -256,10 +259,11 @@ class Inflector
      * ));
      * }}}
      *
-     * @param string $type The type of inflection, either 'plural' or 'singular'
-     * @param array $rules Array of rules to be added.
+     * @param string  $type  The type of inflection, either 'plural' or 'singular'
+     * @param array   $rules An array of rules to be added.
      * @param boolean $reset If true, will unset default inflections for all
-     *        new rules that are being defined in $rules.
+     *                       new rules that are being defined in $rules.
+     *
      * @return void
      */
     public static function rules($type, $rules, $reset = false)
@@ -290,10 +294,11 @@ class Inflector
     }
 
     /**
-     * Return $word in plural form.
+     * Returns a word in plural form.
      *
-     * @param string $word Word in singular
-     * @return string Word in plural
+     * @param string $word The word in singular form.
+     *
+     * @return string The word in plural form.
      */
     public static function pluralize($word)
     {
@@ -333,10 +338,11 @@ class Inflector
     }
 
     /**
-     * Return $word in singular form.
+     * Returns a word in singular form.
      *
-     * @param string $word Word in plural
-     * @return string Word in singular
+     * @param string $word The word in plural form.
+     *
+     * @return string The word in singular form.
      */
     public static function singularize($word)
     {
