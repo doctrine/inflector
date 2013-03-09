@@ -26,7 +26,7 @@ namespace Doctrine\Common\Inflector;
  * across several different php projects and several different authors. The
  * original author names and emails are not known.
  *
- * Plurialize & Singularize implementation are borrowed from CakePHP with some modifications.
+ * Pluralize & Singularize implementation are borrowed from CakePHP with some modifications.
  *
  * @link   www.doctrine-project.org
  * @since  1.0
