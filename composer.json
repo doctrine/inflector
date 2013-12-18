@@ -2,7 +2,7 @@
     "name": "doctrine/inflector",
     "type": "library",
     "description": "Common String Manipulations with regard to casing and singular/plural rules.",
-    "keywords": ["string", "inflection", "singuarlize", "pluarlize"],
+    "keywords": ["string", "inflection", "singularize", "pluralize"],
     "homepage": "http://www.doctrine-project.org",
     "license": "MIT",
     "authors": [
@@ -17,5 +17,10 @@
     },
     "autoload": {
         "psr-0": { "Doctrine\\Common\\Inflector\\": "lib/" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     }
 }
