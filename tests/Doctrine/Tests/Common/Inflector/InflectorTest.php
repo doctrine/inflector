@@ -181,5 +181,18 @@ class InflectorTest extends DoctrineTestCase
         $this->assertEquals(Inflector::singularize('Alcoois'), 'Alcool');
         $this->assertEquals(Inflector::singularize('Atlas'), 'Atlas');
     }
+
+    /**
+     * Test ordinal and ordinalize methods
+     * @return void
+     */
+    public function testOrdinalize()
+    {
+        $this->assertEquals('3rd', Inflector::ordinalize(3));
+        $this->assertEquals('31st', Inflector::ordinalize(31));
+        $this->assertEquals('86th', Inflector::ordinalize(86));
+        $this->assertEquals('1st', Inflector::ordinalize(1));
+        $this->assertEquals('42nd', Inflector::ordinalize(42));
+    }
 }
 
