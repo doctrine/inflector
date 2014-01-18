@@ -388,4 +388,50 @@ class Inflector
         self::$cache['singularize'][$word] = $word;
         return $word;
     }
+
+    /**
+     * Returns the suffix added to a number
+     *
+     * @param $number
+     *
+     * @return string
+     */
+    public static function ordinal($number)
+    {
+        if (in_array(($number % 100), range(11, 13))) {
+            $result = 'th';
+        } else {
+            switch (($number % 10)) {
+                case 1:
+                    $result = 'st';
+                    break;
+
+                case 2:
+                    $result = 'nd';
+                    break;
+
+                case 3:
+                    $result = 'rd';
+                    break;
+
+                default:
+                    $result = 'th';
+                    break;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Return an ordinal string of a number
+     *
+     * @param $number
+     *
+     * @return string
+     */
+    public static function ordinalize($number)
+    {
+        return sprintf('%s%s', $number, self::ordinal($number));
+    }
 }
