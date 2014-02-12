@@ -152,6 +152,7 @@ class Inflector
         'irregular' => array(
             'foes' => 'foe',
             'waves' => 'wave',
+            'criteria' => 'criterion',
             'curves' => 'curve'
         )
     );
