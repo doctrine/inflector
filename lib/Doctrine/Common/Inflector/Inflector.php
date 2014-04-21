@@ -152,6 +152,7 @@ class Inflector
         'irregular' => array(
             'foes' => 'foe',
             'waves' => 'wave',
+            'criteria' => 'criterion',
             'curves' => 'curve'
         )
     );
@@ -369,8 +370,8 @@ class Inflector
             self::$singular['cacheIrregular'] = '(?:' . join('|', array_keys(self::$singular['merged']['irregular'])) . ')';
         }
 
-        if (preg_match('/(.*)\\b(' . self::$singular['cacheIrregular'] . ')$/i', $word, $regs)) {
-            self::$cache['singularize'][$word] = $regs[1] . substr($word, 0, 1) . substr(self::$singular['merged']['irregular'][strtolower($regs[2])], 1);
+        if (preg_match('/(.*)(' . self::$singular['cacheIrregular'] . ')$/i', $word, $regs)) {
+            self::$cache['singularize'][$word] = $regs[1] . substr($regs[2], 0, 1) . substr(self::$singular['merged']['irregular'][strtolower($regs[2])], 1);
             return self::$cache['singularize'][$word];
         }
 
