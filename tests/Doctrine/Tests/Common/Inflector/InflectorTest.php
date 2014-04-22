@@ -7,14 +7,15 @@ use Doctrine\Common\Inflector\Inflector;
 
 class InflectorTest extends DoctrineTestCase
 {
-
     /**
      * Singular & Plural test data. Returns an array of sample words.
      *
      * @return array
      */ 
-    public function dataSampleWords() {
+    public function dataSampleWords() 
+    {
         Inflector::reset();
+        
         // in the format array('singular', 'plural') 
         return array(
             array('categoria', 'categorias'),
@@ -58,6 +59,8 @@ class InflectorTest extends DoctrineTestCase
             array('foe', 'foes'),
             array('cookie', 'cookies'),
             array('identity', 'identities'),
+            array('criteria', 'criterion'),
+            array('curve', 'curves'),
             array('', ''),
         );
     }
@@ -68,8 +71,13 @@ class InflectorTest extends DoctrineTestCase
      * @dataProvider dataSampleWords
      * @return void
      */
-    public function testInflectingSingulars($singular, $plural) {
-        $this->assertEquals($singular, Inflector::singularize($plural), "'$plural' should be singularized to '$singular'");
+    public function testInflectingSingulars($singular, $plural) 
+    {
+        $this->assertEquals(
+            $singular, 
+            Inflector::singularize($plural), 
+            "'$plural' should be singularized to '$singular'"
+        );
     }
 
     /**
@@ -78,8 +86,13 @@ class InflectorTest extends DoctrineTestCase
      * @dataProvider dataSampleWords
      * @return void
      */
-    public function testInflectingPlurals($singular, $plural) {
-        $this->assertEquals($plural, Inflector::pluralize($singular), "'$singular' should be pluralized to '$plural'");
+    public function testInflectingPlurals($singular, $plural) 
+    {
+        $this->assertEquals(
+            $plural, 
+            Inflector::pluralize($singular), 
+            "'$singular' should be pluralized to '$plural'"
+        );
     }
 
     /**
@@ -87,12 +100,15 @@ class InflectorTest extends DoctrineTestCase
      *
      * @return void
      */
-    public function testCustomPluralRule() {
+    public function testCustomPluralRule() 
+    {
         Inflector::reset();
         Inflector::rules('plural', array('/^(custom)$/i' => '\1izables'));
+        
         $this->assertEquals(Inflector::pluralize('custom'), 'customizables');
 
         Inflector::rules('plural', array('uninflected' => array('uninflectable')));
+        
         $this->assertEquals(Inflector::pluralize('uninflectable'), 'uninflectable');
 
         Inflector::rules('plural', array(
@@ -100,6 +116,7 @@ class InflectorTest extends DoctrineTestCase
             'uninflected' => array('noflect', 'abtuse'),
             'irregular' => array('amaze' => 'amazable', 'phone' => 'phonezes')
         ));
+        
         $this->assertEquals(Inflector::pluralize('noflect'), 'noflect');
         $this->assertEquals(Inflector::pluralize('abtuse'), 'abtuse');
         $this->assertEquals(Inflector::pluralize('alert'), 'alertables');
@@ -112,7 +129,8 @@ class InflectorTest extends DoctrineTestCase
      *
      * @return void
      */
-    public function testCustomSingularRule() {
+    public function testCustomSingularRule() 
+    {
         Inflector::reset();
         Inflector::rules('singular', array('/(eple)r$/i' => '\1', '/(jente)r$/i' => '\1'));
 
@@ -136,20 +154,24 @@ class InflectorTest extends DoctrineTestCase
      *
      * @return void
      */
-    public function testRulesClearsCaches() {
+    public function testRulesClearsCaches() 
+    {
         Inflector::reset();
+        
         $this->assertEquals(Inflector::singularize('Bananas'), 'Banana');
         $this->assertEquals(Inflector::pluralize('Banana'), 'Bananas');
 
         Inflector::rules('singular', array(
             'rules' => array('/(.*)nas$/i' => '\1zzz')
         ));
+        
         $this->assertEquals('Banazzz', Inflector::singularize('Bananas'), 'Was inflected with old rules.');
 
         Inflector::rules('plural', array(
             'rules' => array('/(.*)na$/i' => '\1zzz'),
             'irregular' => array('corpus' => 'corpora')
         ));
+        
         $this->assertEquals(Inflector::pluralize('Banana'), 'Banazzz', 'Was inflected with old rules.');
         $this->assertEquals(Inflector::pluralize('corpus'), 'corpora', 'Was inflected with old irregular form.');
     }
@@ -159,8 +181,10 @@ class InflectorTest extends DoctrineTestCase
      *
      * @return void
      */
-    public function testCustomRuleWithReset() {
+    public function testCustomRuleWithReset() 
+    {
         Inflector::reset();
+        
         $uninflected = array('atlas', 'lapis', 'onibus', 'pires', 'virus', '.*x');
         $pluralIrregular = array('as' => 'ases');
 

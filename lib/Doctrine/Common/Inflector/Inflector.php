@@ -77,6 +77,7 @@ class Inflector
             'cookie' => 'cookies',
             'corpus' => 'corpuses',
             'cow' => 'cows',
+            'criteria' => 'criterion',
             'ganglion' => 'ganglions',
             'genie' => 'genies',
             'genus' => 'genera',
@@ -100,7 +101,7 @@ class Inflector
             'soliloquy' => 'soliloquies',
             'testis' => 'testes',
             'trilby' => 'trilbys',
-            'turf' => 'turfs'
+            'turf' => 'turfs',
         )
     );
 
@@ -144,15 +145,23 @@ class Inflector
             '/(n)ews$/i' => '\1\2ews',
             '/eaus$/' => 'eau',
             '/^(.*us)$/' => '\\1',
-            '/s$/i' => ''
+            '/s$/i' => '',
         ),
         'uninflected' => array(
-            '.*[nrlm]ese', '.*deer', '.*fish', '.*measles', '.*ois', '.*pox', '.*sheep', '.*ss'
+            '.*[nrlm]ese',
+            '.*deer',
+            '.*fish',
+            '.*measles',
+            '.*ois',
+            '.*pox',
+            '.*sheep',
+            '.*ss',
         ),
         'irregular' => array(
+            'criterion' => 'criteria',
+            'curves' => 'curve',
             'foes' => 'foe',
             'waves' => 'wave',
-            'curves' => 'curve'
         )
     );
 
@@ -236,8 +245,10 @@ class Inflector
     {
         if (empty(self::$initialState)) {
             self::$initialState = get_class_vars('Inflector');
+
             return;
         }
+
         foreach (self::$initialState as $key => $val) {
             if ($key != 'initialState') {
                 self::${$key} = $val;
@@ -269,27 +280,31 @@ class Inflector
     public static function rules($type, $rules, $reset = false)
     {
         foreach ($rules as $rule => $pattern) {
-            if (is_array($pattern)) {
-                if ($reset) {
-                    self::${$type}[$rule] = $pattern;
-                } else {
-                    if ($rule === 'uninflected') {
-                        self::${$type}[$rule] = array_merge($pattern, self::${$type}[$rule]);
-                    } else {
-                        self::${$type}[$rule] = $pattern + self::${$type}[$rule];
-                    }
-                }
-                unset($rules[$rule], self::${$type}['cache' . ucfirst($rule)]);
-                if (isset(self::${$type}['merged'][$rule])) {
-                    unset(self::${$type}['merged'][$rule]);
-                }
-                if ($type === 'plural') {
-                    self::$cache['pluralize'] = self::$cache['tableize'] = array();
-                } elseif ($type === 'singular') {
-                    self::$cache['singularize'] = array();
-                }
+            if ( ! is_array($pattern)) {
+                continue;
+            }
+
+            if ($reset) {
+                self::${$type}[$rule] = $pattern;
+            } else {
+                self::${$type}[$rule] = ($rule === 'uninflected')
+                    ? array_merge($pattern, self::${$type}[$rule])
+                    : $pattern + self::${$type}[$rule];
+            }
+
+            unset($rules[$rule], self::${$type}['cache' . ucfirst($rule)]);
+
+            if (isset(self::${$type}['merged'][$rule])) {
+                unset(self::${$type}['merged'][$rule]);
+            }
+
+            if ($type === 'plural') {
+                self::$cache['pluralize'] = self::$cache['tableize'] = array();
+            } elseif ($type === 'singular') {
+                self::$cache['singularize'] = array();
             }
         }
+
         self::${$type}['rules'] = $rules + self::${$type}['rules'];
     }
 
@@ -316,22 +331,25 @@ class Inflector
 
         if (!isset(self::$plural['cacheUninflected']) || !isset(self::$plural['cacheIrregular'])) {
             self::$plural['cacheUninflected'] = '(?:' . implode('|', self::$plural['merged']['uninflected']) . ')';
-            self::$plural['cacheIrregular'] = '(?:' . implode('|', array_keys(self::$plural['merged']['irregular'])) . ')';
+            self::$plural['cacheIrregular']   = '(?:' . implode('|', array_keys(self::$plural['merged']['irregular'])) . ')';
         }
 
         if (preg_match('/(.*)\\b(' . self::$plural['cacheIrregular'] . ')$/i', $word, $regs)) {
             self::$cache['pluralize'][$word] = $regs[1] . substr($word, 0, 1) . substr(self::$plural['merged']['irregular'][strtolower($regs[2])], 1);
+            
             return self::$cache['pluralize'][$word];
         }
 
         if (preg_match('/^(' . self::$plural['cacheUninflected'] . ')$/i', $word, $regs)) {
             self::$cache['pluralize'][$word] = $word;
+
             return $word;
         }
 
         foreach (self::$plural['rules'] as $rule => $replacement) {
             if (preg_match($rule, $word)) {
                 self::$cache['pluralize'][$word] = preg_replace($rule, $replacement, $word);
+
                 return self::$cache['pluralize'][$word];
             }
         }
@@ -371,21 +389,26 @@ class Inflector
 
         if (preg_match('/(.*)\\b(' . self::$singular['cacheIrregular'] . ')$/i', $word, $regs)) {
             self::$cache['singularize'][$word] = $regs[1] . substr($word, 0, 1) . substr(self::$singular['merged']['irregular'][strtolower($regs[2])], 1);
+            
             return self::$cache['singularize'][$word];
         }
 
         if (preg_match('/^(' . self::$singular['cacheUninflected'] . ')$/i', $word, $regs)) {
             self::$cache['singularize'][$word] = $word;
+
             return $word;
         }
 
         foreach (self::$singular['rules'] as $rule => $replacement) {
             if (preg_match($rule, $word)) {
                 self::$cache['singularize'][$word] = preg_replace($rule, $replacement, $word);
+
                 return self::$cache['singularize'][$word];
             }
         }
+
         self::$cache['singularize'][$word] = $word;
+
         return $word;
     }
 }
