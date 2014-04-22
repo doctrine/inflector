@@ -57,6 +57,7 @@ class InflectorTest extends DoctrineTestCase
             array('roof', 'roofs'),
             array('foe', 'foes'),
             array('cookie', 'cookies'),
+            array('identity', 'identities'),
             array('', ''),
         );
     }
