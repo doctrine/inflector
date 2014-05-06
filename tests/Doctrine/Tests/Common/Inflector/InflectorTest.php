@@ -206,5 +206,25 @@ class InflectorTest extends DoctrineTestCase
         $this->assertEquals(Inflector::singularize('Alcoois'), 'Alcool');
         $this->assertEquals(Inflector::singularize('Atlas'), 'Atlas');
     }
+
+    /**
+     * Test basic ucwords functionality.
+     *
+     * @return void
+     */
+    public function testUcwords()
+    {
+        $this->assertSame('Top-O-The-Morning To All_of_you!', Inflector::ucwords( 'top-o-the-morning to all_of_you!'));
+    }
+
+    /**
+     * Test ucwords functionality with custom delimeters.
+     *
+     * @return void
+     */
+    public function testUcwordsWithCustomDelimeters()
+    {
+        $this->assertSame('Top-O-The-Morning To All_Of_You!', Inflector::ucwords( 'top-o-the-morning to all_of_you!', '-_ '));
+    }
 }
 
