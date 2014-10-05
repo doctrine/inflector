@@ -83,6 +83,7 @@ class Inflector
             'genus' => 'genera',
             'graffito' => 'graffiti',
             'hoof' => 'hoofs',
+            'human' => 'humans',
             'loaf' => 'loaves',
             'man' => 'men',
             'money' => 'monies',
