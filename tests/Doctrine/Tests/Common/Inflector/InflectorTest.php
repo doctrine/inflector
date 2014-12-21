@@ -15,54 +15,8 @@ class InflectorTest extends DoctrineTestCase
     public function dataSampleWords() 
     {
         Inflector::reset();
-        
-        // in the format array('singular', 'plural') 
-        return array(
-            array('categoria', 'categorias'),
-            array('house', 'houses'),
-            array('powerhouse', 'powerhouses'),
-            array('Bus', 'Buses'),
-            array('bus', 'buses'),
-            array('menu', 'menus'),
-            array('news', 'news'),
-            array('food_menu', 'food_menus'),
-            array('Menu', 'Menus'),
-            array('FoodMenu', 'FoodMenus'),
-            array('quiz', 'quizzes'),
-            array('matrix_row', 'matrix_rows'),
-            array('matrix', 'matrices'),
-            array('vertex', 'vertices'),
-            array('index', 'indices'),
-            array('Alias', 'Aliases'),
-            array('Media', 'Media'),
-            array('NodeMedia', 'NodeMedia'),
-            array('alumnus', 'alumni'),
-            array('bacillus', 'bacilli'),
-            array('cactus', 'cacti'),
-            array('focus', 'foci'),
-            array('fungus', 'fungi'),
-            array('nucleus', 'nuclei'),
-            array('octopus', 'octopuses'),
-            array('radius', 'radii'),
-            array('stimulus', 'stimuli'),
-            array('syllabus', 'syllabi'),
-            array('terminus', 'termini'),
-            array('virus', 'viri'),
-            array('person', 'people'),
-            array('glove', 'gloves'),
-            array('crisis', 'crises'),
-            array('tax', 'taxes'),
-            array('wave', 'waves'),
-            array('bureau', 'bureaus'),
-            array('cafe', 'cafes'),
-            array('roof', 'roofs'),
-            array('foe', 'foes'),
-            array('cookie', 'cookies'),
-            array('identity', 'identities'),
-            array('criteria', 'criterion'),
-            array('curve', 'curves'),
-            array('', ''),
-        );
+
+        return json_decode(file_get_contents(__DIR__.'/../../Fixtures/InflectorWords.json'), true);
     }
 
     /**
@@ -71,13 +25,15 @@ class InflectorTest extends DoctrineTestCase
      * @dataProvider dataSampleWords
      * @return void
      */
-    public function testInflectingSingulars($singular, $plural) 
+    public function testInflectingSingulars($singular, $plurals)
     {
-        $this->assertEquals(
-            $singular, 
-            Inflector::singularize($plural), 
-            "'$plural' should be singularized to '$singular'"
-        );
+        foreach($plurals as $plural) {
+            $this->assertEquals(
+                $singular,
+                Inflector::singularize($plural),
+                "'$plural' should be singularized to '$singular'"
+            );
+        }
     }
 
     /**
@@ -86,13 +42,15 @@ class InflectorTest extends DoctrineTestCase
      * @dataProvider dataSampleWords
      * @return void
      */
-    public function testInflectingPlurals($singular, $plural) 
+    public function testInflectingPlurals($singular, $plurals)
     {
-        $this->assertEquals(
-            $plural, 
-            Inflector::pluralize($singular), 
-            "'$singular' should be pluralized to '$plural'"
-        );
+        foreach($plurals as $plural) {
+            $this->assertEquals(
+                $plural,
+                Inflector::pluralize($singular),
+                "'$singular' should be pluralized to '$plural'"
+            );
+        }
     }
 
     /**
