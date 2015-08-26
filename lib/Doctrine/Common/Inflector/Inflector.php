@@ -159,7 +159,7 @@ class Inflector
             '.*ss',
         ),
         'irregular' => array(
-            'criterion' => 'criteria',
+            'criteria' => 'criterion',
             'curves' => 'curve',
             'foes' => 'foe',
             'waves' => 'wave',
