@@ -62,6 +62,7 @@ class InflectorTest extends DoctrineTestCase
             array('criterion', 'criteria'),
             array('curve', 'curves'),
             array('hero', 'heroes'),
+            array('foot', 'feet'),
             array('', ''),
         );
     }
