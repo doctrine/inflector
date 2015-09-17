@@ -68,6 +68,7 @@ class InflectorTest extends DoctrineTestCase
             array('volcano', 'volcanoes'),
             array('analysis', 'analyses'),
             array('thesis', 'theses'),
+            array('', ''),
         );
     }
 
