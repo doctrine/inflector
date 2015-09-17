@@ -121,6 +121,7 @@ class Inflector
             '/(vert|ind)ices$/i' => '\1ex',
             '/^(ox)en/i' => '\1',
             '/(alias)(es)*$/i' => '\1',
+            '/(buffal|her|potat|tomat|volcan)oes$/i' => '\1o',
             '/(alumn|bacill|cact|foc|fung|nucle|radi|stimul|syllab|termin|viri?)i$/i' => '\1us',
             '/([ftw]ax)es/i' => '\1',
             '/(analys|ax|cris|test|thes)es$/i' => '\1is',
