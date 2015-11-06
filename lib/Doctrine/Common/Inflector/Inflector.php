@@ -268,6 +268,42 @@ class Inflector
     }
 
     /**
+     * Uppercases words with configurable delimeters between words.
+     *
+     * Takes a string and capitalizes all of the words, like PHP's built-in
+     * ucwords function.  This extends that behavior, however, by allowing the
+     * word delimeters to be configured, rather than only separating on
+     * whitespace.
+     *
+     * Here is an example:
+     * <code>
+     * <?php
+     * $string = 'top-o-the-morning to all_of_you!';
+     * echo \Doctrine\Common\Inflector\Inflector::ucwords($string);
+     * // Top-O-The-Morning To All_of_you!
+     *
+     * echo \Doctrine\Common\Inflector\Inflector::ucwords($string, '-_ ');
+     * // Top-O-The-Morning To All_Of_You!
+     * ?>
+     * </code>
+     *
+     * @param string $string The string to operate on.
+     * @param string $delimiters A list of word separators.
+     *
+     * @return string The string with all delimeter-separated words capitalized.
+     */
+    public static function ucwords($string, $delimiters = " \n\t\r\0\x0B-")
+    {
+        return preg_replace_callback(
+            '/[^' . preg_quote($delimiters, '/') . ']+/',
+            function($matches) {
+                return ucfirst($matches[0]);
+            },
+            $string
+        );
+    }
+
+    /**
      * Clears Inflectors inflected value caches, and resets the inflection
      * rules to the initial values.
      *
