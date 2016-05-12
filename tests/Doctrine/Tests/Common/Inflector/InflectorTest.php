@@ -305,5 +305,91 @@ class InflectorTest extends DoctrineTestCase
     {
         $this->assertSame('Top-O-The-Morning To All_Of_You!', Inflector::ucwords( 'top-o-the-morning to all_of_you!', '-_ '));
     }
+
+    /**
+     * @param $expected
+     * @param $word
+     *
+     * @dataProvider dataStringsTableize
+     * @return void
+     */
+    public function testTableize($expected, $word)
+    {
+        $this->assertSame($expected, Inflector::tableize($word));
+    }
+
+    /**
+     * Strings which are used for testTableize.
+     *
+     * @return array
+     */
+    public function dataStringsTableize()
+    {
+        // In the format array('expected', 'word')
+        return array(
+            array('', ''),
+            array('foo_bar', 'FooBar'),
+            array('f0o_bar', 'F0oBar'),
+        );
+    }
+
+    /**
+     * @param $expected
+     * @param $word
+     *
+     * @dataProvider dataStringsClassify
+     * @return void
+     */
+    public function testClassify($expected, $word)
+    {
+        $this->assertSame($expected, Inflector::classify($word));
+    }
+
+    /**
+     * Strings which are used for testClassify.
+     *
+     * @return array
+     */
+    public function dataStringsClassify()
+    {
+        // In the format array('expected', 'word')
+        return array(
+            array('', ''),
+            array('FooBar', 'foo_bar'),
+            array('FooBar', 'foo bar'),
+            array('F0oBar', 'f0o bar'),
+            array('F0oBar', 'f0o  bar'),
+            array('FooBar', 'foo_bar_'),
+        );
+    }
+
+    /**
+     * @param $expected
+     * @param $word
+     *
+     * @dataProvider dataStringsCamelize
+     * @return void
+     */
+    public function testCamelize($expected, $word)
+    {
+        $this->assertSame($expected, Inflector::camelize($word));
+    }
+
+    /**
+     * Strings which are used for testCamelize.
+     *
+     * @return array
+     */
+    public function dataStringsCamelize()
+    {
+        // In the format array('expected', 'word')
+        return array(
+            array('', ''),
+            array('fooBar', 'foo_bar'),
+            array('fooBar', 'foo bar'),
+            array('f0oBar', 'f0o bar'),
+            array('f0oBar', 'f0o  bar'),
+        );
+    }
 }
 
