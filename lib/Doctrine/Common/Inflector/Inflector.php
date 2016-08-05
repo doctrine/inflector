@@ -486,6 +486,8 @@ class Inflector
      */
     public static function pluralize(string $word) : string
     {
+        $tablized_word = self::tableize($word);
+
         if (isset(self::$cache['pluralize'][$word])) {
             return self::$cache['pluralize'][$word];
         }
@@ -503,10 +505,15 @@ class Inflector
             self::$plural['cacheIrregular']   = '(?:' . implode('|', array_keys(self::$plural['merged']['irregular'])) . ')';
         }
 
-        if (preg_match('/(.*)\\b(' . self::$plural['cacheIrregular'] . ')$/i', $word, $regs)) {
-            self::$cache['pluralize'][$word] = $regs[1] . $word[0] . substr(self::$plural['merged']['irregular'][strtolower($regs[2])], 1);
+        if (preg_match('/(.*(?:\\b|_))(' . self::$plural['cacheIrregular'] . ')$/i', $tablized_word, $regs)) {
+            $result = $regs[1] . substr($regs[2], 0, 1) . substr(self::$plural['merged']['irregular'][strtolower($regs[2])], 1);
+            if ($tablized_word !== $word) {
+                $camelized_result = self::camelize($result);
 
-            return self::$cache['pluralize'][$word];
+                $result = substr($word, 0, 1) . substr($camelized_result, 1);
+            }
+
+            return self::$cache['pluralize'][$word] = $result;
         }
 
         if (preg_match('/^(' . self::$plural['cacheUninflected'] . ')$/i', $word, $regs)) {
@@ -533,6 +540,8 @@ class Inflector
      */
     public static function singularize(string $word) : string
     {
+        $tablized_word = self::tableize($word);
+
         if (isset(self::$cache['singularize'][$word])) {
             return self::$cache['singularize'][$word];
         }
@@ -556,10 +565,15 @@ class Inflector
             self::$singular['cacheIrregular']   = '(?:' . implode('|', array_keys(self::$singular['merged']['irregular'])) . ')';
         }
 
-        if (preg_match('/(.*)\\b(' . self::$singular['cacheIrregular'] . ')$/i', $word, $regs)) {
-            self::$cache['singularize'][$word] = $regs[1] . $word[0] . substr(self::$singular['merged']['irregular'][strtolower($regs[2])], 1);
+        if (preg_match('/(.*(?:\\b|_))(' . self::$singular['cacheIrregular'] . ')$/i', $tablized_word, $regs)) {
+            $result = $regs[1] . substr($regs[2], 0, 1) . substr(self::$singular['merged']['irregular'][strtolower($regs[2])], 1);
 
-            return self::$cache['singularize'][$word];
+            if ($tablized_word !== $word) {
+                $camelized_result = self::camelize($result);
+
+                $result = substr($word, 0, 1) . substr($camelized_result, 1);
+            }
+            return self::$cache['singularize'][$word] = $result;
         }
 
         if (preg_match('/^(' . self::$singular['cacheUninflected'] . ')$/i', $word, $regs)) {
