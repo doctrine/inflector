@@ -201,6 +201,7 @@ class Inflector
             'clothes',
         ),
         'irregular' => array(
+            'avalanches' => 'avalanche',
             'caches'     => 'cache',
             'criteria'   => 'criterion',
             'curves'     => 'curve',
@@ -211,7 +212,6 @@ class Inflector
             'neuroses'   => 'neurosis',
             'waves'      => 'wave',
             'oases'      => 'oasis',
-            'avalanches' => 'avalanche'
         )
     );
 
