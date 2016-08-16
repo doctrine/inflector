@@ -185,6 +185,7 @@ class Inflector
             '.*ss',
         ),
         'irregular' => array(
+            'caches'    => 'cache',
             'criteria'  => 'criterion',
             'curves'    => 'curve',
             'emphases'  => 'emphasis',
