@@ -185,6 +185,7 @@ class Inflector
             '.*ss',
         ),
         'irregular' => array(
+            'avalanches' => 'avalanche',
             'criteria'   => 'criterion',
             'curves'     => 'curve',
             'emphases'   => 'emphasis',
@@ -194,7 +195,6 @@ class Inflector
             'neuroses'   => 'neurosis',
             'waves'      => 'wave',
             'oases'      => 'oasis',
-            'avalanches' => 'avalanche'
         )
     );
 
