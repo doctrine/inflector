@@ -87,7 +87,7 @@ class Inflector
             'echo' => 'echoes',
             'foot' => 'feet',
             'fungus' => 'fungi',
-            'ganglion' => 'ganglions',     
+            'ganglion' => 'ganglions',
             'genie' => 'genies',
             'genus' => 'genera',
             'goose' => 'geese',
