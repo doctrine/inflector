@@ -39,6 +39,7 @@ class InflectorTest extends DoctrineTestCase
             array('chateau', 'chateaux'),
             array('cherry', 'cherries'),
             array('child', 'children'),
+            array('node-child', 'node-children'),
             array('church', 'churches'),
             array('circus', 'circuses'),
             array('city', 'cities'),
