@@ -67,7 +67,16 @@ class Inflector
             '/$/' => 's',
         ),
         'uninflected' => array(
-            '.*[nrlm]ese', '.*deer', '.*fish', '.*measles', '.*ois', '.*pox', '.*sheep', 'people', 'cookie'
+            '.*[nrlm]ese',
+            '.*deer',
+            '.*fish',
+            '.*measles',
+            '.*ois',
+            '.*pox',
+            '.*sheep',
+            'people',
+            'cookie',
+            'police',
         ),
         'irregular' => array(
             'atlas' => 'atlases',
@@ -184,6 +193,9 @@ class Inflector
             '.*pox',
             '.*sheep',
             '.*ss',
+            'police',
+            'pants',
+            'clothes',
         ),
         'irregular' => array(
             'criteria'  => 'criterion',

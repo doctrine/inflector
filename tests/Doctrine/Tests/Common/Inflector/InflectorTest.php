@@ -142,6 +142,11 @@ class InflectorTest extends TestCase
             array('wharf', 'wharves'),
             array('wife', 'wives'),
             array('woman', 'women'),
+            array('clothes', 'clothes'),
+            array('pants', 'pants'),
+            array('police', 'police'),
+            array('scissors', 'scissors'),
+            array('trousers', 'trousers'),
         );
     }
 
