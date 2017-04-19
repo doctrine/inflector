@@ -119,6 +119,7 @@ class InflectorTest extends DoctrineTestCase
             array('son-in-law', 'sons-in-law'),
             array('species', 'species'),
             array('splash', 'splashes'),
+            array('spouse', 'spouses'),
             array('spy', 'spies'),
             array('stimulus', 'stimuli'),
             array('stitch', 'stitches'),
