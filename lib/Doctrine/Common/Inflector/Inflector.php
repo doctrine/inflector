@@ -161,6 +161,7 @@ class Inflector
             '/(tive)s$/i' => '\1',
             '/(hive)s$/i' => '\1',
             '/(drive)s$/i' => '\1',
+            '/(dive)s$/i' => '\1',
             '/([^fo])ves$/i' => '\1fe',
             '/(^analy)ses$/i' => '\1sis',
             '/(analy|diagno|^ba|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$/i' => '\1\2sis',
@@ -194,7 +195,6 @@ class Inflector
             'neuroses'  => 'neurosis',
             'waves'     => 'wave',
             'oases'     => 'oasis',
-            'dives'     => 'dive',
         )
     );
 
