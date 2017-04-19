@@ -150,6 +150,7 @@ class InflectorTest extends TestCase
             array('police', 'police'),
             array('scissors', 'scissors'),
             array('trousers', 'trousers'),
+            array('dive', 'dives'),
         );
     }
 
