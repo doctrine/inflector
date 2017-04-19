@@ -141,6 +141,7 @@ class InflectorTest extends DoctrineTestCase
             array('wharf', 'wharves'),
             array('wife', 'wives'),
             array('woman', 'women'),
+            array('dive', 'dives'),
         );
     }
 

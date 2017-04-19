@@ -194,6 +194,7 @@ class Inflector
             'neuroses'  => 'neurosis',
             'waves'     => 'wave',
             'oases'     => 'oasis',
+            'dives'     => 'dive',
         )
     );
 
