@@ -262,8 +262,11 @@ class Inflector
      *
      * @return string The camelized word.
      */
-    public static function camelize($word)
+    public static function camelize($word, $uppercase_first_letter = false)
     {
+        if($uppercase_first_letter)
+            return self::classify($word);
+        
         return lcfirst(self::classify($word));
     }
 
