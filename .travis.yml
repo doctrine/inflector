@@ -18,4 +18,4 @@ install:
   - composer install -n
 
 script:
-  - phpunit
+  - vendor/bin/phpunit
