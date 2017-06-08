@@ -19,7 +19,7 @@
         "phpunit/phpunit": "^6.2"
     },
     "autoload": {
-        "psr-0": { "Doctrine\\Common\\Inflector\\": "lib/" }
+        "psr-4": { "Doctrine\\Common\\Inflector\\": "lib/Doctrine/Common/Inflector" }
     },
     "extra": {
         "branch-alias": {
