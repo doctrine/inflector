@@ -21,6 +21,9 @@
     "autoload": {
         "psr-4": { "Doctrine\\Common\\Inflector\\": "lib/Doctrine/Common/Inflector" }
     },
+    "autoload-dev": {
+        "psr-4": { "Doctrine\\Tests\\Common\\Inflector\\": "tests/Doctrine/Common/Inflector" }
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.2.x-dev"

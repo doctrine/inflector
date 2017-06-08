@@ -2,10 +2,10 @@
 
 namespace Doctrine\Tests\Common\Inflector;
 
-use Doctrine\Tests\DoctrineTestCase;
 use Doctrine\Common\Inflector\Inflector;
+use PHPUnit\Framework\TestCase;
 
-class InflectorTest extends DoctrineTestCase
+class InflectorTest extends TestCase
 {
     /**
      * Singular & Plural test data. Returns an array of sample words.
