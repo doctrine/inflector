@@ -76,6 +76,7 @@ class Inflector
             'brother' => 'brothers',
             'cafe' => 'cafes',
             'chateau' => 'chateaux',
+            'niveau' => 'niveaux',
             'child' => 'children',
             'cookie' => 'cookies',
             'corpus' => 'corpuses',
