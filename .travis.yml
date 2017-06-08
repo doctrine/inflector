@@ -7,12 +7,12 @@ cache:
     - $HOME/.composer/cache
 
 php:
-  - 5.3
-  - 5.4
-  - 5.5
-  - 5.6
   - 7.0
-  - hhvm
+  - 7.1
+  - nightly
+
+allowed_failures:
+  - nightly
 
 install:
   - composer install -n
