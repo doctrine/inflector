@@ -37,6 +37,7 @@ class InflectorTest extends TestCase
             array('calf', 'calves'),
             array('categoria', 'categorias'),
             array('chateau', 'chateaux'),
+            array('niveau', 'niveaux'),
             array('cherry', 'cherries'),
             array('child', 'children'),
             array('church', 'churches'),
