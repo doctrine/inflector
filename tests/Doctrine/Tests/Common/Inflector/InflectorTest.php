@@ -121,6 +121,7 @@ class InflectorTest extends TestCase
             array('son-in-law', 'sons-in-law'),
             array('species', 'species'),
             array('splash', 'splashes'),
+            array('spouse', 'spouses'),
             array('spy', 'spies'),
             array('stimulus', 'stimuli'),
             array('stitch', 'stitches'),
@@ -143,6 +144,7 @@ class InflectorTest extends TestCase
             array('wharf', 'wharves'),
             array('wife', 'wives'),
             array('woman', 'women'),
+            array('dive', 'dives'),
         );
     }
 
