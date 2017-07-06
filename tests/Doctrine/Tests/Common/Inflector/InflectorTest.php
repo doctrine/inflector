@@ -2,10 +2,10 @@
 
 namespace Doctrine\Tests\Common\Inflector;
 
-use Doctrine\Tests\DoctrineTestCase;
 use Doctrine\Common\Inflector\Inflector;
+use PHPUnit\Framework\TestCase;
 
-class InflectorTest extends DoctrineTestCase
+class InflectorTest extends TestCase
 {
     /**
      * Singular & Plural test data. Returns an array of sample words.
@@ -69,6 +69,7 @@ class InflectorTest extends DoctrineTestCase
             array('foot', 'feet'),
             array('fungus', 'fungi'),
             array('glove', 'gloves'),
+            array('gulf', 'gulfs'),
             array('half', 'halves'),
             array('hero', 'heroes'),
             array('hippopotamus', 'hippopotami'),
@@ -97,6 +98,7 @@ class InflectorTest extends DoctrineTestCase
             array('mouse', 'mice'),
             array('neurosis', 'neuroses'),
             array('news', 'news'),
+            array('niveau', 'niveaux'),
             array('NodeMedia', 'NodeMedia'),
             array('nucleus', 'nuclei'),
             array('oasis', 'oases'),
@@ -142,6 +144,11 @@ class InflectorTest extends DoctrineTestCase
             array('wharf', 'wharves'),
             array('wife', 'wives'),
             array('woman', 'women'),
+            array('clothes', 'clothes'),
+            array('pants', 'pants'),
+            array('police', 'police'),
+            array('scissors', 'scissors'),
+            array('trousers', 'trousers'),
         );
     }
 
