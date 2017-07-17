@@ -104,6 +104,7 @@ class InflectorTest extends TestCase
             array('oasis', 'oases'),
             array('octopus', 'octopuses'),
             array('pass', 'passes'),
+            array('passerby', 'passersby'),
             array('person', 'people'),
             array('plateau', 'plateaux'),
             array('potato', 'potatoes'),

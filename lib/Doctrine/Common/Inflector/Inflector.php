@@ -123,6 +123,7 @@ class Inflector
             'octopus' => 'octopuses',
             'opus' => 'opuses',
             'ox' => 'oxen',
+            'passerby' => 'passersby',
             'penis' => 'penises',
             'person' => 'people',
             'plateau' => 'plateaux',
