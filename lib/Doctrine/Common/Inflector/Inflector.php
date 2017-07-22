@@ -201,15 +201,16 @@ class Inflector
             'clothes',
         ),
         'irregular' => array(
-            'criteria'  => 'criterion',
-            'curves'    => 'curve',
-            'emphases'  => 'emphasis',
-            'foes'      => 'foe',
-            'hoaxes'    => 'hoax',
-            'media'     => 'medium',
-            'neuroses'  => 'neurosis',
-            'waves'     => 'wave',
-            'oases'     => 'oasis',
+            'avalanches' => 'avalanche',
+            'criteria'   => 'criterion',
+            'curves'     => 'curve',
+            'emphases'   => 'emphasis',
+            'foes'       => 'foe',
+            'hoaxes'     => 'hoax',
+            'media'      => 'medium',
+            'neuroses'   => 'neurosis',
+            'waves'      => 'wave',
+            'oases'      => 'oasis',
         )
     );
 
