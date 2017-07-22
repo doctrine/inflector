@@ -32,6 +32,7 @@ class InflectorTest extends TestCase
             array('bureau', 'bureaus'),
             array('bus', 'buses'),
             array('Bus', 'Buses'),
+            array('cache', 'caches'),
             array('cactus', 'cacti'),
             array('cafe', 'cafes'),
             array('calf', 'calves'),

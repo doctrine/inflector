@@ -201,6 +201,7 @@ class Inflector
             'clothes',
         ),
         'irregular' => array(
+            'caches'    => 'cache',
             'criteria'  => 'criterion',
             'curves'    => 'curve',
             'emphases'  => 'emphasis',
