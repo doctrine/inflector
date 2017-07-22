@@ -269,7 +269,11 @@ class Inflector
      */
     public static function classify($word)
     {
-        return str_replace(" ", "", ucwords(strtr($word, "_-", "  ")));
+        if ((!defined('HHVM_VERSION_ID') || HHVM_VERSION_ID >= 31200) && (PHP_VERSION_ID >= 50516 || (PHP_VERSION_ID < 50500 && PHP_VERSION_ID >= 50432))) {
+            return str_replace(array(' ', '_', '-'), '', ucwords($word, ' _-'));
+        }
+
+        return str_replace(' ', '', ucwords(strtr($word, '_-', '  ')));
     }
 
     /**
@@ -288,7 +292,7 @@ class Inflector
      * Uppercases words with configurable delimeters between words.
      *
      * Takes a string and capitalizes all of the words, like PHP's built-in
-     * ucwords function.  This extends that behavior, however, by allowing the
+     * ucwords function. This extends that behavior, however, by allowing the
      * word delimeters to be configured, rather than only separating on
      * whitespace.
      *
@@ -311,6 +315,10 @@ class Inflector
      */
     public static function ucwords($string, $delimiters = " \n\t\r\0\x0B-")
     {
+        if ((!defined('HHVM_VERSION_ID') || HHVM_VERSION_ID >= 31200) && (PHP_VERSION_ID >= 50516 || (PHP_VERSION_ID < 50500 && PHP_VERSION_ID >= 50432))) {
+            return ucwords($string, $delimiters);
+        }
+
         return preg_replace_callback(
             '/[^' . preg_quote($delimiters, '/') . ']+/',
             function($matches) {
@@ -335,7 +343,7 @@ class Inflector
         }
 
         foreach (self::$initialState as $key => $val) {
-            if ($key != 'initialState') {
+            if ('initialState' !== $key) {
                 self::${$key} = $val;
             }
         }
@@ -372,7 +380,7 @@ class Inflector
             if ($reset) {
                 self::${$type}[$rule] = $pattern;
             } else {
-                self::${$type}[$rule] = ($rule === 'uninflected')
+                self::${$type}[$rule] = ('uninflected' === $rule)
                     ? array_merge($pattern, self::${$type}[$rule])
                     : $pattern + self::${$type}[$rule];
             }
@@ -383,9 +391,9 @@ class Inflector
                 unset(self::${$type}['merged'][$rule]);
             }
 
-            if ($type === 'plural') {
+            if ('plural' === $type) {
                 self::$cache['pluralize'] = self::$cache['tableize'] = array();
-            } elseif ($type === 'singular') {
+            } elseif ('singular' === $type) {
                 self::$cache['singularize'] = array();
             }
         }
