@@ -109,6 +109,7 @@ class Inflector
             'leaf' => 'leaves',
             'loaf' => 'loaves',
             'man' => 'men',
+            'matrix' => 'matrices',
             'medium' => 'media',
             'memorandum' => 'memoranda',
             'money' => 'monies',
