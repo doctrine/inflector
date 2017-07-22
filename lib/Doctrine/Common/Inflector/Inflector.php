@@ -250,36 +250,24 @@ class Inflector
 
     /**
      * Converts a word into the format for a Doctrine table name. Converts 'ModelName' to 'model_name'.
-     *
-     * @param string $word The word to tableize.
-     *
-     * @return string The tableized word.
      */
-    public static function tableize($word)
+    public static function tableize(string $word) : string
     {
         return strtolower(preg_replace('~(?<=\\w)([A-Z])~', '_$1', $word));
     }
 
     /**
      * Converts a word into the format for a Doctrine class name. Converts 'table_name' to 'TableName'.
-     *
-     * @param string $word The word to classify.
-     *
-     * @return string The classified word.
      */
-    public static function classify($word)
+    public static function classify(string $word) : string
     {
         return str_replace(' ', '', ucwords(strtr($word, '_-', '  ')));
     }
 
     /**
      * Camelizes a word. This uses the classify() method and turns the first character to lowercase.
-     *
-     * @param string $word The word to camelize.
-     *
-     * @return string The camelized word.
      */
-    public static function camelize($word)
+    public static function camelize(string $word) : string
     {
         return lcfirst(self::classify($word));
     }
@@ -309,7 +297,7 @@ class Inflector
      *
      * @return string The string with all delimeter-separated words capitalized.
      */
-    public static function ucwords($string, $delimiters = " \n\t\r\0\x0B-")
+    public static function ucwords(string $string, string $delimiters = " \n\t\r\0\x0B-") : string
     {
         return preg_replace_callback(
             '/[^' . preg_quote($delimiters, '/') . ']+/',
@@ -323,10 +311,8 @@ class Inflector
     /**
      * Clears Inflectors inflected value caches, and resets the inflection
      * rules to the initial values.
-     *
-     * @return void
      */
-    public static function reset()
+    public static function reset() : void
     {
         if (empty(self::$initialState)) {
             self::$initialState = get_class_vars('Inflector');
@@ -362,7 +348,7 @@ class Inflector
      *
      * @return void
      */
-    public static function rules($type, $rules, $reset = false)
+    public static function rules(string $type, iterable $rules, bool $reset = false) : void
     {
         foreach ($rules as $rule => $pattern) {
             if ( ! is_array($pattern)) {
@@ -400,7 +386,7 @@ class Inflector
      *
      * @return string The word in plural form.
      */
-    public static function pluralize($word)
+    public static function pluralize(string $word) : string
     {
         if (isset(self::$cache['pluralize'][$word])) {
             return self::$cache['pluralize'][$word];
@@ -447,7 +433,7 @@ class Inflector
      *
      * @return string The word in singular form.
      */
-    public static function singularize($word)
+    public static function singularize(string $word) : string
     {
         if (isset(self::$cache['singularize'][$word])) {
             return self::$cache['singularize'][$word];
