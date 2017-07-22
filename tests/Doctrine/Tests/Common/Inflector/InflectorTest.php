@@ -25,6 +25,7 @@ class InflectorTest extends TestCase
             array('aquarium', 'aquaria'),
             array('arch', 'arches'),
             array('atlas', 'atlases'),
+            array('avalanche', 'avalanches'),
             array('axe', 'axes'),
             array('baby', 'babies'),
             array('bacillus', 'bacilli'),
