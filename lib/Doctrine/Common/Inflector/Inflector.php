@@ -38,7 +38,7 @@ class Inflector
     /**
      * Plural inflector rules.
      *
-     * @var array
+     * @var string[][]
      */
     private static $plural = array(
         'rules' => array(
@@ -145,7 +145,7 @@ class Inflector
     /**
      * Singular inflector rules.
      *
-     * @var array
+     * @var string[][]
      */
     private static $singular = array(
         'rules' => array(
@@ -250,36 +250,24 @@ class Inflector
 
     /**
      * Converts a word into the format for a Doctrine table name. Converts 'ModelName' to 'model_name'.
-     *
-     * @param string $word The word to tableize.
-     *
-     * @return string The tableized word.
      */
-    public static function tableize($word)
+    public static function tableize(string $word) : string
     {
         return strtolower(preg_replace('~(?<=\\w)([A-Z])~', '_$1', $word));
     }
 
     /**
      * Converts a word into the format for a Doctrine class name. Converts 'table_name' to 'TableName'.
-     *
-     * @param string $word The word to classify.
-     *
-     * @return string The classified word.
      */
-    public static function classify($word)
+    public static function classify(string $word) : string
     {
         return str_replace(' ', '', ucwords(strtr($word, '_-', '  ')));
     }
 
     /**
      * Camelizes a word. This uses the classify() method and turns the first character to lowercase.
-     *
-     * @param string $word The word to camelize.
-     *
-     * @return string The camelized word.
      */
-    public static function camelize($word)
+    public static function camelize(string $word) : string
     {
         return lcfirst(self::classify($word));
     }
@@ -309,7 +297,7 @@ class Inflector
      *
      * @return string The string with all delimeter-separated words capitalized.
      */
-    public static function ucwords($string, $delimiters = " \n\t\r\0\x0B-")
+    public static function ucwords(string $string, string $delimiters = " \n\t\r\0\x0B-") : string
     {
         return preg_replace_callback(
             '/[^' . preg_quote($delimiters, '/') . ']+/',
@@ -323,10 +311,8 @@ class Inflector
     /**
      * Clears Inflectors inflected value caches, and resets the inflection
      * rules to the initial values.
-     *
-     * @return void
      */
-    public static function reset()
+    public static function reset() : void
     {
         if (empty(self::$initialState)) {
             self::$initialState = get_class_vars('Inflector');
@@ -335,7 +321,7 @@ class Inflector
         }
 
         foreach (self::$initialState as $key => $val) {
-            if ($key != 'initialState') {
+            if ($key !== 'initialState') {
                 self::${$key} = $val;
             }
         }
@@ -355,14 +341,14 @@ class Inflector
      * ));
      * }}}
      *
-     * @param string  $type  The type of inflection, either 'plural' or 'singular'
-     * @param array   $rules An array of rules to be added.
-     * @param boolean $reset If true, will unset default inflections for all
-     *                       new rules that are being defined in $rules.
+     * @param string  $type         The type of inflection, either 'plural' or 'singular'
+     * @param array|iterable $rules An array of rules to be added.
+     * @param boolean $reset        If true, will unset default inflections for all
+     *                              new rules that are being defined in $rules.
      *
      * @return void
      */
-    public static function rules($type, $rules, $reset = false)
+    public static function rules(string $type, iterable $rules, bool $reset = false) : void
     {
         foreach ($rules as $rule => $pattern) {
             if ( ! is_array($pattern)) {
@@ -400,7 +386,7 @@ class Inflector
      *
      * @return string The word in plural form.
      */
-    public static function pluralize($word)
+    public static function pluralize(string $word) : string
     {
         if (isset(self::$cache['pluralize'][$word])) {
             return self::$cache['pluralize'][$word];
@@ -420,7 +406,7 @@ class Inflector
         }
 
         if (preg_match('/(.*)\\b(' . self::$plural['cacheIrregular'] . ')$/i', $word, $regs)) {
-            self::$cache['pluralize'][$word] = $regs[1] . substr($word, 0, 1) . substr(self::$plural['merged']['irregular'][strtolower($regs[2])], 1);
+            self::$cache['pluralize'][$word] = $regs[1] . $word[0] . substr(self::$plural['merged']['irregular'][strtolower($regs[2])], 1);
 
             return self::$cache['pluralize'][$word];
         }
@@ -447,7 +433,7 @@ class Inflector
      *
      * @return string The word in singular form.
      */
-    public static function singularize($word)
+    public static function singularize(string $word) : string
     {
         if (isset(self::$cache['singularize'][$word])) {
             return self::$cache['singularize'][$word];
@@ -468,12 +454,12 @@ class Inflector
         }
 
         if (!isset(self::$singular['cacheUninflected']) || !isset(self::$singular['cacheIrregular'])) {
-            self::$singular['cacheUninflected'] = '(?:' . join('|', self::$singular['merged']['uninflected']) . ')';
-            self::$singular['cacheIrregular'] = '(?:' . join('|', array_keys(self::$singular['merged']['irregular'])) . ')';
+            self::$singular['cacheUninflected'] = '(?:' . implode('|', self::$singular['merged']['uninflected']) . ')';
+            self::$singular['cacheIrregular'] = '(?:' . implode('|', array_keys(self::$singular['merged']['irregular'])) . ')';
         }
 
         if (preg_match('/(.*)\\b(' . self::$singular['cacheIrregular'] . ')$/i', $word, $regs)) {
-            self::$cache['singularize'][$word] = $regs[1] . substr($word, 0, 1) . substr(self::$singular['merged']['irregular'][strtolower($regs[2])], 1);
+            self::$cache['singularize'][$word] = $regs[1] . $word[0] . substr(self::$singular['merged']['irregular'][strtolower($regs[2])], 1);
 
             return self::$cache['singularize'][$word];
         }

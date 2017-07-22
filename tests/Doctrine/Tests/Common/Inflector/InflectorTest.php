@@ -10,9 +10,9 @@ class InflectorTest extends TestCase
     /**
      * Singular & Plural test data. Returns an array of sample words.
      *
-     * @return array
+     * @return string[][]
      */
-    public function dataSampleWords()
+    public function dataSampleWords() : array
     {
         Inflector::reset();
 
@@ -157,12 +157,9 @@ class InflectorTest extends TestCase
     }
 
     /**
-     * testInflectingSingulars method
-     *
      * @dataProvider dataSampleWords
-     * @return void
      */
-    public function testInflectingSingulars($singular, $plural)
+    public function testInflectingSingulars(string $singular, string $plural) : void
     {
         $this->assertEquals(
             $singular,
@@ -172,12 +169,9 @@ class InflectorTest extends TestCase
     }
 
     /**
-     * testInflectingPlurals method
-     *
      * @dataProvider dataSampleWords
-     * @return void
      */
-    public function testInflectingPlurals($singular, $plural)
+    public function testInflectingPlurals(string $singular, string $plural) : void
     {
         $this->assertEquals(
             $plural,
@@ -186,12 +180,7 @@ class InflectorTest extends TestCase
         );
     }
 
-    /**
-     * testCustomPluralRule method
-     *
-     * @return void
-     */
-    public function testCustomPluralRule()
+    public function testCustomPluralRule() : void
     {
         Inflector::reset();
         Inflector::rules('plural', array('/^(custom)$/i' => '\1izables'));
@@ -215,12 +204,7 @@ class InflectorTest extends TestCase
         $this->assertEquals(Inflector::pluralize('phone'), 'phonezes');
     }
 
-    /**
-     * testCustomSingularRule method
-     *
-     * @return void
-     */
-    public function testCustomSingularRule()
+    public function testCustomSingularRule() : void
     {
         Inflector::reset();
         Inflector::rules('singular', array('/(eple)r$/i' => '\1', '/(jente)r$/i' => '\1'));
@@ -240,12 +224,7 @@ class InflectorTest extends TestCase
         $this->assertEquals(Inflector::singularize('singulars'), 'singulars');
     }
 
-    /**
-     * test that setting new rules clears the inflector caches.
-     *
-     * @return void
-     */
-    public function testRulesClearsCaches()
+    public function testSettingNewRulesClearsCaches() : void
     {
         Inflector::reset();
 
@@ -267,12 +246,7 @@ class InflectorTest extends TestCase
         $this->assertEquals(Inflector::pluralize('corpus'), 'corpora', 'Was inflected with old irregular form.');
     }
 
-    /**
-     * Test resetting inflection rules.
-     *
-     * @return void
-     */
-    public function testCustomRuleWithReset()
+    public function testCustomRuleWithReset() : void
     {
         Inflector::reset();
 
@@ -298,34 +272,20 @@ class InflectorTest extends TestCase
         $this->assertEquals(Inflector::singularize('Atlas'), 'Atlas');
     }
 
-    /**
-     * Test basic ucwords functionality.
-     *
-     * @return void
-     */
-    public function testUcwords()
+    public function testUcwords() : void
     {
         $this->assertSame('Top-O-The-Morning To All_of_you!', Inflector::ucwords( 'top-o-the-morning to all_of_you!'));
     }
 
-    /**
-     * Test ucwords functionality with custom delimeters.
-     *
-     * @return void
-     */
-    public function testUcwordsWithCustomDelimeters()
+    public function testUcwordsWithCustomDelimeters() : void
     {
         $this->assertSame('Top-O-The-Morning To All_Of_You!', Inflector::ucwords( 'top-o-the-morning to all_of_you!', '-_ '));
     }
 
     /**
-     * @param $expected
-     * @param $word
-     *
      * @dataProvider dataStringsTableize
-     * @return void
      */
-    public function testTableize($expected, $word)
+    public function testTableize(string $expected, string $word) : void
     {
         $this->assertSame($expected, Inflector::tableize($word));
     }
@@ -333,9 +293,9 @@ class InflectorTest extends TestCase
     /**
      * Strings which are used for testTableize.
      *
-     * @return array
+     * @return string[][]
      */
-    public function dataStringsTableize()
+    public function dataStringsTableize() : array
     {
         // In the format array('expected', 'word')
         return array(
@@ -346,13 +306,9 @@ class InflectorTest extends TestCase
     }
 
     /**
-     * @param $expected
-     * @param $word
-     *
      * @dataProvider dataStringsClassify
-     * @return void
      */
-    public function testClassify($expected, $word)
+    public function testClassify(string $expected, string $word) : void
     {
         $this->assertSame($expected, Inflector::classify($word));
     }
@@ -360,9 +316,9 @@ class InflectorTest extends TestCase
     /**
      * Strings which are used for testClassify.
      *
-     * @return array
+     * @return string[][]
      */
-    public function dataStringsClassify()
+    public function dataStringsClassify() : array
     {
         // In the format array('expected', 'word')
         return array(
@@ -376,13 +332,9 @@ class InflectorTest extends TestCase
     }
 
     /**
-     * @param $expected
-     * @param $word
-     *
      * @dataProvider dataStringsCamelize
-     * @return void
      */
-    public function testCamelize($expected, $word)
+    public function testCamelize(string $expected, string $word) : void
     {
         $this->assertSame($expected, Inflector::camelize($word));
     }
@@ -390,9 +342,9 @@ class InflectorTest extends TestCase
     /**
      * Strings which are used for testCamelize.
      *
-     * @return array
+     * @return string[][]
      */
-    public function dataStringsCamelize()
+    public function dataStringsCamelize() : array
     {
         // In the format array('expected', 'word')
         return array(
