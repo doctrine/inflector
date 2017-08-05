@@ -196,6 +196,7 @@ class Inflector
             '.*pox',
             '.*sheep',
             '.*ss',
+            'data',
             'police',
             'pants',
             'clothes',
