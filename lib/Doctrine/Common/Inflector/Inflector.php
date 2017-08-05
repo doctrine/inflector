@@ -223,7 +223,7 @@ class Inflector
     private static $uninflected = array(
         'Amoyese', 'bison', 'Borghese', 'bream', 'breeches', 'britches', 'buffalo', 'cantus',
         'carp', 'chassis', 'clippers', 'cod', 'coitus', 'Congoese', 'contretemps', 'corps',
-        'debris', 'diabetes', 'djinn', 'eland', 'elk', 'equipment', 'Faroese', 'flounder',
+        'data', 'debris', 'diabetes', 'djinn', 'eland', 'elk', 'equipment', 'Faroese', 'flounder',
         'Foochowese', 'Furniture', 'gallows', 'Genevese', 'Genoese', 'Gilbertese', 'graffiti',
         'headquarters', 'herpes', 'hijinks', 'Hottentotese', 'information', 'innings',
         'jackanapes', 'Kiplingese', 'Kongoese', 'Lucchese', 'Luggage', 'mackerel', 'Maltese', '.*?media',

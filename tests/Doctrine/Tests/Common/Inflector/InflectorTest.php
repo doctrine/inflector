@@ -51,6 +51,7 @@ class InflectorTest extends TestCase
             array('criterion', 'criteria'),
             array('curriculum', 'curricula'),
             array('curve', 'curves'),
+            array('data', 'data'),
             array('deer', 'deer'),
             array('demo', 'demos'),
             array('dictionary', 'dictionaries'),
@@ -357,4 +358,3 @@ class InflectorTest extends TestCase
         );
     }
 }
-
