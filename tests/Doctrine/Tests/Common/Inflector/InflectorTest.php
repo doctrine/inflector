@@ -74,6 +74,7 @@ class InflectorTest extends TestCase
             array('fungus', 'fungi'),
             array('glove', 'gloves'),
             array('gulf', 'gulfs'),
+            array('grave', 'graves'),
             array('half', 'halves'),
             array('hero', 'heroes'),
             array('hippopotamus', 'hippopotami'),

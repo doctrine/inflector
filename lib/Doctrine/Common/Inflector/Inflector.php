@@ -210,6 +210,7 @@ class Inflector
             'curves'     => 'curve',
             'emphases'   => 'emphasis',
             'foes'       => 'foe',
+            'graves'     => 'grave',
             'hoaxes'     => 'hoax',
             'media'      => 'medium',
             'neuroses'   => 'neurosis',
