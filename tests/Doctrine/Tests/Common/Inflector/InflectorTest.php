@@ -19,6 +19,7 @@ class InflectorTest extends TestCase
         // In the format array('singular', 'plural')
         return array(
             array('', ''),
+            array('Abuse', 'Abuses'),
             array('AcceptanceCriterion', 'AcceptanceCriteria'),
             array('Alias', 'Aliases'),
             array('alumnus', 'alumni'),
