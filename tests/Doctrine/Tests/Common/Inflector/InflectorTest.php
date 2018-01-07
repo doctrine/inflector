@@ -73,6 +73,7 @@ class InflectorTest extends TestCase
             array('FoodMenu', 'FoodMenus'),
             array('foot', 'feet'),
             array('fungus', 'fungi'),
+            array('goose', 'geese'),
             array('glove', 'gloves'),
             array('gulf', 'gulfs'),
             array('grave', 'graves'),
@@ -158,6 +159,7 @@ class InflectorTest extends TestCase
             array('scissors', 'scissors'),
             array('trousers', 'trousers'),
             array('dive', 'dives'),
+            array('olive', 'olives'),
             // Uninflected words possibly not defined under singular/plural rules
             array("Amoyese", "Amoyese"),
             array("audio", "audio"),
