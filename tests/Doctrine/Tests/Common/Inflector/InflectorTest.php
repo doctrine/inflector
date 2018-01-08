@@ -258,6 +258,7 @@ class InflectorTest extends TestCase
             array("trousers", "trousers"),
             array("trout", "trout"),
             array("tuna", "tuna"),
+            array("us", "us"),
             array("Vermontese", "Vermontese"),
             array("Wenchowese", "Wenchowese"),
             array("wheat", "wheat"),
