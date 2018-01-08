@@ -146,6 +146,7 @@ class InflectorTest extends TestCase
             array('try', 'tries'),
             array('vertex', 'vertices'),
             array('virus', 'viri'),
+            array('valve', 'valves'),
             array('volcano', 'volcanoes'),
             array('wash', 'washes'),
             array('watch', 'watches'),

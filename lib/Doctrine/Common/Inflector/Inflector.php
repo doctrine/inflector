@@ -140,6 +140,7 @@ class Inflector
             'tornado' => 'tornadoes',
             'trilby' => 'trilbys',
             'turf' => 'turfs',
+            'valve' => 'valves',
             'volcano' => 'volcanoes',
         )
     );
@@ -220,6 +221,7 @@ class Inflector
             'neuroses'   => 'neurosis',
             'waves'      => 'wave',
             'oases'      => 'oasis',
+            'valves'     => 'valve',
         )
     );
 
