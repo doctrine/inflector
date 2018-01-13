@@ -21,5 +21,12 @@ script:
   - vendor/bin/phpunit
 
 jobs:
+  include:
+    - stage: Code Quality
+      env: CODING_STANDARDS
+      php: 7.1
+      script:
+        - ./vendor/bin/phpcs
+
   allowed_failures:
     - php: nightly
