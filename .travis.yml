@@ -1,6 +1,6 @@
-language: php
-
+dist: trusty
 sudo: false
+language: php
 
 cache:
   directory:
@@ -11,11 +11,15 @@ php:
   - 7.2
   - nightly
 
-allowed_failures:
-  - nightly
+before_install:
+  - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{,.disabled} || echo "xdebug not available"
+  - travis_retry composer self-update
 
-install:
-  - composer install -n
+install: travis_retry composer update --prefer-dist -n
 
 script:
   - vendor/bin/phpunit
+
+jobs:
+  allowed_failures:
+    - php: nightly
