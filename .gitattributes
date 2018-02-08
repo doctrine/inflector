@@ -1,3 +1,4 @@
 /tests export-ignore
 .* export-ignore
 phpunit.xml.dist export-ignore
+phpcs.xml.dist export-ignore
