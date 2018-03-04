@@ -16,7 +16,7 @@
         "php": "^7.1"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^3.0",
+        "doctrine/coding-standard": "^4.0",
         "phpunit/phpunit": "^7.0"
     },
     "autoload": {

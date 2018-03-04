@@ -15,7 +15,9 @@ before_install:
   - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{,.disabled} || echo "xdebug not available"
   - travis_retry composer self-update
 
-install: travis_retry composer update --prefer-dist -n
+install:
+  - rm composer.lock
+  - travis_retry composer update --prefer-dist
 
 script:
   - vendor/bin/phpunit
@@ -25,6 +27,7 @@ jobs:
     - stage: Code Quality
       env: CODING_STANDARDS
       php: 7.1
+      install: travis_retry composer install --prefer-dist
       script:
         - ./vendor/bin/phpcs
 
