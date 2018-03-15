@@ -298,7 +298,7 @@ class InflectorTest extends TestCase
             ['utopia', 'utopium'],
             ['sepia', 'sepium'],
             ['mafia', 'mafium'],
-            ['fascia', 'fascium']
+            ['fascia', 'fascium'],
         ];
     }
 

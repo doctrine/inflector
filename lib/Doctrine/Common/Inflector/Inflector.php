@@ -71,7 +71,7 @@ class Inflector
             'people',
             'cookie',
             'police',
-            'trivia'
+            'trivia',
         ],
         'irregular' => [
             'atlas' => 'atlases',
@@ -207,7 +207,7 @@ class Inflector
             'utopia',
             'sepia',
             'mafia',
-            'fascia'
+            'fascia',
         ],
         'irregular' => [
             'abuses'     => 'abuse',
