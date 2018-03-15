@@ -73,6 +73,7 @@ class InflectorTest extends TestCase
             ['food_menu', 'food_menus'],
             ['FoodMenu', 'FoodMenus'],
             ['foot', 'feet'],
+            ['fuchsia', 'fuchsias'],
             ['fungus', 'fungi'],
             ['goose', 'geese'],
             ['glove', 'gloves'],
@@ -101,6 +102,7 @@ class InflectorTest extends TestCase
             ['menu', 'menus'],
             ['Menu', 'Menus'],
             ['mess', 'messes'],
+            ['militia', 'militias'],
             ['moose', 'moose'],
             ['motto', 'mottoes'],
             ['mouse', 'mice'],
@@ -257,6 +259,7 @@ class InflectorTest extends TestCase
             ['staff', 'staff'],
             ['swine', 'swine'],
             ['traffic', 'traffic'],
+            ['trivia', 'trivia'],
             ['trousers', 'trousers'],
             ['trout', 'trout'],
             ['tuna', 'tuna'],
@@ -270,6 +273,32 @@ class InflectorTest extends TestCase
             // Regex uninflected words
             ['sea bass', 'sea bass'],
             ['sea-bass', 'sea-bass'],
+        ];
+    }
+
+    /**
+     * Singulars as Plural test data.
+     *
+     * A list of singulars that should not yield the given result if passed through `singularize`.
+     * Returns an array of sample words.
+     *
+     * @return string[][]
+     */
+    public function dataSingularsUninflectedWhenSingularized() : array
+    {
+        Inflector::reset();
+
+        // In the format array('singular', 'notEquals')
+        return [
+            ['fuchsia', 'fuchsium'],
+            ['militia', 'militium'],
+            ['galleria', 'gallerium'],
+            ['petunia', 'petunium'],
+            ['trivia', 'trivium'],
+            ['utopia', 'utopium'],
+            ['sepia', 'sepium'],
+            ['mafia', 'mafium'],
+            ['fascia', 'fascium']
         ];
     }
 
@@ -294,6 +323,18 @@ class InflectorTest extends TestCase
             $plural,
             Inflector::pluralize($singular),
             sprintf("'%s' should be pluralized to '%s'", $singular, $plural)
+        );
+    }
+
+    /**
+     * @dataProvider dataSingularsUninflectedWhenSingularized
+     */
+    public function testSingularsWhenSingularizedShouldBeUninflected(string $singular, string $notEquals) : void
+    {
+        $this->assertNotEquals(
+            $notEquals,
+            Inflector::singularize($singular),
+            sprintf("'%s' should not be singularized to '%s'", $singular, $notEquals)
         );
     }
 
