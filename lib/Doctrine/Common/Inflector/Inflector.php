@@ -371,11 +371,11 @@ class Inflector
     }
 
     /**
-     * Uppercases words with configurable delimeters between words.
+     * Uppercases words with configurable delimiters between words.
      *
      * Takes a string and capitalizes all of the words, like PHP's built-in
      * ucwords function. This extends that behavior, however, by allowing the
-     * word delimeters to be configured, rather than only separating on
+     * word delimiters to be configured, rather than only separating on
      * whitespace.
      *
      * Here is an example:
@@ -393,7 +393,7 @@ class Inflector
      * @param string $string     The string to operate on.
      * @param string $delimiters A list of word separators.
      *
-     * @return string The string with all delimeter-separated words capitalized.
+     * @return string The string with all delimiter-separated words capitalized.
      */
     public static function ucwords(string $string, string $delimiters = " \n\t\r\0\x0B-") : string
     {
