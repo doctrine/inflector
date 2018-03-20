@@ -31,7 +31,7 @@ class Inflector
     /**
      * Plural inflector rules.
      *
-     * @var string[][]
+     * @var string|string[][]
      */
     private static $plural = [
         'rules' => [
@@ -141,7 +141,7 @@ class Inflector
     /**
      * Singular inflector rules.
      *
-     * @var string[][]
+     * @var string|string[][]
      */
     private static $singular = [
         'rules' => [

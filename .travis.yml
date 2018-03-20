@@ -31,5 +31,12 @@ jobs:
       script:
         - ./vendor/bin/phpcs
 
+    - stage: Code Quality
+      env: PHPSTAN
+      php: 7.1
+      install: travis_retry composer install --prefer-dist
+      script:
+        - ./vendor/bin/phpstan analyse -l max lib tests
+
   allowed_failures:
     - php: nightly

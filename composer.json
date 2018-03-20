@@ -17,6 +17,7 @@
     },
     "require-dev": {
         "doctrine/coding-standard": "^4.0",
+        "phpstan/phpstan-shim": "^0.9.2",
         "phpunit/phpunit": "^7.0"
     },
     "autoload": {
