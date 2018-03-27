@@ -156,7 +156,7 @@ class Inflector
             '/(alumn|bacill|cact|foc|fung|nucle|radi|stimul|syllab|termin|viri?)i$/i' => '\1us',
             '/([ftw]ax)es/i' => '\1',
             '/(analys|ax|cris|test|thes)es$/i' => '\1is',
-            '/(shoe|slave)s$/i' => '\1',
+            '/(save|shoe|slave)s$/i' => '\1',
             '/(o)es$/i' => '\1',
             '/ouses$/' => 'ouse',
             '/([^a])uses$/' => '\1us',
