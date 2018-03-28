@@ -122,6 +122,8 @@ class InflectorTest extends TestCase
             ['reflex', 'reflexes'],
             ['roof', 'roofs'],
             ['runner-up', 'runners-up'],
+            ['safe', 'safes'],
+            ['save', 'saves'],
             ['scarf', 'scarves'],
             ['scratch', 'scratches'],
             ['series', 'series'],
