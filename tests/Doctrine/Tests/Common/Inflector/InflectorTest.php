@@ -140,6 +140,7 @@ class InflectorTest extends TestCase
             ['story', 'stories'],
             ['syllabus', 'syllabi'],
             ['tax', 'taxes'],
+            ['taxon', 'taxa'],
             ['terminus', 'termini'],
             ['thesis', 'theses'],
             ['thief', 'thieves'],
