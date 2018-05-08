@@ -269,6 +269,7 @@ class InflectorTest extends TestCase
             ['whiting', 'whiting'],
             ['wildebeest', 'wildebeest'],
             ['Yengeese', 'Yengeese'],
+            [ 'middleware', 'middleware' ],
             // Regex uninflected words
             ['sea bass', 'sea bass'],
             ['sea-bass', 'sea-bass'],

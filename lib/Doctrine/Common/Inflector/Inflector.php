@@ -71,6 +71,7 @@ class Inflector
             'people',
             'cookie',
             'police',
+            'middleware',
         ],
         'irregular' => [
             'atlas' => 'atlases',
