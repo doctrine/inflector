@@ -2,14 +2,14 @@ dist: trusty
 sudo: false
 language: php
 
-cache:
-  directory:
-    - $HOME/.composer/cache
-
 php:
   - 7.1
   - 7.2
   - nightly
+
+cache:
+  directories:
+    - $HOME/.composer/cache
 
 before_install:
   - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{,.disabled} || echo "xdebug not available"
@@ -20,23 +20,36 @@ install:
   - travis_retry composer update --prefer-dist
 
 script:
-  - vendor/bin/phpunit
+  - ./vendor/bin/phpunit
 
 jobs:
+  allow_failures:
+    - php: nightly
+
   include:
+    - stage: Test
+      env: DEPENDENCIES=low
+      install:
+        - rm composer.lock
+        - travis_retry composer update --prefer-dist --prefer-lowest
+
+    - stage: Test
+      env: COVERAGE
+      before_script:
+        - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{.disabled,}
+        - if [[ ! $(php -m | grep -si xdebug) ]]; then echo "xdebug required for coverage"; exit 1; fi
+      script:
+        - ./vendor/bin/phpunit --coverage-clover clover.xml
+      after_script:
+        - wget https://scrutinizer-ci.com/ocular.phar
+        - php ocular.phar code-coverage:upload --format=php-clover clover.xml
+
     - stage: Code Quality
       env: CODING_STANDARDS
-      php: 7.1
       install: travis_retry composer install --prefer-dist
-      script:
-        - ./vendor/bin/phpcs
+      script: ./vendor/bin/phpcs
 
     - stage: Code Quality
-      env: PHPSTAN
-      php: 7.1
+      env: STATIC_ANALYSIS
       install: travis_retry composer install --prefer-dist
-      script:
-        - ./vendor/bin/phpstan analyse -l max lib tests
-
-  allowed_failures:
-    - php: nightly
+      script: vendor/bin/phpstan analyse -l 7 -c phpstan.neon lib
