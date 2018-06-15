@@ -12,7 +12,5 @@
     <file>lib</file>
     <file>tests</file>
 
-    <rule ref="Doctrine">
-        <exclude name="SlevomatCodingStandard.TypeHints.DeclareStrictTypes"/>
-    </rule>
+    <rule ref="Doctrine" />
 </ruleset>

@@ -20,6 +20,54 @@ You can install the Inflector with composer:
 
 Here are the available methods that you can use:
 
+Default Setup
+=============
+
+If you want to use the default rules that come with Doctrine you can use the following.
+
+.. code-block:: php
+
+    use Doctrine\Inflector\InflectorFactory;
+
+    $inflectorFactory = new InflectorFactory();
+
+    $inflector = $inflectorFactory->createInflector();
+
+Custom Setup
+============
+
+If you want to setup custom singular and plural rules, you can configure the inflector like this.
+
+.. code-block:: php
+
+    use Doctrine\Inflector\InflectorFactory;
+    use Doctrine\Inflector\Rules\Irregular;
+    use Doctrine\Inflector\Rules\Rule;
+    use Doctrine\Inflector\Rules\Rules;
+    use Doctrine\Inflector\Rules\Uninflected;
+    use Doctrine\Inflector\Rules\Word;
+
+    $inflectorFactory = new InflectorFactory();
+
+    $inflector = $inflectorFactory->createInflector(
+        $inflectorFactory->createSingularRuleset(
+            new Rules(
+                new Rule('/^(bil)er$/i', '\1'),
+                new Rule('/^(inflec|contribu)tors$/i', '\1ta')
+            ),
+            new Uninflected(new Word('singulars')),
+            new Irregular(new Rule('spins', 'spinor'))
+        ),
+        $inflectorFactory->createPluralRuleset(
+            new Rules(new Rule('/^(alert)$/i', '\1ables')),
+            new Uninflected(new Word('noflect'), new Word('abtuse')),
+            new Irregular(
+                new Rule('amaze', 'amazable'),
+                new Rule('phone', 'phonezes')
+            )
+        )
+    );
+
 Tableize
 ========
 
@@ -27,7 +75,7 @@ Converts ``ModelName`` to ``model_name``:
 
 .. code-block:: php
 
-    echo Inflector::tableize('ModelName'); // model_name
+    echo $inflector->tableize('ModelName'); // model_name
 
 Classify
 ========
@@ -36,7 +84,7 @@ Converts ``model_name`` to ``ModelName``:
 
 .. code-block:: php
 
-    echo Inflector::classify('model_name'); // ModelName
+    echo $inflector->classify('model_name'); // ModelName
 
 Camelize
 ========
@@ -45,13 +93,13 @@ This method uses `Classify`_ and then converts the first character to lowercase:
 
 .. code-block:: php
 
-    echo Inflector::camelize('model_name'); // modelName
+    echo $inflector->camelize('model_name'); // modelName
 
-ucwords
-=======
+capitalize
+==========
 
 Takes a string and capitalizes all of the words, like PHP's built-in
-ucwords function. This extends that behavior, however, by allowing the
+``ucwords`` function. This extends that behavior, however, by allowing the
 word delimiters to be configured, rather than only separating on
 whitespace.
 
@@ -61,9 +109,9 @@ Here is an example:
 
     $string = 'top-o-the-morning to all_of_you!';
 
-    echo Inflector::ucwords($string); // Top-O-The-Morning To All_of_you!
+    echo $inflector->capitalize($string); // Top-O-The-Morning To All_of_you!
 
-    echo Inflector::ucwords($string, '-_ '); // Top-O-The-Morning To All_Of_You!
+    echo $inflector->capitalize($string, '-_ '); // Top-O-The-Morning To All_Of_You!
 
 Pluralize
 =========
@@ -72,44 +120,14 @@ Returns a word in plural form.
 
 .. code-block:: php
 
-    echo Inflector::pluralize('browser'); // browsers
+    echo $inflector->pluralize('browser'); // browsers
 
 Singularize
 ===========
 
 .. code-block:: php
 
-    echo Inflector::singularize('browsers'); // browser
-
-Rules
-=====
-
-Customize the rules for pluralization and singularization:
-
-.. code-block:: php
-
-    Inflector::rules('plural', ['/^(inflect)or$/i' => '\1ables']);
-    Inflector::rules('plural', [
-        'rules' => ['/^(inflect)ors$/i' => '\1ables'],
-        'uninflected' => ['dontinflectme'],
-        'irregular' => ['red' => 'redlings']
-    ]);
-
-The arguments for the ``rules`` method are:
-
-- ``$type`` - The type of inflection, either ``plural`` or ``singular``
-- ``$rules`` - An array of rules to be added.
-- ``$reset`` - If true, will unset default inflections for all new rules that are being defined in $rules.
-
-Reset
-=====
-
-Clears Inflectors inflected value caches, and resets the inflection
-rules to the initial values.
-
-.. code-block:: php
-
-    Inflector::reset();
+    echo $inflector->singularize('browsers'); // browser
 
 Slugify
 =======

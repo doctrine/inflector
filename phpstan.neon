@@ -1,2 +1,7 @@
+parameters:
+    ignoreErrors:
+        - '#iterator of function iterator_to_array expects Traversable, iterable#'
+
 includes:
+    - vendor/phpstan/phpstan-phpunit/extension.neon
     - vendor/phpstan/phpstan-strict-rules/rules.neon
