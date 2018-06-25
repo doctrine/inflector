@@ -19,7 +19,7 @@ class CachedWordInflectorTest extends TestCase
 
     public function testInflect() : void
     {
-        $this->wordInflector->expects($this->once())
+        $this->wordInflector->expects(self::once())
             ->method('inflect')
             ->with('in')
             ->willReturn('out');

@@ -1,0 +1,12 @@
+includes:
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+
+parameters:
+    level: 7
+    paths:
+      - lib
+      - tests
+
+    ignoreErrors:
+      - '#Parameter \#1 ...\$(rules|words) of class Doctrine\\Inflector\\Rules\\(Uninflected|Irregular) constructor expects array<int, Doctrine\\Inflector\\Rules\\(Rule|Word)>, iterable given.#'

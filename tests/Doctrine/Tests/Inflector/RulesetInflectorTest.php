@@ -25,11 +25,11 @@ class RulesetInflectorTest extends TestCase
         /** @var Irregular|MockObject $irregular */
         $irregular = $this->createMock(Irregular::class);
 
-        $this->ruleset->expects($this->once())
+        $this->ruleset->expects(self::once())
             ->method('getIrregular')
             ->willReturn($irregular);
 
-        $irregular->expects($this->once())
+        $irregular->expects(self::once())
             ->method('inflect')
             ->with('in')
             ->willReturn('out');
@@ -44,11 +44,11 @@ class RulesetInflectorTest extends TestCase
 
         $uninflected = $this->createMock(Uninflected::class);
 
-        $this->ruleset->expects($this->once())
+        $this->ruleset->expects(self::once())
             ->method('getUninflected')
             ->willReturn($uninflected);
 
-        $uninflected->expects($this->once())
+        $uninflected->expects(self::once())
             ->method('isUninflected')
             ->with('in')
             ->willReturn(true);
@@ -67,31 +67,31 @@ class RulesetInflectorTest extends TestCase
         /** @var Rules|MockObject $rules */
         $regular = $this->createMock(Rules::class);
 
-        $this->ruleset->expects($this->once())
+        $this->ruleset->expects(self::once())
             ->method('getIrregular')
             ->willReturn($irregular);
 
-        $irregular->expects($this->once())
+        $irregular->expects(self::once())
             ->method('inflect')
             ->with('in')
             ->willReturn('in');
 
         $uninflected = $this->createMock(Uninflected::class);
 
-        $this->ruleset->expects($this->once())
+        $this->ruleset->expects(self::once())
             ->method('getUninflected')
             ->willReturn($uninflected);
 
-        $uninflected->expects($this->once())
+        $uninflected->expects(self::once())
             ->method('isUninflected')
             ->with('in')
             ->willReturn(false);
 
-        $this->ruleset->expects($this->once())
+        $this->ruleset->expects(self::once())
             ->method('getRegular')
             ->willReturn($regular);
 
-        $regular->expects($this->once())
+        $regular->expects(self::once())
             ->method('inflect')
             ->with('in')
             ->willReturn('out');
