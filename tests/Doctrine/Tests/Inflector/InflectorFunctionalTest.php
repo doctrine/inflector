@@ -6,19 +6,19 @@ namespace Doctrine\Tests\Inflector;
 
 use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
+use Doctrine\Inflector\PluralizerFactory;
 use Doctrine\Inflector\Rules\Irregular;
 use Doctrine\Inflector\Rules\Rule;
 use Doctrine\Inflector\Rules\Rules;
 use Doctrine\Inflector\Rules\Uninflected;
 use Doctrine\Inflector\Rules\Word;
+use Doctrine\Inflector\RulesetInflector;
+use Doctrine\Inflector\SingularizerFactory;
 use PHPUnit\Framework\TestCase;
 use function sprintf;
 
 class InflectorFunctionalTest extends TestCase
 {
-    /** @var InflectorFactory */
-    private $inflectorFactory;
-
     /**
      * Singular & Plural test data. Returns an array of sample words.
      *
@@ -310,44 +310,23 @@ class InflectorFunctionalTest extends TestCase
         );
     }
 
-    public function testCustomPluralRule() : void
-    {
-        $inflector = $this->inflectorFactory->createInflector(
-            $this->inflectorFactory->createSingularRuleset(),
-            $this->inflectorFactory->createPluralRuleset(
-                new Rules(new Rule('/^(custom)$/i', '\1izables'))
-            )
-        );
-
-        self::assertSame($inflector->pluralize('custom'), 'customizables');
-    }
-
-    public function testCustomPluralRuleUninflected() : void
-    {
-        $inflector = $this->inflectorFactory->createInflector(
-            $this->inflectorFactory->createSingularRuleset(),
-            $this->inflectorFactory->createPluralRuleset(
-                null,
-                new Uninflected(new Word('uninflectable'))
-            )
-        );
-
-        self::assertSame($inflector->pluralize('uninflectable'), 'uninflectable');
-    }
-
     public function testCustomPluralRules() : void
     {
-        $inflector = $this->inflectorFactory->createInflector(
-            $this->inflectorFactory->createSingularRuleset(),
-            $this->inflectorFactory->createPluralRuleset(
-                new Rules(new Rule('/^(alert)$/i', '\1ables')),
-                new Uninflected(new Word('noflect'), new Word('abtuse')),
-                new Irregular(
-                    new Rule('amaze', 'amazable'),
-                    new Rule('phone', 'phonezes')
+        $inflector = $this->createInflectorFactory()
+            ->withPluralInflector(
+                new RulesetInflector(
+                    (new PluralizerFactory())
+                        ->withRules(new Rules(new Rule('/^(alert)$/i', '\1ables')))
+                        ->withUninflected(new Uninflected(new Word('noflect'), new Word('abtuse')))
+                        ->withIrregular(new Irregular(
+                            new Rule('amaze', 'amazable'),
+                            new Rule('phone', 'phonezes')
+                        ))
+                        ->build()
                 )
             )
-        );
+            ->build()
+        ;
 
         self::assertSame($inflector->pluralize('noflect'), 'noflect');
         self::assertSame($inflector->pluralize('abtuse'), 'abtuse');
@@ -356,35 +335,23 @@ class InflectorFunctionalTest extends TestCase
         self::assertSame($inflector->pluralize('phone'), 'phonezes');
     }
 
-    public function testCustomSingularRule() : void
-    {
-        $inflector = $this->inflectorFactory->createInflector(
-            $this->inflectorFactory->createSingularRuleset(
-                new Rules(
-                    new Rule('/(eple)r$/i', '\1'),
-                    new Rule('/(jente)r$/i', '\1')
-                )
-            ),
-            $this->inflectorFactory->createPluralRuleset()
-        );
-
-        self::assertSame($inflector->singularize('epler'), 'eple');
-        self::assertSame($inflector->singularize('jenter'), 'jente');
-    }
-
     public function testCustomSingularRules() : void
     {
-        $inflector = $this->inflectorFactory->createInflector(
-            $this->inflectorFactory->createSingularRuleset(
-                new Rules(
-                    new Rule('/^(bil)er$/i', '\1'),
-                    new Rule('/^(inflec|contribu)tors$/i', '\1ta')
-                ),
-                new Uninflected(new Word('singulars')),
-                new Irregular(new Rule('spins', 'spinor'))
-            ),
-            $this->inflectorFactory->createPluralRuleset()
-        );
+        $inflector = $this->createInflectorFactory()
+            ->withSingularInflector(
+                new RulesetInflector(
+                    (new SingularizerFactory())
+                        ->withRules(new Rules(
+                            new Rule('/^(bil)er$/i', '\1'),
+                            new Rule('/^(inflec|contribu)tors$/i', '\1ta')
+                        ))
+                        ->withUninflected(new Uninflected(new Word('singulars')))
+                        ->withIrregular(new Irregular(new Rule('spins', 'spinor')))
+                        ->build()
+                )
+            )
+            ->build()
+        ;
 
         self::assertSame($inflector->singularize('inflectors'), 'inflecta');
         self::assertSame($inflector->singularize('contributors'), 'contributa');
@@ -482,13 +449,13 @@ class InflectorFunctionalTest extends TestCase
         ];
     }
 
-    protected function setUp() : void
+    private function createInflectorFactory() : InflectorFactory
     {
-        $this->inflectorFactory = new InflectorFactory();
+        return new InflectorFactory();
     }
 
     private function createInflector() : Inflector
     {
-        return $this->inflectorFactory->createInflector();
+        return (new InflectorFactory())->build();
     }
 }

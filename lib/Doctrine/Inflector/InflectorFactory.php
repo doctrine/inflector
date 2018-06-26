@@ -4,67 +4,36 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector;
 
-use Doctrine\Inflector\Rules\Irregular;
-use Doctrine\Inflector\Rules\Plural;
-use Doctrine\Inflector\Rules\Rules;
-use Doctrine\Inflector\Rules\Ruleset;
-use Doctrine\Inflector\Rules\Singular;
-use Doctrine\Inflector\Rules\Uninflected;
-
 class InflectorFactory
 {
-    public function createInflector(
-        ?Ruleset $singularRuleset = null,
-        ?Ruleset $pluralRuleset = null
-    ) : Inflector {
-        return new Inflector(
-            new CachedWordInflector(new RulesetInflector(
-                $singularRuleset ?? $this->createSingularRuleset()
-            )),
-            new CachedWordInflector(new RulesetInflector(
-                $pluralRuleset ?? $this->createPluralRuleset()
-            ))
-        );
+    /** @var WordInflector */
+    private $singularInflector;
+
+    /** @var WordInflector */
+    private $pluralInflector;
+
+    public function withSingularInflector(WordInflector $singularInflector) : self
+    {
+        $this->singularInflector = $singularInflector;
+
+        return $this;
     }
 
-    public function createSingularRuleset(
-        ?Rules $rules = null,
-        ?Uninflected $uninflected = null,
-        ?Irregular $irregular = null,
-        ?Irregular $pluralIrregular = null
-    ) : Ruleset {
-        $rules           = $rules ?? new Rules(...Singular::getDefaultRules());
-        $uninflected     = $uninflected ?? new Uninflected(...Singular::getUninflectedWords());
-        $irregular       = $irregular ?? new Irregular(...Singular::getIrregularRules());
-        $pluralIrregular = $pluralIrregular ?? new Irregular(...Plural::getIrregularRules());
+    public function withPluralInflector(WordInflector $pluralInflector) : self
+    {
+        $this->pluralInflector = $pluralInflector;
 
-        $singularUninflected = new Uninflected(...(static function () use ($uninflected) : iterable {
-            yield from $uninflected->getWords();
-            yield from Uninflected::getDefaultWords();
-        })());
-
-        $singularIrregular = new Irregular(...(static function () use ($irregular, $pluralIrregular) : iterable {
-            yield from $irregular->getRules();
-            yield from $pluralIrregular->getFlippedRules();
-        })());
-
-        return new Ruleset($rules, $singularUninflected, $singularIrregular);
+        return $this;
     }
 
-    public function createPluralRuleset(
-        ?Rules $rules = null,
-        ?Uninflected $uninflected = null,
-        ?Irregular $irregular = null
-    ) : Ruleset {
-        $rules       = $rules ?? new Rules(...Plural::getDefaultRules());
-        $uninflected = $uninflected ?? new Uninflected(...Plural::getUninflectedWords());
-        $irregular   = $irregular ?? new Irregular(...Plural::getIrregularRules());
+    public function build() : Inflector
+    {
+        $singularInflector = $this->singularInflector
+            ?? new CachedWordInflector(new RulesetInflector((new SingularizerFactory())->build()));
 
-        $pluralUninflected = new Uninflected(...(static function () use ($uninflected) : iterable {
-            yield from $uninflected->getWords();
-            yield from Uninflected::getDefaultWords();
-        })());
+        $pluralInflector = $this->pluralInflector
+            ?? new CachedWordInflector(new RulesetInflector((new PluralizerFactory())->build()));
 
-        return new Ruleset($rules, $pluralUninflected, $irregular);
+        return new Inflector($singularInflector, $pluralInflector);
     }
 }
