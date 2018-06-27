@@ -47,7 +47,7 @@ class Irregular implements WordInflector
 
     public function inflect(string $word) : string
     {
-        if (preg_match('/(.*)\\b(' . $this->getRegex() . ')$/i', $word, $regs)) {
+        if (preg_match('/(.*)\\b(' . $this->getRegex() . ')$/i', $word, $regs) > 0) {
             return $regs[1] . $word[0] . substr($this->rules[strtolower($regs[2])]->getTo(), 1);
         }
 

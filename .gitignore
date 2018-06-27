@@ -3,3 +3,4 @@
 /phpunit.xml
 /phpcs.xml
 /.phpcs-cache
+/phpstan.neon

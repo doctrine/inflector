@@ -51,7 +51,7 @@ class InflectorTest extends TestCase
 
     public function testPluralize() : void
     {
-        $this->pluralInflector->expects($this->once())
+        $this->pluralInflector->expects(self::once())
             ->method('inflect')
             ->with('in')
             ->willReturn('out');
@@ -61,7 +61,7 @@ class InflectorTest extends TestCase
 
     public function testSingularize() : void
     {
-        $this->singularInflector->expects($this->once())
+        $this->singularInflector->expects(self::once())
             ->method('inflect')
             ->with('in')
             ->willReturn('out');
