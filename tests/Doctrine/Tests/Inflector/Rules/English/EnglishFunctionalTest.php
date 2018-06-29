@@ -127,6 +127,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['elk', 'elk'],
             ['emoji', 'emoji'],
             ['emphasis', 'emphases'],
+            ['employee-child', 'employee-children'],
             ['energy', 'energies'],
             ['equipment', 'equipment'],
             ['equipment', 'equipment'],
