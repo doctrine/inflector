@@ -19,7 +19,6 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
     {
         return [
             ['', ''],
-            ['middleware', 'middleware'],
             ['ability', 'abilities'],
             ['abuse', 'abuses'],
             ['acceptancecriterion', 'acceptancecriteria'],
@@ -240,6 +239,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['mess', 'messes'],
             ['metadata', 'metadata'],
             ['mews', 'mews'],
+            ['middleware', 'middleware'],
             ['money', 'money'],
             ['moose', 'moose'],
             ['moose', 'moose'],
@@ -386,7 +386,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['terminus', 'termini'],
             ['testis', 'testes'],
             ['thesis', 'theses'],
-            ['thief', 'thieves'],
+            ['Thief', 'Thieves'],
             ['tomato', 'tomatoes'],
             ['tomato', 'tomatoes'],
             ['tooth', 'teeth'],
