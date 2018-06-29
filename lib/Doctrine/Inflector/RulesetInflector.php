@@ -18,7 +18,11 @@ class RulesetInflector implements WordInflector
 
     public function inflect(string $word) : string
     {
-        if ($this->ruleset->getUninflected()->isUninflected($word)) {
+        if ($word === '') {
+            return '';
+        }
+
+        if ($this->ruleset->getUninflected()->matches($word)) {
             return $word;
         }
 

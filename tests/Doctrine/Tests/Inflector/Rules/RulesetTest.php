@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace Doctrine\Tests\Inflector\Rules;
 
-use Doctrine\Inflector\Rules\Irregular;
-use Doctrine\Inflector\Rules\Rules;
+use Doctrine\Inflector\Rules\Patterns;
 use Doctrine\Inflector\Rules\Ruleset;
-use Doctrine\Inflector\Rules\Uninflected;
+use Doctrine\Inflector\Rules\Substitutions;
+use Doctrine\Inflector\Rules\Transformations;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class RulesetTest extends TestCase
 {
-    /** @var Rules|MockObject */
+    /** @var Transformations|MockObject */
     private $regular;
 
-    /** @var Uninflected|MockObject */
+    /** @var Patterns|MockObject */
     private $uninflected;
 
-    /** @var Irregular|MockObject */
+    /** @var Substitutions|MockObject */
     private $irregular;
 
     /** @var Ruleset */
@@ -42,9 +42,9 @@ class RulesetTest extends TestCase
 
     protected function setUp() : void
     {
-        $this->regular     = $this->createMock(Rules::class);
-        $this->uninflected = $this->createMock(Uninflected::class);
-        $this->irregular   = $this->createMock(Irregular::class);
+        $this->regular     = $this->createMock(Transformations::class);
+        $this->uninflected = $this->createMock(Patterns::class);
+        $this->irregular   = $this->createMock(Substitutions::class);
 
         $this->ruleset = new Ruleset(
             $this->regular,
