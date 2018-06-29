@@ -123,6 +123,7 @@ class Inflectible
         yield new Substitution(new Word('iris'), new Word('irises'));
         yield new Substitution(new Word('larva'), new Word('larvae'));
         yield new Substitution(new Word('leaf'), new Word('leaves'));
+        yield new Substitution(new Word('lens'), new Word('lenses'));
         yield new Substitution(new Word('loaf'), new Word('loaves'));
         yield new Substitution(new Word('man'), new Word('men'));
         yield new Substitution(new Word('medium'), new Word('media'));

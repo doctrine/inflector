@@ -211,6 +211,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['leaf', 'leaves'],
             ['leaf', 'leaves'],
             ['leather', 'leather'],
+            ['lens', 'lenses'],
             ['life', 'lives'],
             ['loaf', 'loaves'],
             ['loaf', 'loaves'],
