@@ -23,15 +23,131 @@ Here are the available methods that you can use:
 Default Setup
 =============
 
-If you want to use the default rules that come with Doctrine you can use the following.
+If you want to use the default rules for a language you can use the following. The following languages are supported.
+
+- English
+- French
+- Norwegian Bokmal
+- Portuguese
+- Spanish
+- Turkish
+
+English
+-------
 
 .. code-block:: php
 
-    use Doctrine\Inflector\InflectorFactory;
+    use Doctrine\Inflector\CachedWordInflector;
+    use Doctrine\Inflector\RulesetInflector;
+    use Doctrine\Inflector\Rules\English;
 
-    $inflectorFactory = new InflectorFactory();
+    $inflector = new Inflector(
+        new CachedWordInflector(new RulesetInflector(
+            English\Rules::getSingularRuleset()
+        )),
+        new CachedWordInflector(new RulesetInflector(
+            English\Rules::getPluralRuleset()
+        ))
+    );
 
-    $inflector = $inflectorFactory->createInflector();
+French
+------
+
+.. code-block:: php
+
+    use Doctrine\Inflector\CachedWordInflector;
+    use Doctrine\Inflector\RulesetInflector;
+    use Doctrine\Inflector\Rules\French;
+
+    $inflector = new Inflector(
+        new CachedWordInflector(new RulesetInflector(
+            French\Rules::getSingularRuleset()
+        )),
+        new CachedWordInflector(new RulesetInflector(
+            French\Rules::getPluralRuleset()
+        ))
+    );
+
+Norwegian Bokmal
+----------------
+
+.. code-block:: php
+
+    use Doctrine\Inflector\CachedWordInflector;
+    use Doctrine\Inflector\RulesetInflector;
+    use Doctrine\Inflector\Rules\NorwegianBokmal;
+
+    $inflector = new Inflector(
+        new CachedWordInflector(new RulesetInflector(
+            NorwegianBokmal\Rules::getSingularRuleset()
+        )),
+        new CachedWordInflector(new RulesetInflector(
+            NorwegianBokmal\Rules::getPluralRuleset()
+        ))
+    );
+
+Portuguese
+----------
+
+.. code-block:: php
+
+    use Doctrine\Inflector\CachedWordInflector;
+    use Doctrine\Inflector\RulesetInflector;
+    use Doctrine\Inflector\Rules\Portuguese;
+
+    $inflector = new Inflector(
+        new CachedWordInflector(new RulesetInflector(
+            Portuguese\Rules::getSingularRuleset()
+        )),
+        new CachedWordInflector(new RulesetInflector(
+            Portuguese\Rules::getPluralRuleset()
+        ))
+    );
+
+Spanish
+-------
+
+.. code-block:: php
+
+    use Doctrine\Inflector\CachedWordInflector;
+    use Doctrine\Inflector\RulesetInflector;
+    use Doctrine\Inflector\Rules\Spanish;
+
+    $inflector = new Inflector(
+        new CachedWordInflector(new RulesetInflector(
+            Spanish\Rules::getSingularRuleset()
+        )),
+        new CachedWordInflector(new RulesetInflector(
+            Spanish\Rules::getPluralRuleset()
+        ))
+    );
+
+Turkish
+-------
+
+.. code-block:: php
+
+    use Doctrine\Inflector\CachedWordInflector;
+    use Doctrine\Inflector\RulesetInflector;
+    use Doctrine\Inflector\Rules\Turkish;
+
+    $inflector = new Inflector(
+        new CachedWordInflector(new RulesetInflector(
+            Turkish\Rules::getSingularRuleset()
+        )),
+        new CachedWordInflector(new RulesetInflector(
+            Turkish\Rules::getPluralRuleset()
+        ))
+    );
+
+Adding Languages
+----------------
+
+If you are interested in adding support for your language, take a look at the other languages defined in the
+``Doctrine\Inflector\Rules`` namespace and the tests located in ``Doctrine\Tests\Inflector\Rules``. You can copy
+one of the languages and update the rules for your language.
+
+Once you have done this, send a pull request to the ``doctrine/inflector`` repository with the additions.
 
 Custom Setup
 ============
@@ -40,32 +156,42 @@ If you want to setup custom singular and plural rules, you can configure the inf
 
 .. code-block:: php
 
-    use Doctrine\Inflector\InflectorFactory;
-    use Doctrine\Inflector\Rules\Irregular;
-    use Doctrine\Inflector\Rules\Rule;
-    use Doctrine\Inflector\Rules\Rules;
-    use Doctrine\Inflector\Rules\Uninflected;
+    use Doctrine\Inflector\CachedWordInflector;
+    use Doctrine\Inflector\Inflector;
+    use Doctrine\Inflector\Rules\Pattern;
+    use Doctrine\Inflector\Rules\Patterns;
+    use Doctrine\Inflector\Rules\Ruleset;
+    use Doctrine\Inflector\Rules\Substitution;
+    use Doctrine\Inflector\Rules\Substitutions;
+    use Doctrine\Inflector\Rules\Transformation;
+    use Doctrine\Inflector\Rules\Transformations;
     use Doctrine\Inflector\Rules\Word;
+    use Doctrine\Inflector\RulesetInflector;
 
-    $inflectorFactory = new InflectorFactory();
-
-    $inflector = $inflectorFactory->createInflector(
-        $inflectorFactory->createSingularRuleset(
-            new Rules(
-                new Rule('/^(bil)er$/i', '\1'),
-                new Rule('/^(inflec|contribu)tors$/i', '\1ta')
-            ),
-            new Uninflected(new Word('singulars')),
-            new Irregular(new Rule('spins', 'spinor'))
-        ),
-        $inflectorFactory->createPluralRuleset(
-            new Rules(new Rule('/^(alert)$/i', '\1ables')),
-            new Uninflected(new Word('noflect'), new Word('abtuse')),
-            new Irregular(
-                new Rule('amaze', 'amazable'),
-                new Rule('phone', 'phonezes')
+    $inflector = new Inflector(
+        new CachedWordInflector(new RulesetInflector(
+            new Ruleset(
+                new Transformations(
+                    new Transformation(new Pattern('/^(bil)er$/i'), '\1'),
+                    new Transformation(new Pattern('/^(inflec|contribu)tors$/i'), '\1ta')
+                ),
+                new Patterns(new Pattern('singulars')),
+                new Substitutions(new Substitution(new Word('spins'), new Word('spinor')))
             )
-        )
+        )),
+        new CachedWordInflector(new RulesetInflector(
+            new Ruleset(
+                new Transformations(
+                    new Transformation(new Pattern('^(bil)er$'), '\1'),
+                    new Transformation(new Pattern('^(inflec|contribu)tors$'), '\1ta')
+                ),
+                new Patterns(new Pattern('noflect'), new Pattern('abtuse')),
+                new Substitutions(
+                    new Substitution(new Word('amaze'), new Word('amazable')),
+                    new Substitution(new Word('phone'), new Word('phonezes'))
+                )
+            )
+        ))
     );
 
 Tableize
@@ -141,3 +267,12 @@ by using the `tableize`_ method and replacing underscores with hyphens:
     {
         return str_replace('_', '-', Inflector::tableize($text));
     }
+
+Acknowledgements
+================
+
+The language rules in this library have been adapted from several different sources, including but not limited to:
+
+- [Ruby On Rails Inflector](http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html)
+- [ICanBoogie Inflector](https://github.com/ICanBoogie/Inflector)
+- [CakePHP Inflector](https://book.cakephp.org/3.0/en/core-libraries/inflector.html)

@@ -7,6 +7,3 @@ parameters:
     paths:
       - lib
       - tests
-
-    ignoreErrors:
-      - '#Parameter \#1 ...\$(rules|words) of class Doctrine\\Inflector\\Rules\\(Uninflected|Irregular) constructor expects array<int, Doctrine\\Inflector\\Rules\\(Rule|Word)>, iterable given.#'

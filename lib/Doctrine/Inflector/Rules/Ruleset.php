@@ -6,33 +6,33 @@ namespace Doctrine\Inflector\Rules;
 
 class Ruleset
 {
-    /** @var Rules */
+    /** @var Transformations */
     private $regular;
 
-    /** @var Uninflected */
+    /** @var Patterns */
     private $uninflected;
 
-    /** @var Irregular */
+    /** @var Substitutions */
     private $irregular;
 
-    public function __construct(Rules $regular, Uninflected $uninflected, Irregular $irregular)
+    public function __construct(Transformations $regular, Patterns $uninflected, Substitutions $irregular)
     {
         $this->regular     = $regular;
         $this->uninflected = $uninflected;
         $this->irregular   = $irregular;
     }
 
-    public function getRegular() : Rules
+    public function getRegular() : Transformations
     {
         return $this->regular;
     }
 
-    public function getUninflected() : Uninflected
+    public function getUninflected() : Patterns
     {
         return $this->uninflected;
     }
 
-    public function getIrregular() : Irregular
+    public function getIrregular() : Substitutions
     {
         return $this->irregular;
     }

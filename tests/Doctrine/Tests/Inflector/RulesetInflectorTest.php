@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Doctrine\Tests\Inflector;
 
-use Doctrine\Inflector\Rules\Irregular;
+use Doctrine\Inflector\Rules\Patterns;
 use Doctrine\Inflector\Rules\Rules;
 use Doctrine\Inflector\Rules\Ruleset;
-use Doctrine\Inflector\Rules\Uninflected;
+use Doctrine\Inflector\Rules\Substitutions;
+use Doctrine\Inflector\Rules\Transformations;
 use Doctrine\Inflector\RulesetInflector;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -22,8 +23,8 @@ class RulesetInflectorTest extends TestCase
 
     public function testInflectIrregular() : void
     {
-        /** @var Irregular|MockObject $irregular */
-        $irregular = $this->createMock(Irregular::class);
+        /** @var Substitutions|MockObject $irregular */
+        $irregular = $this->createMock(Substitutions::class);
 
         $this->ruleset->expects(self::once())
             ->method('getIrregular')
@@ -39,17 +40,15 @@ class RulesetInflectorTest extends TestCase
 
     public function testInflectUninflected() : void
     {
-        /** @var Uninflected|MockObject $uninflected */
-        $uninflected = $this->createMock(Uninflected::class);
-
-        $uninflected = $this->createMock(Uninflected::class);
+        /** @var Patterns|MockObject $uninflected */
+        $uninflected = $this->createMock(Patterns::class);
 
         $this->ruleset->expects(self::once())
             ->method('getUninflected')
             ->willReturn($uninflected);
 
         $uninflected->expects(self::once())
-            ->method('isUninflected')
+            ->method('matches')
             ->with('in')
             ->willReturn(true);
 
@@ -58,14 +57,14 @@ class RulesetInflectorTest extends TestCase
 
     public function testInflectRules() : void
     {
-        /** @var Irregular|MockObject $irregular */
-        $irregular = $this->createMock(Irregular::class);
+        /** @var Substitutions|MockObject $irregular */
+        $irregular = $this->createMock(Substitutions::class);
 
-        /** @var Uninflected|MockObject $uninflected */
-        $uninflected = $this->createMock(Uninflected::class);
+        /** @var Patterns|MockObject $uninflected */
+        $uninflected = $this->createMock(Patterns::class);
 
         /** @var Rules|MockObject $rules */
-        $regular = $this->createMock(Rules::class);
+        $regular = $this->createMock(Transformations::class);
 
         $this->ruleset->expects(self::once())
             ->method('getIrregular')
@@ -76,14 +75,14 @@ class RulesetInflectorTest extends TestCase
             ->with('in')
             ->willReturn('in');
 
-        $uninflected = $this->createMock(Uninflected::class);
+        $uninflected = $this->createMock(Patterns::class);
 
         $this->ruleset->expects(self::once())
             ->method('getUninflected')
             ->willReturn($uninflected);
 
         $uninflected->expects(self::once())
-            ->method('isUninflected')
+            ->method('matches')
             ->with('in')
             ->willReturn(false);
 

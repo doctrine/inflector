@@ -4,26 +4,26 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector\Rules;
 
-class Rule
+final class Substitution
 {
-    /** @var string */
+    /** @var Word */
     private $from;
 
-    /** @var string */
+    /** @var Word */
     private $to;
 
-    public function __construct(string $from, string $to)
+    public function __construct(Word $from, Word $to)
     {
         $this->from = $from;
         $this->to   = $to;
     }
 
-    public function getFrom() : string
+    public function getFrom() : Word
     {
         return $this->from;
     }
 
-    public function getTo() : string
+    public function getTo() : Word
     {
         return $this->to;
     }
