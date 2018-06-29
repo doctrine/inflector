@@ -273,6 +273,6 @@ Acknowledgements
 
 The language rules in this library have been adapted from several different sources, including but not limited to:
 
-- [Ruby On Rails Inflector](http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html)
-- [ICanBoogie Inflector](https://github.com/ICanBoogie/Inflector)
-- [CakePHP Inflector](https://book.cakephp.org/3.0/en/core-libraries/inflector.html)
+- `Ruby On Rails Inflector <http://api.rubyonrails.org/classes/ActiveSupport/Inflector.html>`_
+- `ICanBoogie Inflector <https://github.com/ICanBoogie/Inflector>`_
+- `CakePHP Inflector <https://book.cakephp.org/3.0/en/core-libraries/inflector.html>`_
