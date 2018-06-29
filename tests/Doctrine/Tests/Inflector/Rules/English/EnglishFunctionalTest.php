@@ -353,6 +353,8 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['slice', 'slices'],
             ['sms', 'sms'],
             ['soap', 'soap'],
+            ['social media', 'social media'],
+            ['socialmedia', 'socialmedia'],
             ['son-in-law', 'sons-in-law'],
             ['spam', 'spam'],
             ['species', 'species'],
