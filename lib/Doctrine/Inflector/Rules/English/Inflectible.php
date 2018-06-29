@@ -54,7 +54,6 @@ class Inflectible
         yield new Transformation(new Pattern('(f)eet$'), '\1oot');
         yield new Transformation(new Pattern('(n)ews$'), '\1\2ews');
         yield new Transformation(new Pattern('eaus$'), 'eau');
-        yield new Transformation(new Pattern('^(.*us)$'), '\\1');
         yield new Transformation(new Pattern('s$'), '');
     }
 
@@ -124,6 +123,7 @@ class Inflectible
         yield new Substitution(new Word('iris'), new Word('irises'));
         yield new Substitution(new Word('larva'), new Word('larvae'));
         yield new Substitution(new Word('leaf'), new Word('leaves'));
+        yield new Substitution(new Word('lens'), new Word('lenses'));
         yield new Substitution(new Word('loaf'), new Word('loaves'));
         yield new Substitution(new Word('man'), new Word('men'));
         yield new Substitution(new Word('medium'), new Word('media'));
@@ -165,7 +165,6 @@ class Inflectible
         yield new Substitution(new Word('curve'), new Word('curves'));
         yield new Substitution(new Word('emphasis'), new Word('emphases'));
         yield new Substitution(new Word('foe'), new Word('foes'));
-        yield new Substitution(new Word('goose'), new Word('geese'));
         yield new Substitution(new Word('grave'), new Word('graves'));
         yield new Substitution(new Word('hoax'), new Word('hoaxes'));
         yield new Substitution(new Word('medium'), new Word('media'));
@@ -174,5 +173,6 @@ class Inflectible
         yield new Substitution(new Word('wave'), new Word('waves'));
         yield new Substitution(new Word('oasis'), new Word('oases'));
         yield new Substitution(new Word('valve'), new Word('valves'));
+        yield new Substitution(new Word('zombie'), new Word('zombies'));
     }
 }
