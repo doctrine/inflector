@@ -194,6 +194,21 @@ If you want to setup custom singular and plural rules, you can configure the inf
         ))
     );
 
+No operation inflector
+----------------------
+
+The ``Doctrine\Common\Inflector\NoopInflector`` may be used to configure an inflector that doesn't perform any
+operation for pluralization and/or singularization. If will simply return the input as output.
+
+This is an implementation of the `Null Object design pattern <https://sourcemaking.com/design_patterns/null_object>`_.
+
+.. code-block:: php
+
+    use Doctrine\Inflector\Inflector;
+    use Doctrine\Inflector\NoopInflector;
+
+    $inflector = new Inflector(new NoopInflector(), new NoopInflector());
+
 Tableize
 ========
 
