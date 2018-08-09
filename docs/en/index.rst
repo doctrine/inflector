@@ -1,13 +1,12 @@
 Introduction
 ============
 
-The Doctrine Inflector has static methods for inflecting text.
+The Doctrine Inflector has methods for inflecting text.
 The features include pluralization, singularization,
 converting between camelCase and under_score and capitalizing
 words.
 
-All you need to use the Inflector is the ``Doctrine\Common\Inflector\Inflector``
-class.
+All you need to use the Inflector is the ``Doctrine\Inflector\Inflector`` class.
 
 Installation
 ============
@@ -197,8 +196,8 @@ If you want to setup custom singular and plural rules, you can configure the inf
 No operation inflector
 ----------------------
 
-The ``Doctrine\Common\Inflector\NoopInflector`` may be used to configure an inflector that doesn't perform any
-operation for pluralization and/or singularization. If will simply return the input as output.
+The ``Doctrine\Inflector\NoopInflector`` may be used to configure an inflector that doesn't perform any operation for
+pluralization and/or singularization. If will simply return the input as output.
 
 This is an implementation of the `Null Object design pattern <https://sourcemaking.com/design_patterns/null_object>`_.
 
