@@ -269,15 +269,12 @@ Singularize
 
     echo $inflector->singularize('browsers'); // browser
 
-Slugify
-=======
-
-You can easily use the Inflector to create a slug from a string of text
-by using the `tableize`_ method and replacing underscores with hyphens:
+Urlize
+======
 
 .. code-block:: php
 
-    echo str_replace('_', '-', $inflector->tableize('FooBar')); // foo-bar
+    echo $inflector->urlize('My first blog post'); // my-first-blog-post
 
 Acknowledgements
 ================

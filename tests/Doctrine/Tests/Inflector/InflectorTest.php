@@ -49,6 +49,57 @@ class InflectorTest extends TestCase
         );
     }
 
+    public function testSeemsUtf8() : void
+    {
+        self::assertTrue($this->inflector->seemsUtf8('teléfono'));
+        self::assertTrue($this->inflector->seemsUtf8('král'));
+        self::assertTrue($this->inflector->seemsUtf8('telephone'));
+    }
+
+    public function testUnaccent() : void
+    {
+        self::assertSame('telefono', $this->inflector->unaccent('teléfono'));
+        self::assertSame('telephone', $this->inflector->unaccent('telephone'));
+    }
+
+    /**
+     * @dataProvider dataStringsUrlize
+     */
+    public function testUrlize(string $expected, string $string) : void
+    {
+        self::assertSame(
+            $expected,
+            $this->inflector->urlize($string)
+        );
+    }
+
+    /**
+     * Strings which are used for testUrlize.
+     *
+     * @return string[][]
+     */
+    public function dataStringsUrlize() : array
+    {
+        return [
+            [
+                'testing-creating-a-slug-from-a-random-string',
+                'Testing_Creating a -Slug from a random-string!@#',
+            ],
+            [
+                'contesta-el-telefono',
+                'Contesta el teléfono',
+            ],
+            [
+                'den-hund-fuettern',
+                'den hund füttern',
+            ],
+            [
+                'jsem-kral-na-severu',
+                'Jsem král na severu',
+            ],
+        ];
+    }
+
     public function testPluralize() : void
     {
         $this->pluralInflector->expects(self::once())
