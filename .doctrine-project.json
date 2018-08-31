@@ -1,0 +1,24 @@
+{
+    "active": true,
+    "name": "Inflector",
+    "slug": "inflector",
+    "docsSlug": "doctrine-inflector",
+    "versions": [
+        {
+            "name": "1.3",
+            "branchName": "1.3.x",
+            "slug": "1.3",
+            "current": true,
+            "aliases": [
+                "current",
+                "stable"
+            ]
+        },
+        {
+            "name": "2.0",
+            "branchName": "master",
+            "slug": "2.0",
+            "upcoming": true
+        }
+    ]
+}

@@ -1,8 +1,8 @@
 {
     "name": "doctrine/inflector",
     "type": "library",
-    "description": "Common String Manipulations with regard to casing and singular/plural rules.",
-    "keywords": ["string", "inflection", "singularize", "pluralize"],
+    "description": "PHP Doctrine Inflector is a small library that can perform string manipulations with regard to upper/lowercase and singular/plural forms of words.",
+    "keywords": ["php", "strings", "words", "manipulation", "inflector", "inflection", "uppercase", "lowercase", "singular", "plural"],
     "homepage": "http://www.doctrine-project.org",
     "license": "MIT",
     "authors": [
