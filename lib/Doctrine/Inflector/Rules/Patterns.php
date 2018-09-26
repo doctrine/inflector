@@ -20,7 +20,7 @@ class Patterns
     {
         $this->patterns = $patterns;
 
-        $patterns = array_map(function (Pattern $pattern) : string {
+        $patterns = array_map(static function (Pattern $pattern) : string {
             return $pattern->getPattern();
         }, $this->patterns);
 
