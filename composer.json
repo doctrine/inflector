@@ -16,7 +16,7 @@
         "php": "^7.1"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^4.0",
+        "doctrine/coding-standard": "^5.0",
         "phpstan/phpstan": "^0.10",
         "phpstan/phpstan-phpunit": "^0.10",
         "phpstan/phpstan-strict-rules": "^0.10",
