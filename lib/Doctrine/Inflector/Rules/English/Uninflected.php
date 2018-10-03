@@ -30,6 +30,7 @@ final class Uninflected
 
         yield new Pattern('middleware');
         yield new Pattern('people');
+        yield new Pattern('software');
     }
 
     /**
