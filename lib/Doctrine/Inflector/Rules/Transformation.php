@@ -33,6 +33,6 @@ final class Transformation implements WordInflector
 
     public function inflect(string $word) : string
     {
-        return preg_replace($this->pattern->getRegex(), $this->replacement, $word);
+        return (string) preg_replace($this->pattern->getRegex(), $this->replacement, $word);
     }
 }

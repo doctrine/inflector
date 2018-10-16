@@ -37,7 +37,7 @@ class Inflector
      */
     public function tableize(string $word) : string
     {
-        return mb_strtolower(preg_replace('~(?<=\\w)([A-Z])~u', '_$1', $word));
+        return mb_strtolower((string) preg_replace('~(?<=\\w)([A-Z])~u', '_$1', $word));
     }
 
     /**
@@ -458,19 +458,19 @@ class Inflector
         }
 
         // Remove all none word characters
-        $string = preg_replace('/\W/', ' ', $string);
+        $string = (string) preg_replace('/\W/', ' ', $string);
 
         // More stripping. Replace spaces with dashes
-        $string = strtolower(preg_replace(
+        $string = strtolower((string) preg_replace(
             '/[^A-Z^a-z^0-9^\/]+/',
             '-',
-            preg_replace(
+            (string) preg_replace(
                 '/([a-z\d])([A-Z])/',
                 '\1_\2',
-                preg_replace(
+                (string) preg_replace(
                     '/([A-Z]+)([A-Z][a-z])/',
                     '\1_\2',
-                    preg_replace('/::/', '/', $string)
+                    (string) preg_replace('/::/', '/', $string)
                 )
             )
         ));
