@@ -279,7 +279,7 @@ by using the `tableize`_ method and replacing underscores with hyphens:
 
     public static function slugify(string $text) : string
     {
-        return str_replace('_', '-', $inflector->tableize($text));
+        return str_replace('_', '-', self::$inflector->tableize($text));
     }
 
 Acknowledgements
