@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Doctrine\Tests\Inflector\Rules\Spanish;
 
-use Doctrine\Inflector\CachedWordInflector;
 use Doctrine\Inflector\Inflector;
-use Doctrine\Inflector\Rules\Spanish;
-use Doctrine\Inflector\RulesetInflector;
+use Doctrine\Inflector\InflectorFactory;
+use Doctrine\Inflector\Language;
 use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTest;
 
 class SpanishFunctionalTest extends LanguageFunctionalTest
@@ -59,13 +58,6 @@ class SpanishFunctionalTest extends LanguageFunctionalTest
 
     protected function createInflector() : Inflector
     {
-        return new Inflector(
-            new CachedWordInflector(new RulesetInflector(
-                Spanish\Rules::getSingularRuleset()
-            )),
-            new CachedWordInflector(new RulesetInflector(
-                Spanish\Rules::getPluralRuleset()
-            ))
-        );
+        return (new InflectorFactory())(Language::SPANISH);
     }
 }

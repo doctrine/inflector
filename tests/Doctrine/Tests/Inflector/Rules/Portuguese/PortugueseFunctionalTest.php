@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Doctrine\Tests\Inflector\Rules\Portuguese;
 
-use Doctrine\Inflector\CachedWordInflector;
 use Doctrine\Inflector\Inflector;
-use Doctrine\Inflector\Rules\Portuguese;
-use Doctrine\Inflector\RulesetInflector;
+use Doctrine\Inflector\InflectorFactory;
+use Doctrine\Inflector\Language;
 use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTest;
 
 class PortugueseFunctionalTest extends LanguageFunctionalTest
@@ -50,13 +49,6 @@ class PortugueseFunctionalTest extends LanguageFunctionalTest
 
     protected function createInflector() : Inflector
     {
-        return new Inflector(
-            new CachedWordInflector(new RulesetInflector(
-                Portuguese\Rules::getSingularRuleset()
-            )),
-            new CachedWordInflector(new RulesetInflector(
-                Portuguese\Rules::getPluralRuleset()
-            ))
-        );
+        return (new InflectorFactory())(Language::PORTUGUESE);
     }
 }

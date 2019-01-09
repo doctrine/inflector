@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Doctrine\Tests\Inflector\Rules\Turkish;
 
-use Doctrine\Inflector\CachedWordInflector;
 use Doctrine\Inflector\Inflector;
-use Doctrine\Inflector\Rules\Turkish;
-use Doctrine\Inflector\RulesetInflector;
+use Doctrine\Inflector\InflectorFactory;
+use Doctrine\Inflector\Language;
 use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTest;
 
 class TurkishFunctionalTest extends LanguageFunctionalTest
@@ -30,15 +29,9 @@ class TurkishFunctionalTest extends LanguageFunctionalTest
         ];
     }
 
+
     protected function createInflector() : Inflector
     {
-        return new Inflector(
-            new CachedWordInflector(new RulesetInflector(
-                Turkish\Rules::getSingularRuleset()
-            )),
-            new CachedWordInflector(new RulesetInflector(
-                Turkish\Rules::getPluralRuleset()
-            ))
-        );
+        return (new InflectorFactory())(Language::TURKISH);
     }
 }

@@ -1,38 +1,55 @@
 Introduction
 ============
 
-The Doctrine Inflector has methods for inflecting text.
-The features include pluralization, singularization,
-converting between camelCase and under_score and capitalizing
+The Doctrine Inflector has methods for inflecting text. The features include pluralization,
+singularization, converting between camelCase and under_score and capitalizing
 words.
-
-All you need to use the Inflector is the ``Doctrine\Inflector\Inflector`` class.
 
 Installation
 ============
 
 You can install the Inflector with composer:
 
-.. code-block::
+.. code-block:: console
 
     $ composer require doctrine/inflector
 
-Here are the available methods that you can use:
+Usage
+=====
 
-Default Setup
-=============
+Using the inflector is easy, you can create a new ``Doctrine\Inflector\Inflector`` instance by using
+the ``Doctrine\Inflector\InflectorFactory`` class:
 
-If you want to use the default rules for a language you can use the following. The following languages are supported.
+.. code-block:: php
 
-- English
-- French
-- Norwegian Bokmal
-- Portuguese
-- Spanish
-- Turkish
+    use Doctrine\Inflector\InflectorFactory;
 
-English
--------
+    $inflectorFactory = new InflectorFactory();
+
+    $inflector = $inflectorFactory();
+
+By default it will create an English inflector. If you want to use another language, just pass the language
+you want to create an inflector for to the ``create()`` method:
+
+.. code-block:: php
+
+    use Doctrine\Inflector\InflectorFactory;
+    use Doctrine\Inflector\Language;
+
+    $inflectorFactory = new InflectorFactory();
+
+    $inflector = $inflectorFactory(Language::SPANISH);
+
+The supported languages are as follows:
+
+- ``Language::ENGLISH``
+- ``Language::FRENCH``
+- ``Language::NORWEGIAN_BOKMAL``
+- ``Language::PORTUGUESE``
+- ``Language::SPANISH``
+- ``Language::TURKISH``
+
+If you want to manually construct the inflector instead of using a factory, you can do so like this:
 
 .. code-block:: php
 
@@ -46,96 +63,6 @@ English
         )),
         new CachedWordInflector(new RulesetInflector(
             English\Rules::getPluralRuleset()
-        ))
-    );
-
-French
-------
-
-.. code-block:: php
-
-    use Doctrine\Inflector\CachedWordInflector;
-    use Doctrine\Inflector\RulesetInflector;
-    use Doctrine\Inflector\Rules\French;
-
-    $inflector = new Inflector(
-        new CachedWordInflector(new RulesetInflector(
-            French\Rules::getSingularRuleset()
-        )),
-        new CachedWordInflector(new RulesetInflector(
-            French\Rules::getPluralRuleset()
-        ))
-    );
-
-Norwegian Bokmal
-----------------
-
-.. code-block:: php
-
-    use Doctrine\Inflector\CachedWordInflector;
-    use Doctrine\Inflector\RulesetInflector;
-    use Doctrine\Inflector\Rules\NorwegianBokmal;
-
-    $inflector = new Inflector(
-        new CachedWordInflector(new RulesetInflector(
-            NorwegianBokmal\Rules::getSingularRuleset()
-        )),
-        new CachedWordInflector(new RulesetInflector(
-            NorwegianBokmal\Rules::getPluralRuleset()
-        ))
-    );
-
-Portuguese
-----------
-
-.. code-block:: php
-
-    use Doctrine\Inflector\CachedWordInflector;
-    use Doctrine\Inflector\RulesetInflector;
-    use Doctrine\Inflector\Rules\Portuguese;
-
-    $inflector = new Inflector(
-        new CachedWordInflector(new RulesetInflector(
-            Portuguese\Rules::getSingularRuleset()
-        )),
-        new CachedWordInflector(new RulesetInflector(
-            Portuguese\Rules::getPluralRuleset()
-        ))
-    );
-
-Spanish
--------
-
-.. code-block:: php
-
-    use Doctrine\Inflector\CachedWordInflector;
-    use Doctrine\Inflector\RulesetInflector;
-    use Doctrine\Inflector\Rules\Spanish;
-
-    $inflector = new Inflector(
-        new CachedWordInflector(new RulesetInflector(
-            Spanish\Rules::getSingularRuleset()
-        )),
-        new CachedWordInflector(new RulesetInflector(
-            Spanish\Rules::getPluralRuleset()
-        ))
-    );
-
-Turkish
--------
-
-.. code-block:: php
-
-    use Doctrine\Inflector\CachedWordInflector;
-    use Doctrine\Inflector\RulesetInflector;
-    use Doctrine\Inflector\Rules\Turkish;
-
-    $inflector = new Inflector(
-        new CachedWordInflector(new RulesetInflector(
-            Turkish\Rules::getSingularRuleset()
-        )),
-        new CachedWordInflector(new RulesetInflector(
-            Turkish\Rules::getPluralRuleset()
         ))
     );
 
@@ -235,7 +162,7 @@ This method uses `Classify`_ and then converts the first character to lowercase:
 
     echo $inflector->camelize('model_name'); // modelName
 
-capitalize
+Capitalize
 ==========
 
 Takes a string and capitalizes all of the words, like PHP's built-in
@@ -265,12 +192,16 @@ Returns a word in plural form.
 Singularize
 ===========
 
+Returns a word in singular form.
+
 .. code-block:: php
 
     echo $inflector->singularize('browsers'); // browser
 
 Urlize
 ======
+
+Generate a URL friendly string from a string of text:
 
 .. code-block:: php
 
