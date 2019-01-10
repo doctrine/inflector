@@ -97,6 +97,18 @@ class InflectorTest extends TestCase
                 'jsem-kral-na-severu',
                 'Jsem král na severu',
             ],
+            [
+                'test1-test2',
+                'test1::test2',
+            ],
+            [
+                'test1-test2',
+                'test1$test2',
+            ],
+            [
+                'testab-test2',
+                'TESTAb-test2',
+            ],
         ];
     }
 

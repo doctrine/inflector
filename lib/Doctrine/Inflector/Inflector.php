@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector;
 
+use RuntimeException;
 use function chr;
 use function function_exists;
 use function lcfirst;
@@ -11,6 +12,7 @@ use function mb_strtolower;
 use function ord;
 use function preg_match;
 use function preg_replace;
+use function sprintf;
 use function str_replace;
 use function strlen;
 use function strtolower;
@@ -37,7 +39,16 @@ class Inflector
      */
     public function tableize(string $word) : string
     {
-        return mb_strtolower((string) preg_replace('~(?<=\\w)([A-Z])~u', '_$1', $word));
+        $tableized = preg_replace('~(?<=\\w)([A-Z])~u', '_$1', $word);
+
+        if ($tableized === null) {
+            throw new RuntimeException(sprintf(
+                'preg_replace returned null for value "%s"',
+                $word
+            ));
+        }
+
+        return mb_strtolower($tableized);
     }
 
     /**
@@ -449,33 +460,37 @@ class Inflector
     public function urlize(string $string) : string
     {
         // Remove all non url friendly characters with the unaccent function
-        $string = $this->unaccent($string);
+        $unaccented = $this->unaccent($string);
 
         if (function_exists('mb_strtolower')) {
-            $string = mb_strtolower($string);
+            $lowered = mb_strtolower($unaccented);
         } else {
-            $string = strtolower($string);
+            $lowered = strtolower($unaccented);
         }
 
-        // Remove all none word characters
-        $string = (string) preg_replace('/\W/', ' ', $string);
+        $replacements = [
+            '/\W/' => ' ',
+            '/([A-Z]+)([A-Z][a-z])/' => '\1_\2',
+            '/([a-z\d])([A-Z])/' => '\1_\2',
+            '/[^A-Z^a-z^0-9^\/]+/' => '-',
+        ];
 
-        // More stripping. Replace spaces with dashes
-        $string = strtolower((string) preg_replace(
-            '/[^A-Z^a-z^0-9^\/]+/',
-            '-',
-            (string) preg_replace(
-                '/([a-z\d])([A-Z])/',
-                '\1_\2',
-                (string) preg_replace(
-                    '/([A-Z]+)([A-Z][a-z])/',
-                    '\1_\2',
-                    (string) preg_replace('/::/', '/', $string)
-                )
-            )
-        ));
+        $urlized = $lowered;
 
-        return trim($string, '-');
+        foreach ($replacements as $pattern => $replacement) {
+            $replaced = preg_replace($pattern, $replacement, $urlized);
+
+            if ($urlized === null) {
+                throw new RuntimeException(sprintf(
+                    'preg_replace returned null for value "%s"',
+                    $urlized
+                ));
+            }
+
+            $urlized = $replaced;
+        }
+
+        return trim($urlized, '-');
     }
 
     /**
