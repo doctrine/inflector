@@ -207,6 +207,15 @@ Generate a URL friendly string from a string of text:
 
     echo $inflector->urlize('My first blog post'); // my-first-blog-post
 
+Unaccent
+========
+
+You can unaccent a string of text using the ``unaccent()`` method:
+
+.. code-block:: php
+
+    echo $inflector->unaccent('año'); // ano
+
 Acknowledgements
 ================
 

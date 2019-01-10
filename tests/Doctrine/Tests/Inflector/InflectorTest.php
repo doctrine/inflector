@@ -109,6 +109,10 @@ class InflectorTest extends TestCase
                 'testab-test2',
                 'TESTAb-test2',
             ],
+            [
+                'ano',
+                'año',
+            ],
         ];
     }
 
