@@ -173,6 +173,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['half', 'halves'],
             ['half', 'halves'],
             ['half', 'halves'],
+            ['hardware', 'hardware'],
             ['headquarters', 'headquarters'],
             ['hero', 'heroes'],
             ['hero', 'heroes'],
