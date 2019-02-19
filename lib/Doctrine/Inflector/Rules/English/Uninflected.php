@@ -28,10 +28,8 @@ final class Uninflected
     {
         yield from self::getDefault();
 
-        yield new Pattern('middleware');
         yield new Pattern('people');
-        yield new Pattern('software');
-        yield new Pattern('hardware');
+        yield new Pattern('\w+ware$');
     }
 
     /**
