@@ -298,7 +298,9 @@ class Inflector
         for ($i = 0; $i < strlen($string); $i++) {
             if (ord($string[$i]) < 0x80) {
                 continue; // 0bbbbbbb
-            } elseif ((ord($string[$i]) & 0xE0) === 0xC0) {
+            }
+
+            if ((ord($string[$i]) & 0xE0) === 0xC0) {
                 $n = 1; // 110bbbbb
             } elseif ((ord($string[$i]) & 0xF0) === 0xE0) {
                 $n = 2; // 1110bbbb
