@@ -29,7 +29,6 @@ class TurkishFunctionalTest extends LanguageFunctionalTest
         ];
     }
 
-
     protected function createInflector() : Inflector
     {
         return (new InflectorFactory())(Language::TURKISH);

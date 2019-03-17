@@ -35,7 +35,6 @@ class Substitutions implements WordInflector
         return new Substitutions(...$substitutions);
     }
 
-
     public function inflect(string $word) : string
     {
         $lowerWord = strtolower($word);
