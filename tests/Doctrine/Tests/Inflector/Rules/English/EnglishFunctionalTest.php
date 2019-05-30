@@ -8,6 +8,7 @@ use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
 use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTest;
+use function sprintf;
 
 class EnglishFunctionalTest extends LanguageFunctionalTest
 {
@@ -397,6 +398,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['traffic', 'traffic'],
             ['traffic', 'traffic'],
             ['travel', 'travel'],
+            ['trivia', 'trivia'],
             ['trousers', 'trousers'],
             ['trousers', 'trousers'],
             ['trout', 'trout'],
@@ -433,6 +435,42 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['zombie', 'zombies'],
             ['|ice', '|ices'],
         ];
+    }
+
+    /**
+     * Singulars as Plural test data.
+     *
+     * A list of singulars that should not yield the given result if passed through `singularize`.
+     * Returns an array of sample words.
+     *
+     * @return string[][]
+     */
+    public function dataSingularsUninflectedWhenSingularized() : array
+    {
+        // In the format array('singular', 'notEquals')
+        return [
+            ['fuchsia', 'fuchsium'],
+            ['militia', 'militium'],
+            ['galleria', 'gallerium'],
+            ['petunia', 'petunium'],
+            ['trivia', 'trivium'],
+            ['utopia', 'utopium'],
+            ['sepia', 'sepium'],
+            ['mafia', 'mafium'],
+            ['fascia', 'fascium'],
+        ];
+    }
+
+    /**
+     * @dataProvider dataSingularsUninflectedWhenSingularized
+     */
+    public function testSingularsWhenSingularizedShouldBeUninflected(string $singular, string $notEquals) : void
+    {
+        self::assertNotSame(
+            $notEquals,
+            $this->createInflector()->singularize($singular),
+            sprintf("'%s' should not be singularized to '%s'", $singular, $notEquals)
+        );
     }
 
     protected function createInflector() : Inflector

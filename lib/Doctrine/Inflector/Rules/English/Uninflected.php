@@ -18,7 +18,16 @@ final class Uninflected
         yield new Pattern('.*ss');
         yield new Pattern('clothes');
         yield new Pattern('data');
+        yield new Pattern('fascia');
+        yield new Pattern('fuchsia');
+        yield new Pattern('galleria');
+        yield new Pattern('mafia');
+        yield new Pattern('militia');
         yield new Pattern('pants');
+        yield new Pattern('petunia');
+        yield new Pattern('sepia');
+        yield new Pattern('trivia');
+        yield new Pattern('utopia');
     }
 
     /**
@@ -29,6 +38,7 @@ final class Uninflected
         yield from self::getDefault();
 
         yield new Pattern('people');
+        yield new Pattern('trivia');
         yield new Pattern('\w+ware$');
     }
 
