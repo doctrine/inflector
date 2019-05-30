@@ -8,6 +8,7 @@ use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
 use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTest;
+use function sprintf;
 
 class EnglishFunctionalTest extends LanguageFunctionalTest
 {
@@ -456,7 +457,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['utopia', 'utopium'],
             ['sepia', 'sepium'],
             ['mafia', 'mafium'],
-            ['fascia', 'fascium']
+            ['fascia', 'fascium'],
         ];
     }
 
