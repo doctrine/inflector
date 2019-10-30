@@ -8,10 +8,8 @@ cache:
 
 php:
   - 7.1
-  - nightly
-
-allowed_failures:
-  - nightly
+  - 7.2
+  - 7.3
 
 install:
   - composer install -n
