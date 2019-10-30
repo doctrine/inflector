@@ -3,7 +3,6 @@ sudo: false
 language: php
 
 php:
-  - 7.1
   - 7.2
   - 7.3
   - 7.4snapshot
@@ -24,9 +23,6 @@ script:
   - ./vendor/bin/phpunit
 
 jobs:
-  allow_failures:
-    - php: 7.4snapshot
-
   include:
     - stage: Test
       env: DEPENDENCIES=low
