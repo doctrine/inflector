@@ -8,3 +8,6 @@ parameters:
     paths:
       - lib
       - tests
+
+    excludes_analyse:
+        - %rootDir%/../../../tests/Doctrine/Tests/Common/*

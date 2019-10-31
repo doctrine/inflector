@@ -12,5 +12,8 @@
     <file>lib</file>
     <file>tests</file>
 
-    <rule ref="Doctrine" />
+    <rule ref="Doctrine">
+        <exclude-pattern>lib/Doctrine/Common</exclude-pattern>
+        <exclude-pattern>tests/Doctrine/Tests/Common</exclude-pattern>
+    </rule>
 </ruleset>
