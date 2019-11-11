@@ -102,6 +102,7 @@ class Inflectible
         yield new Substitution(new Word('chateau'), new Word('chateaux'));
         yield new Substitution(new Word('niveau'), new Word('niveaux'));
         yield new Substitution(new Word('child'), new Word('children'));
+        yield new Substitution(new Word('canvas'), new Word('canvases'));
         yield new Substitution(new Word('cookie'), new Word('cookies'));
         yield new Substitution(new Word('corpus'), new Word('corpuses'));
         yield new Substitution(new Word('cow'), new Word('cows'));
@@ -113,6 +114,7 @@ class Inflectible
         yield new Substitution(new Word('foot'), new Word('feet'));
         yield new Substitution(new Word('fungus'), new Word('fungi'));
         yield new Substitution(new Word('ganglion'), new Word('ganglions'));
+        yield new Substitution(new Word('gas'), new Word('gases'));
         yield new Substitution(new Word('genie'), new Word('genies'));
         yield new Substitution(new Word('genus'), new Word('genera'));
         yield new Substitution(new Word('goose'), new Word('geese'));

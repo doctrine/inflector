@@ -96,7 +96,6 @@ final class Uninflected
         yield new Pattern('food');
         yield new Pattern('furniture');
         yield new Pattern('gallows');
-        yield new Pattern('gas');
         yield new Pattern('genevese');
         yield new Pattern('genoese');
         yield new Pattern('gilbertese');
