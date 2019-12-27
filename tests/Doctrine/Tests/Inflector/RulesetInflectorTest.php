@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Doctrine\Tests\Inflector;
 
 use Doctrine\Inflector\Rules\Patterns;
-use Doctrine\Inflector\Rules\Rules;
 use Doctrine\Inflector\Rules\Ruleset;
 use Doctrine\Inflector\Rules\Substitutions;
 use Doctrine\Inflector\Rules\Transformations;
@@ -23,7 +22,6 @@ class RulesetInflectorTest extends TestCase
 
     public function testInflectIrregular() : void
     {
-        /** @var Substitutions|MockObject $irregular */
         $irregular = $this->createMock(Substitutions::class);
 
         $this->ruleset->expects(self::once())
@@ -40,7 +38,6 @@ class RulesetInflectorTest extends TestCase
 
     public function testInflectUninflected() : void
     {
-        /** @var Patterns|MockObject $uninflected */
         $uninflected = $this->createMock(Patterns::class);
 
         $this->ruleset->expects(self::once())
@@ -57,13 +54,10 @@ class RulesetInflectorTest extends TestCase
 
     public function testInflectRules() : void
     {
-        /** @var Substitutions|MockObject $irregular */
         $irregular = $this->createMock(Substitutions::class);
 
-        /** @var Patterns|MockObject $uninflected */
         $uninflected = $this->createMock(Patterns::class);
 
-        /** @var Rules|MockObject $rules */
         $regular = $this->createMock(Transformations::class);
 
         $this->ruleset->expects(self::once())
