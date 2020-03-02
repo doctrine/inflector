@@ -4,22 +4,18 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector\Rules\NorwegianBokmal;
 
-use Doctrine\Inflector\CachedWordInflector;
-use Doctrine\Inflector\Inflector;
-use Doctrine\Inflector\LanguageInflectorFactory;
-use Doctrine\Inflector\RulesetInflector;
+use Doctrine\Inflector\GenericLanguageInflectorFactory;
+use Doctrine\Inflector\Rules\Ruleset;
 
-final class InflectorFactory implements LanguageInflectorFactory
+final class InflectorFactory extends GenericLanguageInflectorFactory
 {
-    public function build() : Inflector
+    protected function getSingularRuleset() : Ruleset
     {
-        return new Inflector(
-            new CachedWordInflector(new RulesetInflector(
-                Rules::getSingularRuleset()
-            )),
-            new CachedWordInflector(new RulesetInflector(
-                Rules::getPluralRuleset()
-            ))
-        );
+        return Rules::getSingularRuleset();
+    }
+
+    protected function getPluralRuleset() : Ruleset
+    {
+        return Rules::getPluralRuleset();
     }
 }
