@@ -15,36 +15,107 @@ use PHPUnit\Framework\TestCase;
 class RulesetInflectorTest extends TestCase
 {
     /** @var Ruleset|MockObject */
-    private $ruleset;
+    private $firstRuleset;
+
+    /** @var Ruleset|MockObject */
+    private $secondRuleset;
 
     /** @var RulesetInflector */
     private $rulesetInflector;
 
-    public function testInflectIrregular() : void
+    public function testInflectIrregularUsesFirstMatch() : void
     {
-        $irregular = $this->createMock(Substitutions::class);
+        $firstIrregular  = $this->createMock(Substitutions::class);
+        $secondIrregular = $this->createMock(Substitutions::class);
 
-        $this->ruleset->expects(self::once())
+        $this->firstRuleset
             ->method('getIrregular')
-            ->willReturn($irregular);
+            ->willReturn($firstIrregular);
 
-        $irregular->expects(self::once())
+        $this->secondRuleset
+            ->method('getIrregular')
+            ->willReturn($secondIrregular);
+
+        $firstIrregular->expects(self::once())
             ->method('inflect')
             ->with('in')
-            ->willReturn('out');
+            ->willReturn('first');
 
-        self::assertSame('out', $this->rulesetInflector->inflect('in'));
+        $secondIrregular->expects(self::never())
+            ->method('inflect');
+
+        self::assertSame('first', $this->rulesetInflector->inflect('in'));
     }
 
-    public function testInflectUninflected() : void
+    public function testInflectIrregularContinuesIfFirstRulesetReturnsOriginalValue() : void
     {
-        $uninflected = $this->createMock(Patterns::class);
+        $firstIrregular  = $this->createMock(Substitutions::class);
+        $secondIrregular = $this->createMock(Substitutions::class);
 
-        $this->ruleset->expects(self::once())
+        $this->firstRuleset
+            ->method('getIrregular')
+            ->willReturn($firstIrregular);
+
+        $this->secondRuleset
+            ->method('getIrregular')
+            ->willReturn($secondIrregular);
+
+        $firstIrregular->expects(self::once())
+            ->method('inflect')
+            ->with('in')
+            ->willReturn('in');
+
+        $secondIrregular->expects(self::once())
+            ->method('inflect')
+            ->with('in')
+            ->willReturn('second');
+
+        self::assertSame('second', $this->rulesetInflector->inflect('in'));
+    }
+
+    public function testInflectUninflectedSkipsOnFirstMatch() : void
+    {
+        $firstUninflected  = $this->createMock(Patterns::class);
+        $secondUninflected = $this->createMock(Patterns::class);
+
+        $this->firstRuleset
             ->method('getUninflected')
-            ->willReturn($uninflected);
+            ->willReturn($firstUninflected);
 
-        $uninflected->expects(self::once())
+        $this->secondRuleset
+            ->method('getUninflected')
+            ->willReturn($secondUninflected);
+
+        $firstUninflected->expects(self::once())
+            ->method('matches')
+            ->with('in')
+            ->willReturn(true);
+
+        $secondUninflected->expects(self::never())
+            ->method('matches');
+
+        self::assertSame('in', $this->rulesetInflector->inflect('in'));
+    }
+
+    public function testInflectUninflectedContinuesIfFirstRulesetDoesNotIgnore() : void
+    {
+        $firstUninflected  = $this->createMock(Patterns::class);
+        $secondUninflected = $this->createMock(Patterns::class);
+
+        $this->firstRuleset
+            ->method('getUninflected')
+            ->willReturn($firstUninflected);
+
+        $this->secondRuleset
+            ->method('getUninflected')
+            ->willReturn($secondUninflected);
+
+        $firstUninflected->expects(self::once())
+            ->method('matches')
+            ->with('in')
+            ->willReturn(false);
+
+        $secondUninflected->expects(self::once())
             ->method('matches')
             ->with('in')
             ->willReturn(true);
@@ -52,50 +123,171 @@ class RulesetInflectorTest extends TestCase
         self::assertSame('in', $this->rulesetInflector->inflect('in'));
     }
 
-    public function testInflectRules() : void
+    public function testInflectRegularUsesFirstMatch() : void
     {
         $irregular = $this->createMock(Substitutions::class);
 
-        $uninflected = $this->createMock(Patterns::class);
-
-        $regular = $this->createMock(Transformations::class);
-
-        $this->ruleset->expects(self::once())
+        $this->firstRuleset
             ->method('getIrregular')
             ->willReturn($irregular);
 
-        $irregular->expects(self::once())
+        $this->secondRuleset
+            ->method('getIrregular')
+            ->willReturn($irregular);
+
+        $irregular
             ->method('inflect')
             ->with('in')
             ->willReturn('in');
 
         $uninflected = $this->createMock(Patterns::class);
 
-        $this->ruleset->expects(self::once())
+        $this->firstRuleset
             ->method('getUninflected')
             ->willReturn($uninflected);
 
-        $uninflected->expects(self::once())
+        $this->secondRuleset
+            ->method('getUninflected')
+            ->willReturn($uninflected);
+
+        $uninflected
             ->method('matches')
             ->with('in')
             ->willReturn(false);
 
-        $this->ruleset->expects(self::once())
+        $firstRegular  = $this->createMock(Transformations::class);
+        $secondRegular = $this->createMock(Transformations::class);
+
+        $this->firstRuleset
+            ->method('getRegular')
+            ->willReturn($firstRegular);
+
+        $this->secondRuleset
+            ->method('getRegular')
+            ->willReturn($secondRegular);
+
+        $firstRegular->expects(self::once())
+            ->method('inflect')
+            ->with('in')
+            ->willReturn('first');
+
+        $secondRegular->expects(self::never())
+            ->method('inflect');
+
+        self::assertSame('first', $this->rulesetInflector->inflect('in'));
+    }
+
+    public function testInflectRegularContinuesIfFirstRulesetReturnsOriginalValue() : void
+    {
+        $irregular = $this->createMock(Substitutions::class);
+
+        $this->firstRuleset
+            ->method('getIrregular')
+            ->willReturn($irregular);
+
+        $this->secondRuleset
+            ->method('getIrregular')
+            ->willReturn($irregular);
+
+        $irregular
+            ->method('inflect')
+            ->with('in')
+            ->willReturn('in');
+
+        $uninflected = $this->createMock(Patterns::class);
+
+        $this->firstRuleset
+            ->method('getUninflected')
+            ->willReturn($uninflected);
+
+        $this->secondRuleset
+            ->method('getUninflected')
+            ->willReturn($uninflected);
+
+        $uninflected
+            ->method('matches')
+            ->with('in')
+            ->willReturn(false);
+
+        $firstRegular  = $this->createMock(Transformations::class);
+        $secondRegular = $this->createMock(Transformations::class);
+
+        $this->firstRuleset
+            ->method('getRegular')
+            ->willReturn($firstRegular);
+
+        $this->secondRuleset
+            ->method('getRegular')
+            ->willReturn($secondRegular);
+
+        $firstRegular->expects(self::once())
+            ->method('inflect')
+            ->with('in')
+            ->willReturn('in');
+
+        $secondRegular->expects(self::once())
+            ->method('inflect')
+            ->with('in')
+            ->willReturn('second');
+
+        self::assertSame('second', $this->rulesetInflector->inflect('in'));
+    }
+
+    public function testInflectReturnsOriginalValueOnNoMatches() : void
+    {
+        $irregular = $this->createMock(Substitutions::class);
+
+        $this->firstRuleset
+            ->method('getIrregular')
+            ->willReturn($irregular);
+
+        $this->secondRuleset
+            ->method('getIrregular')
+            ->willReturn($irregular);
+
+        $irregular
+            ->method('inflect')
+            ->with('in')
+            ->willReturn('in');
+
+        $uninflected = $this->createMock(Patterns::class);
+
+        $this->firstRuleset
+            ->method('getUninflected')
+            ->willReturn($uninflected);
+
+        $this->secondRuleset
+            ->method('getUninflected')
+            ->willReturn($uninflected);
+
+        $uninflected
+            ->method('matches')
+            ->with('in')
+            ->willReturn(false);
+
+        $regular = $this->createMock(Transformations::class);
+
+        $this->firstRuleset
             ->method('getRegular')
             ->willReturn($regular);
 
-        $regular->expects(self::once())
+        $this->secondRuleset
+            ->method('getRegular')
+            ->willReturn($regular);
+
+        $regular
             ->method('inflect')
             ->with('in')
-            ->willReturn('out');
+            ->willReturn('in');
 
-        self::assertSame('out', $this->rulesetInflector->inflect('in'));
+        self::assertSame('in', $this->rulesetInflector->inflect('in'));
     }
 
     protected function setUp() : void
     {
-        $this->ruleset = $this->createMock(Ruleset::class);
+        $this->firstRuleset  = $this->createMock(Ruleset::class);
+        $this->secondRuleset = $this->createMock(Ruleset::class);
 
-        $this->rulesetInflector = new RulesetInflector($this->ruleset);
+        $this->rulesetInflector = new RulesetInflector($this->firstRuleset, $this->secondRuleset);
     }
 }
