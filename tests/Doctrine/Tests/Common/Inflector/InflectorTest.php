@@ -300,8 +300,6 @@ class InflectorTest extends TestCase
 
     public function testCustomPluralRule() : void
     {
-        $this->markTestSkipped('Custom rules are no longer supported');
-
         Inflector::reset();
         Inflector::rules('plural', array('/^(custom)$/i' => '\1izables'));
 
@@ -326,8 +324,6 @@ class InflectorTest extends TestCase
 
     public function testCustomSingularRule() : void
     {
-        $this->markTestSkipped('Custom rules are no longer supported');
-
         Inflector::reset();
         Inflector::rules('singular', array('/(eple)r$/i' => '\1', '/(jente)r$/i' => '\1'));
 
@@ -348,8 +344,6 @@ class InflectorTest extends TestCase
 
     public function testSettingNewRulesClearsCaches() : void
     {
-        $this->markTestSkipped('Custom rules are no longer supported');
-
         Inflector::reset();
 
         $this->assertEquals(Inflector::singularize('Bananas'), 'Banana');
@@ -372,8 +366,6 @@ class InflectorTest extends TestCase
 
     public function testCustomRuleWithReset() : void
     {
-        $this->markTestSkipped('Custom rules are no longer supported');
-
         Inflector::reset();
 
         $uninflected = array('atlas', 'lapis', 'onibus', 'pires', 'virus', '.*x');
