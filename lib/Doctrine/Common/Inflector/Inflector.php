@@ -22,7 +22,6 @@ namespace Doctrine\Common\Inflector;
 use BadMethodCallException;
 use Doctrine\Inflector\Inflector as InflectorObject;
 use Doctrine\Inflector\InflectorFactory;
-use Doctrine\Inflector\Language;
 use function sprintf;
 use function trigger_error;
 use const E_USER_DEPRECATED;
@@ -38,7 +37,7 @@ final class Inflector
     private static function getInstance() : InflectorObject
     {
         if (self::$instance === null) {
-            self::$instance = (new InflectorFactory())(Language::ENGLISH);
+            self::$instance = InflectorFactory::create()->build();
         }
 
         return self::$instance;

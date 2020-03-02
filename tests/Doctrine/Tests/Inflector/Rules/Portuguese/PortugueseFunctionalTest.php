@@ -49,6 +49,6 @@ class PortugueseFunctionalTest extends LanguageFunctionalTest
 
     protected function createInflector() : Inflector
     {
-        return (new InflectorFactory())(Language::PORTUGUESE);
+        return InflectorFactory::createForLanguage(Language::PORTUGUESE)->build();
     }
 }

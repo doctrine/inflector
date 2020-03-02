@@ -476,6 +476,6 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
 
     protected function createInflector() : Inflector
     {
-        return (new InflectorFactory())(Language::ENGLISH);
+        return InflectorFactory::createForLanguage(Language::ENGLISH)->build();
     }
 }

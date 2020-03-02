@@ -58,6 +58,6 @@ class SpanishFunctionalTest extends LanguageFunctionalTest
 
     protected function createInflector() : Inflector
     {
-        return (new InflectorFactory())(Language::SPANISH);
+        return InflectorFactory::createForLanguage(Language::SPANISH)->build();
     }
 }

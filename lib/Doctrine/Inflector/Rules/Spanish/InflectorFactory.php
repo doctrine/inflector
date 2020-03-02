@@ -6,11 +6,12 @@ namespace Doctrine\Inflector\Rules\Spanish;
 
 use Doctrine\Inflector\CachedWordInflector;
 use Doctrine\Inflector\Inflector;
+use Doctrine\Inflector\LanguageInflectorFactory;
 use Doctrine\Inflector\RulesetInflector;
 
-final class InflectorFactory
+final class InflectorFactory implements LanguageInflectorFactory
 {
-    public function __invoke() : Inflector
+    public function build() : Inflector
     {
         return new Inflector(
             new CachedWordInflector(new RulesetInflector(

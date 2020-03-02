@@ -6,7 +6,6 @@ namespace Doctrine\Tests\Inflector;
 
 use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
-use Doctrine\Inflector\Language;
 use PHPUnit\Framework\TestCase;
 
 class InflectorFunctionalTest extends TestCase
@@ -103,6 +102,6 @@ class InflectorFunctionalTest extends TestCase
 
     private function createInflector() : Inflector
     {
-        return (new InflectorFactory())(Language::ENGLISH);
+        return InflectorFactory::create()->build();
     }
 }

@@ -6,7 +6,6 @@ namespace Doctrine\Inflector;
 
 use Doctrine\Inflector\Rules\Ruleset;
 use function array_merge;
-use function func_get_args;
 
 /**
  * Inflects based on multiple rulesets.
