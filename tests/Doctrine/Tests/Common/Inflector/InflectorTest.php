@@ -403,7 +403,7 @@ class InflectorTest extends TestCase
         $this->assertSame('Top-O-The-Morning To All_of_you!', Inflector::ucwords( 'top-o-the-morning to all_of_you!'));
     }
 
-    public function testUcwordsWithCustomDelimeters() : void
+    public function testUcwordsWithCustomDelimiters() : void
     {
         $this->assertSame('Top-O-The-Morning To All_Of_You!', Inflector::ucwords( 'top-o-the-morning to all_of_you!', '-_ '));
     }
