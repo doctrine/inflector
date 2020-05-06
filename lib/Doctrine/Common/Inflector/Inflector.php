@@ -77,7 +77,7 @@ class Inflector
      */
     public static function tableize(string $word) : string
     {
-        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in Doctrine Inflector 3.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in doctrine/inflector 2.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
 
         return self::getInstance()->tableize($word);
     }
@@ -87,7 +87,7 @@ class Inflector
      */
     public static function classify(string $word) : string
     {
-        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in Doctrine Inflector 3.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in doctrine/inflector 2.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
 
         return self::getInstance()->classify($word);
     }
@@ -99,7 +99,7 @@ class Inflector
      */
     public static function camelize(string $word) : string
     {
-        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in Doctrine Inflector 3.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in doctrine/inflector 2.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
 
         return self::getInstance()->camelize($word);
     }
@@ -133,7 +133,7 @@ class Inflector
      */
     public static function ucwords(string $string, string $delimiters = " \n\t\r\0\x0B-") : string
     {
-        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in Doctrine Inflector 3.0. Please use the "ucwords" function instead.', __METHOD__), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in doctrine/inflector 2.0. Please use the "ucwords" function instead.', __METHOD__), E_USER_DEPRECATED);
 
         return ucwords($string, $delimiters);
     }
@@ -146,7 +146,7 @@ class Inflector
      */
     public static function reset() : void
     {
-        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in Doctrine Inflector 3.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in doctrine/inflector 2.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
 
         self::$factory = null;
         self::$instance = null;
@@ -177,7 +177,7 @@ class Inflector
      */
     public static function rules(string $type, iterable $rules, bool $reset = false) : void
     {
-        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in Doctrine Inflector 3.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in doctrine/inflector 2.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
 
         if (self::$factory === null) {
             self::$factory = self::createFactory();
@@ -258,7 +258,7 @@ class Inflector
      */
     public static function pluralize(string $word) : string
     {
-        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in Doctrine Inflector 3.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in doctrine/inflector 2.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
 
         return self::getInstance()->pluralize($word);
     }
@@ -274,7 +274,7 @@ class Inflector
      */
     public static function singularize(string $word) : string
     {
-        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in Doctrine Inflector 3.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
+        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in doctrine/inflector 2.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
 
         return self::getInstance()->singularize($word);
     }
