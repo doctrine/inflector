@@ -48,8 +48,9 @@ jobs:
       install: travis_retry composer install --prefer-dist
       script: vendor/bin/phpstan analyse
 
-    - stage: BC checks
-      php: 7.4
-      env: BC_CHECK
-      post_install: wget -O roave-backward-compatibility-check.phar https://github.com/Roave/BackwardCompatibilityCheck/releases/download/4.4.0/roave-backward-compatibility-check.phar
-      script: ./roave-backward-compatibility-check.phar --from=v1.3.0
+# Todo: re-enable once 2.1.x-dev is available
+#    - stage: BC checks
+#      php: 7.4
+#      env: BC_CHECK
+#      post_install: wget -O roave-backward-compatibility-check.phar https://github.com/Roave/BackwardCompatibilityCheck/releases/download/4.4.0/roave-backward-compatibility-check.phar
+#      script: ./roave-backward-compatibility-check.phar --from=v1.3.0
