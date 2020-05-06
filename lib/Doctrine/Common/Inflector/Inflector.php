@@ -42,7 +42,7 @@ use const E_USER_DEPRECATED;
 /**
  * @deprecated
  */
-final class Inflector
+class Inflector
 {
     /**
      * @var LanguageInflectorFactory|null
