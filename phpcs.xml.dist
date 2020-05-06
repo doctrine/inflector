@@ -16,4 +16,16 @@
         <exclude-pattern>lib/Doctrine/Common</exclude-pattern>
         <exclude-pattern>tests/Doctrine/Tests/Common</exclude-pattern>
     </rule>
+
+    <rule ref="SlevomatCodingStandard.TypeHints.PropertyTypeHint">
+        <properties>
+            <property name="enableNativeTypeHint" value="false" />
+            <property name="traversableTypeHints" type="array">
+                <element value="Traversable"/>
+                <element value="Iterator"/>
+                <element value="IteratorAggregate"/>
+                <element value="Doctrine\Common\Collections\Collection"/>
+            </property>
+        </properties>
+    </rule>
 </ruleset>
