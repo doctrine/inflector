@@ -24,21 +24,17 @@ the ``Doctrine\Inflector\InflectorFactory`` class:
 
     use Doctrine\Inflector\InflectorFactory;
 
-    $inflectorFactory = new InflectorFactory();
-
-    $inflector = $inflectorFactory();
+    $inflector = InflectorFactory::create()->build();
 
 By default it will create an English inflector. If you want to use another language, just pass the language
-you want to create an inflector for to the ``create()`` method:
+you want to create an inflector for to the ``createForLanguage()`` method:
 
 .. code-block:: php
 
     use Doctrine\Inflector\InflectorFactory;
     use Doctrine\Inflector\Language;
 
-    $inflectorFactory = new InflectorFactory();
-
-    $inflector = $inflectorFactory(Language::SPANISH);
+    $inflector = InflectorFactory::createForLanguage(Language::SPANISH)->build();
 
 The supported languages are as follows:
 
@@ -78,12 +74,11 @@ Once you have done this, send a pull request to the ``doctrine/inflector`` repos
 Custom Setup
 ============
 
-If you want to setup custom singular and plural rules, you can configure the inflector like this.
+If you want to setup custom singular and plural rules, you can configure these in the factory:
 
 .. code-block:: php
 
-    use Doctrine\Inflector\CachedWordInflector;
-    use Doctrine\Inflector\Inflector;
+    use Doctrine\Inflector\InflectorFactory;
     use Doctrine\Inflector\Rules\Pattern;
     use Doctrine\Inflector\Rules\Patterns;
     use Doctrine\Inflector\Rules\Ruleset;
@@ -92,10 +87,9 @@ If you want to setup custom singular and plural rules, you can configure the inf
     use Doctrine\Inflector\Rules\Transformation;
     use Doctrine\Inflector\Rules\Transformations;
     use Doctrine\Inflector\Rules\Word;
-    use Doctrine\Inflector\RulesetInflector;
 
-    $inflector = new Inflector(
-        new CachedWordInflector(new RulesetInflector(
+    $inflector = InflectorFactory::create()
+        ->withSingularRules(
             new Ruleset(
                 new Transformations(
                     new Transformation(new Pattern('/^(bil)er$/i'), '\1'),
@@ -104,8 +98,8 @@ If you want to setup custom singular and plural rules, you can configure the inf
                 new Patterns(new Pattern('singulars')),
                 new Substitutions(new Substitution(new Word('spins'), new Word('spinor')))
             )
-        )),
-        new CachedWordInflector(new RulesetInflector(
+        )
+        ->withPluralRules(
             new Ruleset(
                 new Transformations(
                     new Transformation(new Pattern('^(bil)er$'), '\1'),
@@ -117,8 +111,8 @@ If you want to setup custom singular and plural rules, you can configure the inf
                     new Substitution(new Word('phone'), new Word('phonezes'))
                 )
             )
-        ))
-    );
+        )
+        ->build();
 
 No operation inflector
 ----------------------
@@ -215,6 +209,12 @@ You can unaccent a string of text using the ``unaccent()`` method:
 .. code-block:: php
 
     echo $inflector->unaccent('año'); // ano
+
+Legacy API
+==========
+
+The API present in Inflector 1.x is still available, but will be deprecated in a future release and dropped for 3.0.
+Support for languages other than English is available in the 2.0 API only.
 
 Acknowledgements
 ================

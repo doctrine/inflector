@@ -33,6 +33,6 @@ class NorwegianBokmalFunctionalTest extends LanguageFunctionalTest
 
     protected function createInflector() : Inflector
     {
-        return (new InflectorFactory())(Language::NORWEGIAN_BOKMAL);
+        return InflectorFactory::createForLanguage(Language::NORWEGIAN_BOKMAL)->build();
     }
 }

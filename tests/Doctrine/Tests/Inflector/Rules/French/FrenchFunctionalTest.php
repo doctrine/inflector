@@ -58,6 +58,6 @@ class FrenchFunctionalTest extends LanguageFunctionalTest
 
     protected function createInflector() : Inflector
     {
-        return (new InflectorFactory())(Language::FRENCH);
+        return InflectorFactory::createForLanguage(Language::FRENCH)->build();
     }
 }

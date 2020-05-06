@@ -19,10 +19,22 @@
 
 namespace Doctrine\Common\Inflector;
 
-use BadMethodCallException;
 use Doctrine\Inflector\Inflector as InflectorObject;
 use Doctrine\Inflector\InflectorFactory;
-use Doctrine\Inflector\Language;
+use Doctrine\Inflector\LanguageInflectorFactory;
+use Doctrine\Inflector\Rules\Pattern;
+use Doctrine\Inflector\Rules\Patterns;
+use Doctrine\Inflector\Rules\Ruleset;
+use Doctrine\Inflector\Rules\Substitution;
+use Doctrine\Inflector\Rules\Substitutions;
+use Doctrine\Inflector\Rules\Transformation;
+use Doctrine\Inflector\Rules\Transformations;
+use Doctrine\Inflector\Rules\Word;
+use InvalidArgumentException;
+use function array_keys;
+use function array_map;
+use function array_unshift;
+use function array_values;
 use function sprintf;
 use function trigger_error;
 use const E_USER_DEPRECATED;
@@ -32,16 +44,30 @@ use const E_USER_DEPRECATED;
  */
 final class Inflector
 {
+    /**
+     * @var LanguageInflectorFactory|null
+     */
+    private static $factory;
+
     /** @var InflectorObject|null */
     private static $instance;
 
     private static function getInstance() : InflectorObject
     {
+        if (self::$factory === null) {
+            self::$factory = self::createFactory();
+        }
+
         if (self::$instance === null) {
-            self::$instance = (new InflectorFactory())(Language::ENGLISH);
+            self::$instance = self::$factory->build();
         }
 
         return self::$instance;
+    }
+
+    private static function createFactory() : LanguageInflectorFactory
+    {
+        return InflectorFactory::create();
     }
 
     /**
@@ -121,6 +147,9 @@ final class Inflector
     public static function reset() : void
     {
         @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in Doctrine Inflector 3.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
+
+        self::$factory = null;
+        self::$instance = null;
     }
 
     /**
@@ -148,7 +177,74 @@ final class Inflector
      */
     public static function rules(string $type, iterable $rules, bool $reset = false) : void
     {
-        throw new BadMethodCallException('Adding custom rules is no longer supported in Doctrine Inflector 2.0.');
+        @trigger_error(sprintf('The "%s" method is deprecated and will be dropped in Doctrine Inflector 3.0. Please update to the new Inflector API.', __METHOD__), E_USER_DEPRECATED);
+
+        if (self::$factory === null) {
+            self::$factory = self::createFactory();
+        }
+
+        self::$instance = null;
+
+        switch ($type) {
+            case 'singular':
+                self::$factory->withSingularRules(self::buildRuleset($rules), $reset);
+                break;
+            case 'plural':
+                self::$factory->withPluralRules(self::buildRuleset($rules), $reset);
+                break;
+            default:
+                throw new InvalidArgumentException(sprintf('Cannot define custom inflection rules for type "%s".', $type));
+        }
+    }
+
+    private static function buildRuleset(iterable $rules) : Ruleset
+    {
+        $regular = [];
+        $irregular = [];
+        $uninflected = [];
+
+        foreach ($rules as $rule => $pattern) {
+            if ( ! is_array($pattern)) {
+                $regular[$rule] = $pattern;
+
+                continue;
+            }
+
+            switch ($rule) {
+                case 'uninflected':
+                    $uninflected = $pattern;
+                    break;
+                case 'irregular':
+                    $irregular = $pattern;
+                    break;
+                case 'rules':
+                    $regular = $pattern;
+                    break;
+            }
+        }
+
+        return new Ruleset(
+            new Transformations(...array_map(
+                static function (string $pattern, string $replacement) : Transformation {
+                    return new Transformation(new Pattern($pattern), $replacement);
+                },
+                array_keys($regular),
+                array_values($regular)
+            )),
+            new Patterns(...array_map(
+                static function (string $pattern) : Pattern {
+                    return new Pattern($pattern);
+                },
+                $uninflected
+            )),
+            new Substitutions(...array_map(
+                static function (string $word, string $to) : Substitution {
+                    return new Substitution(new Word($word), new Word($to));
+                },
+                array_keys($irregular),
+                array_values($irregular)
+            ))
+        );
     }
 
     /**

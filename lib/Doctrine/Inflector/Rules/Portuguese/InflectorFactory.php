@@ -4,21 +4,18 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector\Rules\Portuguese;
 
-use Doctrine\Inflector\CachedWordInflector;
-use Doctrine\Inflector\Inflector;
-use Doctrine\Inflector\RulesetInflector;
+use Doctrine\Inflector\GenericLanguageInflectorFactory;
+use Doctrine\Inflector\Rules\Ruleset;
 
-final class InflectorFactory
+final class InflectorFactory extends GenericLanguageInflectorFactory
 {
-    public function __invoke() : Inflector
+    protected function getSingularRuleset() : Ruleset
     {
-        return new Inflector(
-            new CachedWordInflector(new RulesetInflector(
-                Rules::getSingularRuleset()
-            )),
-            new CachedWordInflector(new RulesetInflector(
-                Rules::getPluralRuleset()
-            ))
-        );
+        return Rules::getSingularRuleset();
+    }
+
+    protected function getPluralRuleset() : Ruleset
+    {
+        return Rules::getPluralRuleset();
     }
 }
