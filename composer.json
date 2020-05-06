@@ -24,13 +24,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Doctrine\\Common\\Inflector\\": "lib/Doctrine/Common/Inflector",
             "Doctrine\\Inflector\\": "lib/Doctrine/Inflector"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Doctrine\\Tests\\Common\\Inflector\\": "tests/Doctrine/Tests/Common/Inflector",
             "Doctrine\\Tests\\Inflector\\": "tests/Doctrine/Tests/Inflector"
         }
     },
