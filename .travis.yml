@@ -13,10 +13,8 @@ cache:
 
 before_install:
   - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{,.disabled} || echo "xdebug not available"
-  - travis_retry composer self-update
 
 install:
-  - rm composer.lock
   - travis_retry composer update --prefer-dist
 
 script:
@@ -27,7 +25,6 @@ jobs:
     - stage: Test
       env: DEPENDENCIES=low
       install:
-        - rm composer.lock
         - travis_retry composer update --prefer-dist --prefer-lowest
 
     - stage: Test
@@ -50,3 +47,10 @@ jobs:
       env: STATIC_ANALYSIS
       install: travis_retry composer install --prefer-dist
       script: vendor/bin/phpstan analyse
+
+# Todo: re-enable once 2.1.x-dev is available
+#    - stage: BC checks
+#      php: 7.4
+#      env: BC_CHECK
+#      post_install: wget -O roave-backward-compatibility-check.phar https://github.com/Roave/BackwardCompatibilityCheck/releases/download/4.4.0/roave-backward-compatibility-check.phar
+#      script: ./roave-backward-compatibility-check.phar --from=v1.3.0
