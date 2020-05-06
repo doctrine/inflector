@@ -13,10 +13,8 @@ cache:
 
 before_install:
   - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{,.disabled} || echo "xdebug not available"
-  - travis_retry composer self-update
 
 install:
-  - rm composer.lock
   - travis_retry composer update --prefer-dist
 
 script:
@@ -27,7 +25,6 @@ jobs:
     - stage: Test
       env: DEPENDENCIES=low
       install:
-        - rm composer.lock
         - travis_retry composer update --prefer-dist --prefer-lowest
 
     - stage: Test
