@@ -474,6 +474,34 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
         );
     }
 
+    /**
+     * Words without plural test data.
+     *
+     * List of words that don't have a plural form.
+     *
+     * @return string[][]
+     */
+    public function dataPluralUninflectedWhenPluralized() : array
+    {
+        return [
+            ['media'],
+        ];
+    }
+
+    /**
+     * @dataProvider dataPluralUninflectedWhenPluralized
+     */
+    public function testPluralsWhenPluralizedShouldBeUninflected(string $plural) : void
+    {
+        $pluralized = $this->createInflector()->pluralize($plural);
+
+        self::assertSame(
+            $plural,
+            $pluralized,
+            sprintf("'%s' should not be pluralized to '%s'", $plural, $pluralized)
+        );
+    }
+
     protected function createInflector() : Inflector
     {
         return InflectorFactory::createForLanguage(Language::ENGLISH)->build();
