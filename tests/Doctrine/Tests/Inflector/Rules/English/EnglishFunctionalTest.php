@@ -459,6 +459,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['sepia', 'sepium'],
             ['mafia', 'mafium'],
             ['fascia', 'fascium'],
+            ['status', 'statu'],
         ];
     }
 
