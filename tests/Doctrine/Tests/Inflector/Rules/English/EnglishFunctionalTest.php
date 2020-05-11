@@ -459,6 +459,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['sepia', 'sepium'],
             ['mafia', 'mafium'],
             ['fascia', 'fascium'],
+            ['status', 'statu'],
         ];
     }
 
@@ -471,6 +472,34 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             $notEquals,
             $this->createInflector()->singularize($singular),
             sprintf("'%s' should not be singularized to '%s'", $singular, $notEquals)
+        );
+    }
+
+    /**
+     * Words without plural test data.
+     *
+     * List of words that don't have a plural form.
+     *
+     * @return string[][]
+     */
+    public function dataPluralUninflectedWhenPluralized() : array
+    {
+        return [
+            ['media'],
+        ];
+    }
+
+    /**
+     * @dataProvider dataPluralUninflectedWhenPluralized
+     */
+    public function testPluralsWhenPluralizedShouldBeUninflected(string $plural) : void
+    {
+        $pluralized = $this->createInflector()->pluralize($plural);
+
+        self::assertSame(
+            $plural,
+            $pluralized,
+            sprintf("'%s' should not be pluralized to '%s'", $plural, $pluralized)
         );
     }
 
