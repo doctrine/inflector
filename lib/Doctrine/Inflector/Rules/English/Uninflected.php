@@ -40,6 +40,7 @@ final class Uninflected
         yield new Pattern('people');
         yield new Pattern('trivia');
         yield new Pattern('\w+ware$');
+        yield new Pattern('media');
     }
 
     /**
