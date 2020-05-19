@@ -182,7 +182,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['hijinks', 'hijinks'],
             ['hippopotamus', 'hippopotami'],
             ['hoax', 'hoaxes'],
-            ['homework', 'homework'],
+            ['homework', 'homeworks'],
             ['horse', 'horses'],
             ['hottentotese', 'hottentotese'],
             ['house', 'houses'],

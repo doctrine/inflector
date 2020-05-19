@@ -103,7 +103,6 @@ final class Uninflected
         yield new Pattern('headquarters');
         yield new Pattern('herpes');
         yield new Pattern('hijinks');
-        yield new Pattern('homework');
         yield new Pattern('hottentotese');
         yield new Pattern('impatience');
         yield new Pattern('information');
