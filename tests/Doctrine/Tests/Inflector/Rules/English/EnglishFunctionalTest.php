@@ -318,8 +318,6 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['research', 'researches'],
             ['rhinoceros', 'rhinoceros'],
             ['rice', 'rice'],
-            ['rice', 'rice'],
-            ['rice', 'rice'],
             ['roof', 'roofs'],
             ['runner-up', 'runners-up'],
             ['safe', 'safes'],
