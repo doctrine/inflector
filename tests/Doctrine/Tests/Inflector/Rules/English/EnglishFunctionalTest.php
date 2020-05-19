@@ -315,7 +315,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['radius', 'radii'],
             ['rain', 'rain'],
             ['reflex', 'reflexes'],
-            ['research', 'research'],
+            ['research', 'researches'],
             ['rhinoceros', 'rhinoceros'],
             ['rice', 'rice'],
             ['rice', 'rice'],
