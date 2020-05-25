@@ -21,6 +21,9 @@ script:
   - ./vendor/bin/phpunit
 
 jobs:
+  allow_failures:
+    - php: nightly
+
   include:
     - stage: Test
       env: DEPENDENCIES=low
@@ -37,6 +40,12 @@ jobs:
       after_script:
         - wget https://scrutinizer-ci.com/ocular.phar
         - php ocular.phar code-coverage:upload --format=php-clover clover.xml
+
+    - stage: Test
+      php: nightly
+      before_install:
+        - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{,.disabled} || echo "xdebug not available"
+        - composer config platform.php 7.4.99
 
     - stage: Code Quality
       env: CODING_STANDARDS
