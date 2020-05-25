@@ -133,8 +133,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['equipment', 'equipment'],
             ['equipment', 'equipment'],
             ['evidence', 'evidence'],
-            ['experience', 'experience'],
-            ['experience', 'experience'],
+            ['experience', 'experiences'],
             ['family', 'families'],
             ['faroese', 'faroese'],
             ['fax', 'faxes'],
@@ -431,7 +430,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['woman', 'women'],
             ['wood', 'wood'],
             ['wool', 'wool'],
-            ['work', 'work'],
+            ['work', 'works'],
             ['yengeese', 'yengeese'],
             ['zombie', 'zombies'],
             ['|ice', '|ices'],
@@ -460,6 +459,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['mafia', 'mafium'],
             ['fascia', 'fascium'],
             ['status', 'statu'],
+            ['campus', 'campu'],
         ];
     }
 
