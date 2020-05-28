@@ -36,17 +36,13 @@ class RulesetInflector implements WordInflector
             if ($ruleset->getUninflected()->matches($word)) {
                 return $word;
             }
-        }
 
-        foreach ($this->rulesets as $ruleset) {
             $inflected = $ruleset->getIrregular()->inflect($word);
 
             if ($inflected !== $word) {
                 return $inflected;
             }
-        }
 
-        foreach ($this->rulesets as $ruleset) {
             $inflected = $ruleset->getRegular()->inflect($word);
 
             if ($inflected !== $word) {
