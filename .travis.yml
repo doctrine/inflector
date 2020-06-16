@@ -37,9 +37,8 @@ jobs:
         - if [[ ! $(php -m | grep -si xdebug) ]]; then echo "xdebug required for coverage"; exit 1; fi
       script:
         - ./vendor/bin/phpunit --coverage-clover clover.xml
-      after_script:
-        - wget https://scrutinizer-ci.com/ocular.phar
-        - php ocular.phar code-coverage:upload --format=php-clover clover.xml
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
 
     - stage: Test
       php: nightly
