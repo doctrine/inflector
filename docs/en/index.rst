@@ -213,7 +213,8 @@ You can unaccent a string of text using the ``unaccent()`` method:
 Legacy API
 ==========
 
-The API present in Inflector 1.x is still available, but will be deprecated in a future release and dropped for 3.0.
+As of 1.4.0, the API present in Inflector 1.x has been marked as deprecated. In the 2.x release series,
+the legacy API has been dropped completely.
 Support for languages other than English is available in the 2.0 API only.
 
 Acknowledgements
