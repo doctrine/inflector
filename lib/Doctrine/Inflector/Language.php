@@ -6,6 +6,7 @@ namespace Doctrine\Inflector;
 
 final class Language
 {
+    public const DUTCH            = 'dutch';
     public const ENGLISH          = 'english';
     public const FRENCH           = 'french';
     public const NORWEGIAN_BOKMAL = 'norwegian-bokmal';
