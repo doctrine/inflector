@@ -17,19 +17,19 @@ class SubstitutionsTest extends TestCase
     /** @var Substitutions */
     private $irregular;
 
-    public function testGetFlippedSubstitutions() : void
+    public function testGetFlippedSubstitutions(): void
     {
         $substitutions = $this->irregular->getFlippedSubstitutions();
 
         self::assertSame('spins', $substitutions->inflect('spinor'));
     }
 
-    public function testInflect() : void
+    public function testInflect(): void
     {
         self::assertSame('spinor', $this->irregular->inflect('spins'));
     }
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->substitutions = [
             new Substitution(new Word('spins'), new Word('spinor')),

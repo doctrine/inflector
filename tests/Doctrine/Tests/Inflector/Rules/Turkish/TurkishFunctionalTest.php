@@ -14,7 +14,7 @@ class TurkishFunctionalTest extends LanguageFunctionalTest
     /**
      * @return string[][]
      */
-    public function dataSampleWords() : array
+    public function dataSampleWords(): array
     {
         return [
             ['gün', 'günler'],
@@ -29,7 +29,7 @@ class TurkishFunctionalTest extends LanguageFunctionalTest
         ];
     }
 
-    protected function createInflector() : Inflector
+    protected function createInflector(): Inflector
     {
         return InflectorFactory::createForLanguage(Language::TURKISH)->build();
     }

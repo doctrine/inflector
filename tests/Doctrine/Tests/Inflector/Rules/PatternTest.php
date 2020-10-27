@@ -12,29 +12,29 @@ class PatternTest extends TestCase
     /** @var Pattern */
     private $pattern;
 
-    public function testGetPattern() : void
+    public function testGetPattern(): void
     {
         self::assertSame('test', $this->pattern->getPattern());
     }
 
-    public function testGetRegex() : void
+    public function testGetRegex(): void
     {
         self::assertSame('/test/i', $this->pattern->getRegex());
     }
 
-    public function testPatternWithExplicitRegex() : void
+    public function testPatternWithExplicitRegex(): void
     {
         $pattern = new Pattern('/test/');
 
         self::assertSame('/test/', $pattern->getRegex());
     }
 
-    public function testMatches() : void
+    public function testMatches(): void
     {
         self::assertTrue($this->pattern->matches('test'));
     }
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->pattern = new Pattern('test');
     }

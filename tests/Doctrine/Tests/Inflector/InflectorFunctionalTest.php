@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class InflectorFunctionalTest extends TestCase
 {
-    public function testCapitalize() : void
+    public function testCapitalize(): void
     {
         self::assertSame(
             'Top-O-The-Morning To All_of_you!',
@@ -18,7 +18,7 @@ class InflectorFunctionalTest extends TestCase
         );
     }
 
-    public function testCapitalizeWithCustomDelimiters() : void
+    public function testCapitalizeWithCustomDelimiters(): void
     {
         self::assertSame(
             'Top-O-The-Morning To All_Of_You!',
@@ -29,7 +29,7 @@ class InflectorFunctionalTest extends TestCase
     /**
      * @dataProvider dataStringsTableize
      */
-    public function testTableize(string $expected, string $word) : void
+    public function testTableize(string $expected, string $word): void
     {
         self::assertSame($expected, $this->createInflector()->tableize($word));
     }
@@ -39,7 +39,7 @@ class InflectorFunctionalTest extends TestCase
      *
      * @return string[][]
      */
-    public function dataStringsTableize() : array
+    public function dataStringsTableize(): array
     {
         // In the format array('expected', 'word')
         return [
@@ -52,7 +52,7 @@ class InflectorFunctionalTest extends TestCase
     /**
      * @dataProvider dataStringsClassify
      */
-    public function testClassify(string $expected, string $word) : void
+    public function testClassify(string $expected, string $word): void
     {
         self::assertSame($expected, $this->createInflector()->classify($word));
     }
@@ -62,7 +62,7 @@ class InflectorFunctionalTest extends TestCase
      *
      * @return string[][]
      */
-    public function dataStringsClassify() : array
+    public function dataStringsClassify(): array
     {
         // In the format array('expected', 'word')
         return [
@@ -78,7 +78,7 @@ class InflectorFunctionalTest extends TestCase
     /**
      * @dataProvider dataStringsCamelize
      */
-    public function testCamelize(string $expected, string $word) : void
+    public function testCamelize(string $expected, string $word): void
     {
         self::assertSame($expected, $this->createInflector()->camelize($word));
     }
@@ -88,7 +88,7 @@ class InflectorFunctionalTest extends TestCase
      *
      * @return string[][]
      */
-    public function dataStringsCamelize() : array
+    public function dataStringsCamelize(): array
     {
         // In the format array('expected', 'word')
         return [
@@ -100,7 +100,7 @@ class InflectorFunctionalTest extends TestCase
         ];
     }
 
-    private function createInflector() : Inflector
+    private function createInflector(): Inflector
     {
         return InflectorFactory::create()->build();
     }

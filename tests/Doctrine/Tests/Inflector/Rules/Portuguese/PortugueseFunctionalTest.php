@@ -14,7 +14,7 @@ class PortugueseFunctionalTest extends LanguageFunctionalTest
     /**
      * @return string[][]
      */
-    public function dataSampleWords() : array
+    public function dataSampleWords(): array
     {
         return [
             ['livro', 'livros'],
@@ -47,7 +47,7 @@ class PortugueseFunctionalTest extends LanguageFunctionalTest
         ];
     }
 
-    protected function createInflector() : Inflector
+    protected function createInflector(): Inflector
     {
         return InflectorFactory::createForLanguage(Language::PORTUGUESE)->build();
     }
