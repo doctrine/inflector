@@ -6,6 +6,7 @@ namespace Doctrine\Tests\Inflector;
 
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
+use Doctrine\Inflector\LanguageInflectorFactory;
 use Doctrine\Inflector\Rules\English\InflectorFactory as EnglishInflectorFactory;
 use Doctrine\Inflector\Rules\French\InflectorFactory as FrenchInflectorFactory;
 use Doctrine\Inflector\Rules\NorwegianBokmal\InflectorFactory as NorwegianBokmalInflectorFactory;
@@ -24,6 +25,7 @@ class InflectorFactoryTest extends TestCase
     }
 
     /**
+     * @phpstan-param class-string<LanguageInflectorFactory> $expectedClass
      * @dataProvider provideLanguages
      */
     public function testCreateForLanguageWithCustomLanguage(string $expectedClass, string $language): void
@@ -31,6 +33,9 @@ class InflectorFactoryTest extends TestCase
         self::assertInstanceOf($expectedClass, InflectorFactory::createForLanguage($language));
     }
 
+    /**
+     * @phpstan-return Generator<string, array{class-string<LanguageInflectorFactory>, Language::*}>
+     */
     public static function provideLanguages(): Generator
     {
         yield 'English' => [EnglishInflectorFactory::class, Language::ENGLISH];
