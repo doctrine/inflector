@@ -20,28 +20,28 @@ class InflectorTest extends TestCase
     /** @var Inflector */
     private $inflector;
 
-    public function testTableize() : void
+    public function testTableize(): void
     {
         self::assertSame('model_name', $this->inflector->tableize('ModelName'));
         self::assertSame('model_name', $this->inflector->tableize('modelName'));
         self::assertSame('model_name', $this->inflector->tableize('model_name'));
     }
 
-    public function testClassify() : void
+    public function testClassify(): void
     {
         self::assertSame('ModelName', $this->inflector->classify('model_name'));
         self::assertSame('ModelName', $this->inflector->classify('modelName'));
         self::assertSame('ModelName', $this->inflector->classify('ModelName'));
     }
 
-    public function testCamelize() : void
+    public function testCamelize(): void
     {
         self::assertSame('modelName', $this->inflector->camelize('ModelName'));
         self::assertSame('modelName', $this->inflector->camelize('model_name'));
         self::assertSame('modelName', $this->inflector->camelize('modelName'));
     }
 
-    public function testCapitalize() : void
+    public function testCapitalize(): void
     {
         self::assertSame(
             'Top-O-The-Morning To All_of_you!',
@@ -49,14 +49,14 @@ class InflectorTest extends TestCase
         );
     }
 
-    public function testSeemsUtf8() : void
+    public function testSeemsUtf8(): void
     {
         self::assertTrue($this->inflector->seemsUtf8('teléfono'));
         self::assertTrue($this->inflector->seemsUtf8('král'));
         self::assertTrue($this->inflector->seemsUtf8('telephone'));
     }
 
-    public function testUnaccent() : void
+    public function testUnaccent(): void
     {
         self::assertSame('telefono', $this->inflector->unaccent('teléfono'));
         self::assertSame('telephone', $this->inflector->unaccent('telephone'));
@@ -65,7 +65,7 @@ class InflectorTest extends TestCase
     /**
      * @dataProvider dataStringsUrlize
      */
-    public function testUrlize(string $expected, string $string) : void
+    public function testUrlize(string $expected, string $string): void
     {
         self::assertSame(
             $expected,
@@ -78,7 +78,7 @@ class InflectorTest extends TestCase
      *
      * @return string[][]
      */
-    public function dataStringsUrlize() : array
+    public function dataStringsUrlize(): array
     {
         return [
             [
@@ -116,7 +116,7 @@ class InflectorTest extends TestCase
         ];
     }
 
-    public function testPluralize() : void
+    public function testPluralize(): void
     {
         $this->pluralInflector->expects(self::once())
             ->method('inflect')
@@ -126,7 +126,7 @@ class InflectorTest extends TestCase
         self::assertSame('out', $this->inflector->pluralize('in'));
     }
 
-    public function testSingularize() : void
+    public function testSingularize(): void
     {
         $this->singularInflector->expects(self::once())
             ->method('inflect')
@@ -136,7 +136,7 @@ class InflectorTest extends TestCase
         self::assertSame('out', $this->inflector->singularize('in'));
     }
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->singularInflector = $this->createMock(WordInflector::class);
         $this->pluralInflector   = $this->createMock(WordInflector::class);

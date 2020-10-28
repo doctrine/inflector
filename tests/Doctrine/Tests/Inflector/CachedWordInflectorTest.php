@@ -17,7 +17,7 @@ class CachedWordInflectorTest extends TestCase
     /** @var CachedWordInflector */
     private $cachedWordInflector;
 
-    public function testInflect() : void
+    public function testInflect(): void
     {
         $this->wordInflector->expects(self::once())
             ->method('inflect')
@@ -28,7 +28,7 @@ class CachedWordInflectorTest extends TestCase
         self::assertSame('out', $this->cachedWordInflector->inflect('in'));
     }
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->wordInflector = $this->createMock(WordInflector::class);
 

@@ -25,22 +25,22 @@ class RulesetTest extends TestCase
     /** @var Ruleset */
     private $ruleset;
 
-    public function testGetRegular() : void
+    public function testGetRegular(): void
     {
         self::assertSame($this->regular, $this->ruleset->getRegular());
     }
 
-    public function testGetUninflected() : void
+    public function testGetUninflected(): void
     {
         self::assertSame($this->uninflected, $this->ruleset->getUninflected());
     }
 
-    public function testGetIrregular() : void
+    public function testGetIrregular(): void
     {
         self::assertSame($this->irregular, $this->ruleset->getIrregular());
     }
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->regular     = $this->createMock(Transformations::class);
         $this->uninflected = $this->createMock(Patterns::class);
