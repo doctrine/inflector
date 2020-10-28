@@ -6,6 +6,7 @@ namespace Doctrine\Tests\Inflector;
 
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
+use Doctrine\Inflector\LanguageInflectorFactory;
 use Doctrine\Inflector\Rules\Dutch\InflectorFactory as DutchInflectorFactory;
 use Doctrine\Inflector\Rules\English\InflectorFactory as EnglishInflectorFactory;
 use Doctrine\Inflector\Rules\French\InflectorFactory as FrenchInflectorFactory;
@@ -19,20 +20,24 @@ use PHPUnit\Framework\TestCase;
 
 class InflectorFactoryTest extends TestCase
 {
-    public function testCreateUsesEnglishByDefault() : void
+    public function testCreateUsesEnglishByDefault(): void
     {
         self::assertInstanceOf(EnglishInflectorFactory::class, InflectorFactory::create());
     }
 
     /**
+     * @phpstan-param class-string<LanguageInflectorFactory> $expectedClass
      * @dataProvider provideLanguages
      */
-    public function testCreateForLanguageWithCustomLanguage(string $expectedClass, string $language) : void
+    public function testCreateForLanguageWithCustomLanguage(string $expectedClass, string $language): void
     {
         self::assertInstanceOf($expectedClass, InflectorFactory::createForLanguage($language));
     }
 
-    public static function provideLanguages() : Generator
+    /**
+     * @phpstan-return Generator<string, array{class-string<LanguageInflectorFactory>, Language::*}>
+     */
+    public static function provideLanguages(): Generator
     {
         yield 'Dutch' => [DutchInflectorFactory::class, Language::DUTCH];
         yield 'English' => [EnglishInflectorFactory::class, Language::ENGLISH];
@@ -43,7 +48,7 @@ class InflectorFactoryTest extends TestCase
         yield 'Turkish' => [TurkishInflectorFactory::class, Language::TURKISH];
     }
 
-    public function testCreateForLanguageThrowsInvalidArgumentExceptionForUnsupportedLanguage() : void
+    public function testCreateForLanguageThrowsInvalidArgumentExceptionForUnsupportedLanguage(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Language "invalid" is not supported.');

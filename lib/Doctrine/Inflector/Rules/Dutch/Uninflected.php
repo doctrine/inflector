@@ -9,9 +9,9 @@ use Doctrine\Inflector\Rules\Pattern;
 final class Uninflected
 {
     /**
-     * @return Pattern[]
+     * @return iterable<Pattern>
      */
-    public static function getSingular() : iterable
+    public static function getSingular(): iterable
     {
         yield from self::getDefault();
 
@@ -41,9 +41,9 @@ final class Uninflected
     }
 
     /**
-     * @return Pattern[]
+     * @return iterable<Pattern>
      */
-    public static function getPlural() : iterable
+    public static function getPlural(): iterable
     {
         yield from self::getDefault();
 
@@ -57,9 +57,9 @@ final class Uninflected
     }
 
     /**
-     * @return Pattern[]
+     * @return iterable<Pattern>
      */
-    private static function getDefault() : iterable
+    private static function getDefault(): iterable
     {
         yield new Pattern('twitter');
     }

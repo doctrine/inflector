@@ -12,15 +12,15 @@ use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTest;
 class DutchFunctionalTest extends LanguageFunctionalTest
 {
     /**
-     * @return string[][]
+     * @return list<array{string, string}>
      */
     public function dataSampleWords() : array
     {
         return [
-            // @todo: ask for not-sort, cause that's them (ssst) sometimes do, if them do and all that
             ['schip', 'schepen'],
             ['stad', 'steden'],
             ['gelid', 'gelederen'],
+            // @todo more
             ['weerman', 'weermannen'],
             ['ei', 'eieren'],
             ['rij', 'rijen'],
@@ -30,17 +30,19 @@ class DutchFunctionalTest extends LanguageFunctionalTest
             ['industrie', 'industrieën'],
             ['lid', 'leden'],
             ['smid', 'smeden'],
-            ['schip', 'schepen'],
             ['kalf', 'kalveren'],
             ['lam', 'lammeren'],
             ['koe', 'koeien'],
             ['vlo', 'vlooien'],
             ['leerrede', 'leerredenen'],
             ['lende', 'lendenen'],
-            ['epos', 'epen'],   // @todo: make the multiplitudes arrays w/o sort order as well, epossen
+            ['epos', 'epen'],           // @todo: make the multiplitudes arrays w/o sort order as well, epossen
+            ['epos', 'epossen'],
             ['genius', 'geniën'],
             ['aanbod', 'aanbiedingen'],
-            ['beleg', 'belegeringen'],
+            ['beleg', 'belegeringen'],  // @todo: meening: past to circumvent a camp to concor
+            ['beleg', 'beleggen'],      // @todo: meening: present
+            ['beleg', 'belegjes'],      // @todo: meening: the slices food on a sandwich
             ['dank', 'dankbetuigingen'],
             ['gedrag', 'gedragingen'],
             ['genot', 'genietingen'],
@@ -51,7 +53,7 @@ class DutchFunctionalTest extends LanguageFunctionalTest
         ];
     }
 
-    protected function createInflector() : Inflector
+    protected function createInflector(): Inflector
     {
         return InflectorFactory::createForLanguage(Language::DUTCH)->build();
     }

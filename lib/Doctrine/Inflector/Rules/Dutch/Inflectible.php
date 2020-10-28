@@ -32,9 +32,9 @@ use Doctrine\Inflector\Rules\Word;
 class Inflectible
 {
     /**
-     * @return Transformation[]
+     * @return iterable<Transformation>
      */
-    public static function getSingular() : iterable
+    public static function getSingular(): iterable
     {
         // http://nl.wikipedia.org/wiki/Meervoud_(Nederlands)#Klinkerverandering
         yield new Transformation(new Pattern('()heden$'), '\1heid');
@@ -61,9 +61,9 @@ class Inflectible
     }
 
     /**
-     * @return Transformation[]
+     * @return iterable<Transformation>
      */
-    public static function getPlural() : iterable
+    public static function getPlural(): iterable
     {
         // @todo already in plural (?)
         // @todo refine
@@ -104,9 +104,9 @@ class Inflectible
     }
 
     /**
-     * @return Substitution[]
+     * @return iterable<Substitution>
      */
-    public static function getIrregular() : iterable
+    public static function getIrregular(): iterable
     {
         // http://nl.wikipedia.org/wiki/Klemtoon
         yield new Substitution(new Word('olie'), new Word('oliën'));
