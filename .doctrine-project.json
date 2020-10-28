@@ -6,12 +6,9 @@
     "versions": [
         {
             "name": "2.1",
-            "branchName": "master",
+            "branchName": "2.1.x",
             "slug": "2.1",
-            "upcoming": true,
-            "aliases": [
-                "latest"
-            ]
+            "upcoming": true
         },
         {
             "name": "2.0",
