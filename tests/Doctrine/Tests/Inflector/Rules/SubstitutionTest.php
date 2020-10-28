@@ -13,17 +13,17 @@ class SubstitutionTest extends TestCase
     /** @var Substitution */
     private $substitution;
 
-    public function testGetFrom() : void
+    public function testGetFrom(): void
     {
         self::assertSame('from', $this->substitution->getFrom()->getWord());
     }
 
-    public function testGetTo() : void
+    public function testGetTo(): void
     {
         self::assertSame('to', $this->substitution->getTo()->getWord());
     }
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->substitution = new Substitution(new Word('from'), new Word('to'));
     }

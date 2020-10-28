@@ -16,7 +16,7 @@ class Transformations implements WordInflector
         $this->transformations = $transformations;
     }
 
-    public function inflect(string $word) : string
+    public function inflect(string $word): string
     {
         foreach ($this->transformations as $transformation) {
             if ($transformation->getPattern()->matches($word)) {

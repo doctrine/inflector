@@ -18,12 +18,12 @@ final class Substitution
         $this->to   = $to;
     }
 
-    public function getFrom() : Word
+    public function getFrom(): Word
     {
         return $this->from;
     }
 
-    public function getTo() : Word
+    public function getTo(): Word
     {
         return $this->to;
     }

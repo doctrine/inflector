@@ -20,14 +20,14 @@ class Patterns
     {
         $this->patterns = $patterns;
 
-        $patterns = array_map(static function (Pattern $pattern) : string {
+        $patterns = array_map(static function (Pattern $pattern): string {
             return $pattern->getPattern();
         }, $this->patterns);
 
         $this->regex = '/^(?:' . implode('|', $patterns) . ')$/i';
     }
 
-    public function matches(string $word) : bool
+    public function matches(string $word): bool
     {
         return preg_match($this->regex, $word, $regs) === 1;
     }
