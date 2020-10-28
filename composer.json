@@ -31,10 +31,5 @@
         "psr-4": {
             "Doctrine\\Tests\\Inflector\\": "tests/Doctrine/Tests/Inflector"
         }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0.x-dev"
-        }
     }
 }
