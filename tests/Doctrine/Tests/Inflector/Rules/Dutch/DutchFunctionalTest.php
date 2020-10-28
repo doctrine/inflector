@@ -17,6 +17,10 @@ class DutchFunctionalTest extends LanguageFunctionalTest
     public function dataSampleWords() : array
     {
         return [
+            // @todo: ask for not-sort, cause that's them (ssst) sometimes do, if them do and all that
+            ['schip', 'schepen'],
+            ['stad', 'steden'],
+            ['gelid', 'gelederen'],
             ['weerman', 'weermannen'],
             ['ei', 'eieren'],
             ['rij', 'rijen'],
@@ -27,16 +31,13 @@ class DutchFunctionalTest extends LanguageFunctionalTest
             ['lid', 'leden'],
             ['smid', 'smeden'],
             ['schip', 'schepen'],
-            ['stad', 'steden'],
-            ['gelid', 'gelederen'],
-            ['gelid', 'gelederen'],
             ['kalf', 'kalveren'],
             ['lam', 'lammeren'],
             ['koe', 'koeien'],
             ['vlo', 'vlooien'],
             ['leerrede', 'leerredenen'],
             ['lende', 'lendenen'],
-            ['epos', 'epen'],
+            ['epos', 'epen'],   // @todo: make the multiplitudes arrays w/o sort order as well, epossen
             ['genius', 'geniën'],
             ['aanbod', 'aanbiedingen'],
             ['beleg', 'belegeringen'],
