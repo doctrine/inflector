@@ -37,7 +37,7 @@ class FrenchFunctionalTest extends LanguageFunctionalTest
             ['bleu', 'bleus'],
             ['émeu', 'émeus'],
             ['landau', 'landaus'],
-            ['lieu', 'lieus'],
+            ['lieu', 'lieux'],
             ['pneu', 'pneus'],
             ['sarrau', 'sarraus'],
             ['journal', 'journaux'],
