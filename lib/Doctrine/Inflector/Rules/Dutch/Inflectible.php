@@ -126,8 +126,6 @@ class Inflectible
 
         yield new Substitution(new Word('stad'), new Word('steden'));
 
-        yield new Substitution(new Word('gelid'), new Word('gelederen'));
-
         // http://nl.wikipedia.org/wiki/Meervoud_(Nederlands)#Stapelmeervoud
         yield new Substitution(new Word('gelid'), new Word('gelederen'));
 
