@@ -46,7 +46,7 @@ class DutchFunctionalTest extends LanguageFunctionalTest
             ['matrices', 'matrix'],
             ['twitter', 'twitter'],
             // @todo: multiplitudes array w/o sort order for multiple plural same possibilities
-            ['epos', 'epen'],           
+            ['epos', 'epen'],
             // ['epos', 'epossen'],
             // @todo: multiplitudes array w/o sort order for multiple plural different meenings
             ['beleg', 'belegeringen'],     // @todo: meening: invest a city and then conquer it
