@@ -48,10 +48,10 @@ class DutchFunctionalTest extends LanguageFunctionalTest
             // @todo: multiplitudes array w/o sort order for multiple plural same possibilities
             ['epos', 'epen'],
             // ['epos', 'epossen'],
-            // @todo: multiplitudes array w/o sort order for multiple plural different meenings
-            ['beleg', 'belegeringen'],     // @todo: meening: invest a city and then conquer it
-            // ['beleg', 'beleggen'],      // @todo: meening: call a meeting
-            // ['beleg', 'belegjes'],      // @todo: meening: the slices food on a sandwich
+            // @todo: multiplitudes array w/o sort order for multiple plural different meanings
+            ['beleg', 'belegeringen'],     // @todo: meaning: invest a city and then conquer it
+            // ['beleg', 'beleggen'],      // @todo: meaning: call a meeting
+            // ['beleg', 'belegjes'],      // @todo: meaning: the slices food on a sandwich
         ];
     }
 
