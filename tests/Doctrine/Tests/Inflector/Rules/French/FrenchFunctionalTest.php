@@ -14,7 +14,7 @@ class FrenchFunctionalTest extends LanguageFunctionalTest
     /**
      * @return string[][]
      */
-    public function dataSampleWords() : array
+    public function dataSampleWords(): array
     {
         return [
             ['ami', 'amis'],
@@ -56,7 +56,7 @@ class FrenchFunctionalTest extends LanguageFunctionalTest
         ];
     }
 
-    protected function createInflector() : Inflector
+    protected function createInflector(): Inflector
     {
         return InflectorFactory::createForLanguage(Language::FRENCH)->build();
     }

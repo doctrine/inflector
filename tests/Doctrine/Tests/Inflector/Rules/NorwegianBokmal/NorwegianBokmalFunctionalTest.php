@@ -14,7 +14,7 @@ class NorwegianBokmalFunctionalTest extends LanguageFunctionalTest
     /**
      * @return string[][]
      */
-    public function dataSampleWords() : array
+    public function dataSampleWords(): array
     {
         return [
             ['dag', 'dager'],
@@ -31,7 +31,7 @@ class NorwegianBokmalFunctionalTest extends LanguageFunctionalTest
         ];
     }
 
-    protected function createInflector() : Inflector
+    protected function createInflector(): Inflector
     {
         return InflectorFactory::createForLanguage(Language::NORWEGIAN_BOKMAL)->build();
     }

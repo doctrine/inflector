@@ -14,7 +14,7 @@ class Word
         $this->word = $word;
     }
 
-    public function getWord() : string
+    public function getWord(): string
     {
         return $this->word;
     }

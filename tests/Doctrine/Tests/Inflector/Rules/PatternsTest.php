@@ -13,13 +13,13 @@ class PatternsTest extends TestCase
     /** @var Patterns */
     private $patterns;
 
-    public function testMatches() : void
+    public function testMatches(): void
     {
         self::assertTrue($this->patterns->matches('test1'));
         self::assertFalse($this->patterns->matches('test2'));
     }
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->patterns = new Patterns(new Pattern('test1'));
     }

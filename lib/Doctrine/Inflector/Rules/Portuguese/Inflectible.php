@@ -14,7 +14,7 @@ class Inflectible
     /**
      * @return Transformation[]
      */
-    public static function getSingular() : iterable
+    public static function getSingular(): iterable
     {
         yield new Transformation(new Pattern('/^(g|)ases$/i'), '\1ás');
         yield new Transformation(new Pattern('/(japon|escoc|ingl|dinamarqu|fregu|portugu)eses$/i'), '\1ês');
@@ -37,7 +37,7 @@ class Inflectible
     /**
      * @return Transformation[]
      */
-    public static function getPlural() : iterable
+    public static function getPlural(): iterable
     {
         yield new Transformation(new Pattern('/^(alem|c|p)ao$/i'), '\1aes');
         yield new Transformation(new Pattern('/^(irm|m)ao$/i'), '\1aos');
@@ -61,7 +61,7 @@ class Inflectible
     /**
      * @return Substitution[]
      */
-    public static function getIrregular() : iterable
+    public static function getIrregular(): iterable
     {
         yield new Substitution(new Word('abdomen'), new Word('abdomens'));
         yield new Substitution(new Word('alemão'), new Word('alemães'));

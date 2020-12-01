@@ -11,7 +11,7 @@ use Doctrine\Inflector\Rules\Transformations;
 
 final class Rules
 {
-    public static function getSingularRuleset() : Ruleset
+    public static function getSingularRuleset(): Ruleset
     {
         return new Ruleset(
             new Transformations(...Inflectible::getSingular()),
@@ -20,7 +20,7 @@ final class Rules
         );
     }
 
-    public static function getPluralRuleset() : Ruleset
+    public static function getPluralRuleset(): Ruleset
     {
         return new Ruleset(
             new Transformations(...Inflectible::getPlural()),

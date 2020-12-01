@@ -14,7 +14,7 @@ class DutchFunctionalTest extends LanguageFunctionalTest
     /**
      * @return list<array{string, string}>
      */
-    public function dataSampleWords() : array
+    public function dataSampleWords(): array
     {
         return [
             ['schip', 'schepen'],
