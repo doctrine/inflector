@@ -122,6 +122,9 @@ class Inflectible
 
         yield new Substitution(new Word('smid'), new Word('smeden'));
 
+        // @todo: above 2 examples might be compacted into a rule
+        // @todo: also f.i. ooglid oogleden
+
         yield new Substitution(new Word('schip'), new Word('schepen'));
 
         yield new Substitution(new Word('stad'), new Word('steden'));
