@@ -18,6 +18,7 @@ class DutchFunctionalTest extends LanguageFunctionalTest
     {
         return [
             ['schip', 'schepen'],
+            ['idee', 'ideeën'],
             ['stad', 'steden'],
             ['gelid', 'gelederen'],
             // @todo more
@@ -42,8 +43,8 @@ class DutchFunctionalTest extends LanguageFunctionalTest
             ['gedrag', 'gedragingen'],
             ['genot', 'genietingen'],
             ['lof', 'lofbetuigingen'],
-            ['qaestrices', 'quaestrix'],
-            ['matrices', 'matrix'],
+            ['quaestrix', 'quaestrices'],
+            ['matrix', 'matrices'],
             ['twitter', 'twitter'],
             // @todo: multiplitudes array w/o sort order for multiple plural same possibilities
             ['epos', 'epen'],

@@ -113,6 +113,10 @@ class Inflectible
 
         yield new Substitution(new Word('industrie'), new Word('industrieën'));
 
+        yield new Substitution(new Word('idee'), new Word('ideeën'));
+
+        // @todo: above 3 examples maybe could be compacted into a rule
+
         // http://nl.wikipedia.org/wiki/Meervoud_(Nederlands)#Klinkerverandering
         yield new Substitution(new Word('lid'), new Word('leden'));
 
@@ -157,8 +161,8 @@ class Inflectible
         yield new Substitution(new Word('lof'), new Word('lofbetuigingen'));
 
         // http://nl.wikipedia.org/wiki/Meervoud_(Nederlands)#Latijnse_meervoudsvormen
-        yield new Substitution(new Word('qaestrices'), new Word('quaestrix'));
+        yield new Substitution(new Word('quaestrix'), new Word('qaestrices'));
 
-        yield new Substitution(new Word('matrices'), new Word('matrix'));
+        yield new Substitution(new Word('matrix'), new Word('matrices'));
     }
 }
