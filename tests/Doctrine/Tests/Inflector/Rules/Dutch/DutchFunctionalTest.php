@@ -48,6 +48,7 @@ class DutchFunctionalTest extends LanguageFunctionalTest
             ['meer', 'meren'],
             ['baas', 'bazen'],
             ['oog', 'ogen'],
+            ['as', 'assen'],
             ['twitter', 'twitter'],
             // @todo: multiplitudes array w/o sort order for multiple plural same possibilities
             ['epos', 'epen'],
