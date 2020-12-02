@@ -38,6 +38,7 @@ you want to create an inflector for to the ``createForLanguage()`` method:
 
 The supported languages are as follows:
 
+- ``Language::DUTCH``
 - ``Language::ENGLISH``
 - ``Language::FRENCH``
 - ``Language::NORWEGIAN_BOKMAL``

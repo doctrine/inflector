@@ -7,6 +7,7 @@ namespace Doctrine\Tests\Inflector;
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
 use Doctrine\Inflector\LanguageInflectorFactory;
+use Doctrine\Inflector\Rules\Dutch\InflectorFactory as DutchInflectorFactory;
 use Doctrine\Inflector\Rules\English\InflectorFactory as EnglishInflectorFactory;
 use Doctrine\Inflector\Rules\French\InflectorFactory as FrenchInflectorFactory;
 use Doctrine\Inflector\Rules\NorwegianBokmal\InflectorFactory as NorwegianBokmalInflectorFactory;
@@ -38,6 +39,7 @@ class InflectorFactoryTest extends TestCase
      */
     public static function provideLanguages(): Generator
     {
+        yield 'Dutch' => [DutchInflectorFactory::class, Language::DUTCH];
         yield 'English' => [EnglishInflectorFactory::class, Language::ENGLISH];
         yield 'French' => [FrenchInflectorFactory::class, Language::FRENCH];
         yield 'Norwegian Bokmal' => [NorwegianBokmalInflectorFactory::class, Language::NORWEGIAN_BOKMAL];
