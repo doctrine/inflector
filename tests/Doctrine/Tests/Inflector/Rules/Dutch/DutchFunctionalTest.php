@@ -21,7 +21,7 @@ class DutchFunctionalTest extends LanguageFunctionalTest
             ['idee', 'ideeën'],
             ['stad', 'steden'],
             ['gelid', 'gelederen'],
-            // @todo more
+            // @todo more words
             ['weerman', 'weermannen'],
             ['ei', 'eieren'],
             ['rij', 'rijen'],
