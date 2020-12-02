@@ -162,7 +162,7 @@ class Inflectible
         yield new Substitution(new Word('lof'), new Word('lofbetuigingen'));
 
         // http://nl.wikipedia.org/wiki/Meervoud_(Nederlands)#Latijnse_meervoudsvormen
-        yield new Substitution(new Word('quaestrix'), new Word('qaestrices'));
+        yield new Substitution(new Word('quaestrix'), new Word('quaestrices'));
 
         yield new Substitution(new Word('matrix'), new Word('matrices'));
     }
