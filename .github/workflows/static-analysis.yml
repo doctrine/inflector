@@ -28,7 +28,6 @@ jobs:
         with:
           coverage: "none"
           php-version: "${{ matrix.php-version }}"
-          tools: "cs2pr"
 
       - name: "Install dependencies with Composer"
         uses: "ramsey/composer-install@v1"
@@ -36,4 +35,4 @@ jobs:
           dependency-versions: "highest"
 
       - name: "Run a static analysis with phpstan/phpstan"
-        run: "vendor/bin/phpstan analyse --error-format=checkstyle | cs2pr"
+        run: "vendor/bin/phpstan analyse"
