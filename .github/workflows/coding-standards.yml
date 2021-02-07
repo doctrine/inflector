@@ -30,15 +30,11 @@ jobs:
           php-version: "${{ matrix.php-version }}"
           tools: "cs2pr"
 
-      - name: "Cache dependencies installed with Composer"
-        uses: "actions/cache@v2"
-        with:
-          path: "~/.composer/cache"
-          key: "php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('composer.lock') }}"
-          restore-keys: "php-${{ matrix.php-version }}-composer-locked-"
-
       - name: "Install dependencies with Composer"
-        run: "composer install --no-interaction --no-progress --no-suggest"
+        uses: "ramsey/composer-install@v1"
+        with:
+          dependency-versions: "highest"
+
 
       # https://github.com/doctrine/.github/issues/3
       - name: "Run PHP_CodeSniffer"

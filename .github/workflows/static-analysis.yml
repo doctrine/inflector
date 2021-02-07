@@ -30,15 +30,10 @@ jobs:
           php-version: "${{ matrix.php-version }}"
           tools: "cs2pr"
 
-      - name: "Cache dependencies installed with composer"
-        uses: "actions/cache@v2"
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v1"
         with:
-          path: "~/.composer/cache"
-          key: "php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('composer.lock') }}"
-          restore-keys: "php-${{ matrix.php-version }}-composer-locked-"
-
-      - name: "Install dependencies with composer"
-        run: "composer install --no-interaction --no-progress --no-suggest"
+          dependency-versions: "highest"
 
       - name: "Run a static analysis with phpstan/phpstan"
         run: "vendor/bin/phpstan analyse --error-format=checkstyle | cs2pr"

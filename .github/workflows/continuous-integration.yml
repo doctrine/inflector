@@ -26,10 +26,10 @@ jobs:
           - "7.3"
           - "7.4"
           - "8.0"
-        deps:
-          - "normal"
+        dependencies:
+          - "highest"
         include:
-          - deps: "low"
+          - dependencies: "lowest"
             php-version: "7.2"
 
     steps:
@@ -45,20 +45,11 @@ jobs:
           coverage: "pcov"
           ini-values: "zend.assertions=1"
 
-      - name: "Cache dependencies installed with composer"
-        uses: "actions/cache@v2"
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v1"
         with:
-          path: "~/.composer/cache"
-          key: "php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('composer.lock') }}"
-          restore-keys: "php-${{ matrix.php-version }}-composer-locked-"
-
-      - name: "Install dependencies with composer"
-        run: "composer update --no-interaction --prefer-dist"
-        if: "${{ matrix.deps == 'normal' }}"
-
-      - name: "Install lowest possible dependencies with composer"
-        run: "composer update --no-interaction --prefer-dist --prefer-lowest"
-        if: "${{ matrix.deps == 'low' }}"
+          dependency-versions: "${{ matrix.dependencies }}"
+          composer-options: "--prefer-dist"
 
       - name: "Run PHPUnit"
         run: "vendor/bin/phpunit --coverage-clover=coverage.xml"
@@ -66,7 +57,7 @@ jobs:
       - name: "Upload coverage file"
         uses: "actions/upload-artifact@v2"
         with:
-          name: "phpunit-${{ matrix.deps }}-${{ matrix.php-version }}.coverage"
+          name: "phpunit-${{ matrix.dependencies }}-${{ matrix.php-version }}.coverage"
           path: "coverage.xml"
 
   upload_coverage:
