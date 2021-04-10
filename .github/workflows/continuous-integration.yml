@@ -22,7 +22,6 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "7.1"
           - "7.2"
           - "7.3"
           - "7.4"
@@ -31,7 +30,7 @@ jobs:
           - "highest"
         include:
           - dependencies: "lowest"
-            php-version: "7.1"
+            php-version: "7.2"
 
     steps:
       - name: "Checkout"
@@ -60,6 +59,41 @@ jobs:
         with:
           name: "phpunit-${{ matrix.dependencies }}-${{ matrix.php-version }}.coverage"
           path: "coverage.xml"
+
+  phpunit-lower-php-versions:
+    name: "PHPUnit"
+    runs-on: "ubuntu-20.04"
+
+    strategy:
+      matrix:
+        php-version:
+          - "7.1"
+        dependencies:
+          - "highest"
+        include:
+          - dependencies: "lowest"
+            php-version: "7.1"
+
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v2"
+        with:
+          fetch-depth: 2
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "${{ matrix.php-version }}"
+          ini-values: "zend.assertions=1"
+
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v1"
+        with:
+          dependency-versions: "${{ matrix.dependencies }}"
+          composer-options: "--prefer-dist"
+
+      - name: "Run PHPUnit"
+        run: "vendor/bin/phpunit"
 
   upload_coverage:
     name: "Upload coverage to Codecov"
