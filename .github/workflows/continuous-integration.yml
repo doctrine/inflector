@@ -22,6 +22,7 @@ jobs:
     strategy:
       matrix:
         php-version:
+          - "7.1"
           - "7.2"
           - "7.3"
           - "7.4"
@@ -30,7 +31,7 @@ jobs:
           - "highest"
         include:
           - dependencies: "lowest"
-            php-version: "7.2"
+            php-version: "7.1"
 
     steps:
       - name: "Checkout"
