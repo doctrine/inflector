@@ -6,6 +6,7 @@ namespace Doctrine\Tests\Inflector\Rules;
 
 use Doctrine\Inflector\Inflector;
 use PHPUnit\Framework\TestCase;
+
 use function sprintf;
 
 abstract class LanguageFunctionalTest extends TestCase
@@ -13,12 +14,12 @@ abstract class LanguageFunctionalTest extends TestCase
     /**
      * @return string[][]
      */
-    abstract public function dataSampleWords() : array;
+    abstract public function dataSampleWords(): array;
 
     /**
      * @dataProvider dataSampleWords
      */
-    public function testInflectingSingulars(string $singular, string $plural) : void
+    public function testInflectingSingulars(string $singular, string $plural): void
     {
         self::assertSame(
             $singular,
@@ -30,7 +31,7 @@ abstract class LanguageFunctionalTest extends TestCase
     /**
      * @dataProvider dataSampleWords
      */
-    public function testInflectingPlurals(string $singular, string $plural) : void
+    public function testInflectingPlurals(string $singular, string $plural): void
     {
         self::assertSame(
             $plural,
@@ -39,5 +40,5 @@ abstract class LanguageFunctionalTest extends TestCase
         );
     }
 
-    abstract protected function createInflector() : Inflector;
+    abstract protected function createInflector(): Inflector;
 }

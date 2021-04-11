@@ -14,12 +14,12 @@ class TransformationsTest extends TestCase
     /** @var Transformations */
     private $transformations;
 
-    public function testInflect() : void
+    public function testInflect(): void
     {
         self::assertSame('customizables', $this->transformations->inflect('custom'));
     }
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->transformations = new Transformations(new Transformation(new Pattern('/^(custom)$/i'), '\1izables'));
     }

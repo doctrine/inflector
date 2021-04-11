@@ -25,17 +25,17 @@ final class Pattern
         }
     }
 
-    public function getPattern() : string
+    public function getPattern(): string
     {
         return $this->pattern;
     }
 
-    public function getRegex() : string
+    public function getRegex(): string
     {
         return $this->regex;
     }
 
-    public function matches(string $word) : bool
+    public function matches(string $word): bool
     {
         return preg_match($this->getRegex(), $word) === 1;
     }

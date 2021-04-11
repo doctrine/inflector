@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 
 class InflectorFactoryTest extends TestCase
 {
-    public function testCreateUsesEnglishByDefault() : void
+    public function testCreateUsesEnglishByDefault(): void
     {
         self::assertInstanceOf(EnglishInflectorFactory::class, InflectorFactory::create());
     }
@@ -26,12 +26,12 @@ class InflectorFactoryTest extends TestCase
     /**
      * @dataProvider provideLanguages
      */
-    public function testCreateForLanguageWithCustomLanguage(string $expectedClass, string $language) : void
+    public function testCreateForLanguageWithCustomLanguage(string $expectedClass, string $language): void
     {
         self::assertInstanceOf($expectedClass, InflectorFactory::createForLanguage($language));
     }
 
-    public static function provideLanguages() : Generator
+    public static function provideLanguages(): Generator
     {
         yield 'English' => [EnglishInflectorFactory::class, Language::ENGLISH];
         yield 'French' => [FrenchInflectorFactory::class, Language::FRENCH];
@@ -41,7 +41,7 @@ class InflectorFactoryTest extends TestCase
         yield 'Turkish' => [TurkishInflectorFactory::class, Language::TURKISH];
     }
 
-    public function testCreateForLanguageThrowsInvalidArgumentExceptionForUnsupportedLanguage() : void
+    public function testCreateForLanguageThrowsInvalidArgumentExceptionForUnsupportedLanguage(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Language "invalid" is not supported.');

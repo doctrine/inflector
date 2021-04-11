@@ -12,12 +12,12 @@ class WordTest extends TestCase
     /** @var Word */
     private $word;
 
-    public function testGetWord() : void
+    public function testGetWord(): void
     {
         self::assertSame('test', $this->word->getWord());
     }
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->word = new Word('test');
     }

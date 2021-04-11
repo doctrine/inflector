@@ -14,7 +14,7 @@ class Inflectible
     /**
      * @return Transformation[]
      */
-    public static function getSingular() : iterable
+    public static function getSingular(): iterable
     {
         yield new Transformation(new Pattern('(s)tatuses$'), '\1\2tatus');
         yield new Transformation(new Pattern('(s)tatus$'), '\1\2tatus');
@@ -62,7 +62,7 @@ class Inflectible
     /**
      * @return Transformation[]
      */
-    public static function getPlural() : iterable
+    public static function getPlural(): iterable
     {
         yield new Transformation(new Pattern('(s)tatus$'), '\1\2tatuses');
         yield new Transformation(new Pattern('(quiz)$'), '\1zes');
@@ -94,7 +94,7 @@ class Inflectible
     /**
      * @return Substitution[]
      */
-    public static function getIrregular() : iterable
+    public static function getIrregular(): iterable
     {
         yield new Substitution(new Word('atlas'), new Word('atlases'));
         yield new Substitution(new Word('axe'), new Word('axes'));

@@ -8,6 +8,7 @@ use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
 use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTest;
+
 use function sprintf;
 
 class EnglishFunctionalTest extends LanguageFunctionalTest
@@ -15,7 +16,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
     /**
      * @return string[][]
      */
-    public function dataSampleWords() : array
+    public function dataSampleWords(): array
     {
         return [
             ['', ''],
@@ -445,7 +446,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
      *
      * @return string[][]
      */
-    public function dataSingularsUninflectedWhenSingularized() : array
+    public function dataSingularsUninflectedWhenSingularized(): array
     {
         // In the format array('singular', 'notEquals')
         return [
@@ -466,7 +467,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
     /**
      * @dataProvider dataSingularsUninflectedWhenSingularized
      */
-    public function testSingularsWhenSingularizedShouldBeUninflected(string $singular, string $notEquals) : void
+    public function testSingularsWhenSingularizedShouldBeUninflected(string $singular, string $notEquals): void
     {
         self::assertNotSame(
             $notEquals,
@@ -482,7 +483,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
      *
      * @return string[][]
      */
-    public function dataPluralUninflectedWhenPluralized() : array
+    public function dataPluralUninflectedWhenPluralized(): array
     {
         return [
             ['media'],
@@ -492,7 +493,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
     /**
      * @dataProvider dataPluralUninflectedWhenPluralized
      */
-    public function testPluralsWhenPluralizedShouldBeUninflected(string $plural) : void
+    public function testPluralsWhenPluralizedShouldBeUninflected(string $plural): void
     {
         $pluralized = $this->createInflector()->pluralize($plural);
 
@@ -503,7 +504,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
         );
     }
 
-    protected function createInflector() : Inflector
+    protected function createInflector(): Inflector
     {
         return InflectorFactory::createForLanguage(Language::ENGLISH)->build();
     }
