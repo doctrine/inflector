@@ -24,6 +24,7 @@ class InflectorFactoryTest extends TestCase
     }
 
     /**
+     * @psalm-param class-string $expectedClass
      * @dataProvider provideLanguages
      */
     public function testCreateForLanguageWithCustomLanguage(string $expectedClass, string $language): void
@@ -31,6 +32,7 @@ class InflectorFactoryTest extends TestCase
         self::assertInstanceOf($expectedClass, InflectorFactory::createForLanguage($language));
     }
 
+    /** @return Generator<string, array{0: class-string, 1: string}> */
     public static function provideLanguages(): Generator
     {
         yield 'English' => [EnglishInflectorFactory::class, Language::ENGLISH];

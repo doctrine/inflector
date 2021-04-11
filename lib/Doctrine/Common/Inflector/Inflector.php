@@ -167,7 +167,7 @@ class Inflector
      * }}}
      *
      * @param string  $type         The type of inflection, either 'plural' or 'singular'
-     * @param array|iterable $rules An array of rules to be added.
+     * @param array<string,mixed>|iterable<string,mixed> $rules An array of rules to be added.
      * @param boolean $reset        If true, will unset default inflections for all
      *                              new rules that are being defined in $rules.
      *
@@ -197,6 +197,9 @@ class Inflector
         }
     }
 
+    /**
+      * @param array<string,mixed>|iterable<string,mixed> $rules An array of rules to be added.
+      */
     private static function buildRuleset(iterable $rules) : Ruleset
     {
         $regular = [];
