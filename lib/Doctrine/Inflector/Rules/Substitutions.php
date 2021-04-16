@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Doctrine\Inflector\Rules;
 
 use Doctrine\Inflector\WordInflector;
+
 use function strtolower;
 use function strtoupper;
 use function substr;
@@ -21,7 +22,7 @@ class Substitutions implements WordInflector
         }
     }
 
-    public function getFlippedSubstitutions() : Substitutions
+    public function getFlippedSubstitutions(): Substitutions
     {
         $substitutions = [];
 
@@ -35,7 +36,7 @@ class Substitutions implements WordInflector
         return new Substitutions(...$substitutions);
     }
 
-    public function inflect(string $word) : string
+    public function inflect(string $word): string
     {
         $lowerWord = strtolower($word);
 

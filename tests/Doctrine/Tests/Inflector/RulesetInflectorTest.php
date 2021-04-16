@@ -26,7 +26,7 @@ class RulesetInflectorTest extends TestCase
     /** @var RulesetInflector */
     private $rulesetInflector;
 
-    public function testInflectIrregularUsesFirstMatch() : void
+    public function testInflectIrregularUsesFirstMatch(): void
     {
         $firstIrregular  = $this->createMock(Substitutions::class);
         $secondIrregular = $this->createMock(Substitutions::class);
@@ -50,7 +50,7 @@ class RulesetInflectorTest extends TestCase
         self::assertSame('first', $this->rulesetInflector->inflect('in'));
     }
 
-    public function testInflectIrregularContinuesIfFirstRulesetReturnsOriginalValue() : void
+    public function testInflectIrregularContinuesIfFirstRulesetReturnsOriginalValue(): void
     {
         $firstRuleset = new Ruleset(
             new Transformations(),
@@ -69,7 +69,7 @@ class RulesetInflectorTest extends TestCase
         self::assertSame('second', $inflector->inflect('in'));
     }
 
-    public function testInflectUninflectedSkipsOnFirstMatch() : void
+    public function testInflectUninflectedSkipsOnFirstMatch(): void
     {
         $firstUninflected  = $this->createMock(Patterns::class);
         $secondUninflected = $this->createMock(Patterns::class);
@@ -93,7 +93,7 @@ class RulesetInflectorTest extends TestCase
         self::assertSame('in', $this->rulesetInflector->inflect('in'));
     }
 
-    public function testIrregularIsInflectedEvenIfLaterRulesetIgnores() : void
+    public function testIrregularIsInflectedEvenIfLaterRulesetIgnores(): void
     {
         $firstIrregular    = new Substitutions(new Substitution(new Word('travel'), new Word('travels')));
         $secondUninflected = new Patterns(new Pattern('travel'));
@@ -109,7 +109,7 @@ class RulesetInflectorTest extends TestCase
         self::assertSame('travels', $this->rulesetInflector->inflect('travel'));
     }
 
-    public function testInflectRegularUsesFirstMatch() : void
+    public function testInflectRegularUsesFirstMatch(): void
     {
         $irregular = $this->createMock(Substitutions::class);
 
@@ -163,7 +163,7 @@ class RulesetInflectorTest extends TestCase
         self::assertSame('first', $this->rulesetInflector->inflect('in'));
     }
 
-    public function testInflectRegularContinuesIfFirstRulesetReturnsOriginalValue() : void
+    public function testInflectRegularContinuesIfFirstRulesetReturnsOriginalValue(): void
     {
         $irregular = $this->createMock(Substitutions::class);
 
@@ -219,7 +219,7 @@ class RulesetInflectorTest extends TestCase
         self::assertSame('second', $this->rulesetInflector->inflect('in'));
     }
 
-    public function testInflectReturnsOriginalValueOnNoMatches() : void
+    public function testInflectReturnsOriginalValueOnNoMatches(): void
     {
         $irregular = $this->createMock(Substitutions::class);
 
@@ -269,7 +269,7 @@ class RulesetInflectorTest extends TestCase
         self::assertSame('in', $this->rulesetInflector->inflect('in'));
     }
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->firstRuleset  = $this->createMock(Ruleset::class);
         $this->secondRuleset = $this->createMock(Ruleset::class);

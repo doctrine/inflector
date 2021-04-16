@@ -1,0 +1,38 @@
+name: "Static Analysis"
+
+on:
+  pull_request:
+    branches:
+      - "*.x"
+  push:
+    branches:
+      - "*.x"
+
+jobs:
+  static-analysis-phpstan:
+    name: "Static Analysis with PHPStan"
+    runs-on: "ubuntu-20.04"
+
+    strategy:
+      matrix:
+        php-version:
+          - "7.4"
+
+    steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v2"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          coverage: "none"
+          php-version: "${{ matrix.php-version }}"
+
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v1"
+        with:
+          dependency-versions: "highest"
+
+      - name: "Run a static analysis with phpstan/phpstan"
+        run: "vendor/bin/phpstan analyse"
+
