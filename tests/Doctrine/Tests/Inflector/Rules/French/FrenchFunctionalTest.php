@@ -53,6 +53,10 @@ class FrenchFunctionalTest extends LanguageFunctionalTest
             ['monsieur', 'messieurs'],
             ['madame', 'mesdames'],
             ['mademoiselle', 'mesdemoiselles'],
+            ['chacal', 'chacals'],
+            ['carnaval', 'carnavals'],
+            ['festival', 'festivals'],
+            ['récital', 'récitals'],
         ];
     }
 
