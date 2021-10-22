@@ -3,6 +3,11 @@ name: "Continuous Integration"
 
 on:
   pull_request:
+    branches:
+      - "*.x"
+  push:
+    branches:
+      - "*.x"
 
 jobs:
   roave_bc_check:
