@@ -3,6 +3,11 @@ name: "Continuous Integration"
 
 on:
   pull_request:
+    branches:
+      - "*.x"
+  push:
+    branches:
+      - "*.x"
 
 jobs:
   roave_bc_check:
@@ -17,76 +22,4 @@ jobs:
 
   phpunit:
     name: "PHPUnit"
-    runs-on: "ubuntu-20.04"
-
-    strategy:
-      matrix:
-        php-version:
-          - "7.2"
-          - "7.3"
-          - "7.4"
-          - "8.0"
-        deps:
-          - "normal"
-        include:
-          - deps: "low"
-            php-version: "7.2"
-
-    steps:
-      - name: "Checkout"
-        uses: "actions/checkout@v2"
-        with:
-          fetch-depth: 2
-
-      - name: "Install PHP"
-        uses: "shivammathur/setup-php@v2"
-        with:
-          php-version: "${{ matrix.php-version }}"
-          coverage: "pcov"
-          ini-values: "zend.assertions=1"
-
-      - name: "Cache dependencies installed with composer"
-        uses: "actions/cache@v2"
-        with:
-          path: "~/.composer/cache"
-          key: "php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('composer.lock') }}"
-          restore-keys: "php-${{ matrix.php-version }}-composer-locked-"
-
-      - name: "Install dependencies with composer"
-        run: "composer update --no-interaction --prefer-dist"
-        if: "${{ matrix.deps == 'normal' }}"
-
-      - name: "Install lowest possible dependencies with composer"
-        run: "composer update --no-interaction --prefer-dist --prefer-lowest"
-        if: "${{ matrix.deps == 'low' }}"
-
-      - name: "Run PHPUnit"
-        run: "vendor/bin/phpunit --coverage-clover=coverage.xml"
-
-      - name: "Upload coverage file"
-        uses: "actions/upload-artifact@v2"
-        with:
-          name: "phpunit-${{ matrix.deps }}-${{ matrix.php-version }}.coverage"
-          path: "coverage.xml"
-
-  upload_coverage:
-    name: "Upload coverage to Codecov"
-    runs-on: "ubuntu-20.04"
-    needs:
-      - "phpunit"
-
-    steps:
-      - name: "Checkout"
-        uses: "actions/checkout@v2"
-        with:
-          fetch-depth: 2
-
-      - name: "Download coverage files"
-        uses: "actions/download-artifact@v2"
-        with:
-          path: "reports"
-
-      - name: "Upload to Codecov"
-        uses: "codecov/codecov-action@v1"
-        with:
-          directory: reports
+    uses: "doctrine/.github/.github/workflows/continuous-integration.yml@1.1.1"

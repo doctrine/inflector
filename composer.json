@@ -20,7 +20,8 @@
         "phpstan/phpstan": "^0.12",
         "phpstan/phpstan-phpunit": "^0.12",
         "phpstan/phpstan-strict-rules": "^0.12",
-        "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
+        "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
+        "vimeo/psalm": "^4.10"
     },
     "autoload": {
         "psr-4": {

@@ -5,42 +5,11 @@ on:
   pull_request:
     branches:
       - "*.x"
-      - "master"
   push:
     branches:
       - "*.x"
-      - "master"
 
 jobs:
   static-analysis-phpstan:
-    name: "Static Analysis with PHPStan"
-    runs-on: "ubuntu-20.04"
-
-    strategy:
-      matrix:
-        php-version:
-          - "7.4"
-
-    steps:
-      - name: "Checkout code"
-        uses: "actions/checkout@v2"
-
-      - name: "Install PHP"
-        uses: "shivammathur/setup-php@v2"
-        with:
-          coverage: "none"
-          php-version: "${{ matrix.php-version }}"
-          tools: "cs2pr"
-
-      - name: "Cache dependencies installed with composer"
-        uses: "actions/cache@v2"
-        with:
-          path: "~/.composer/cache"
-          key: "php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('composer.lock') }}"
-          restore-keys: "php-${{ matrix.php-version }}-composer-locked-"
-
-      - name: "Install dependencies with composer"
-        run: "composer install --no-interaction --no-progress --no-suggest"
-
-      - name: "Run a static analysis with phpstan/phpstan"
-        run: "vendor/bin/phpstan analyse --error-format=checkstyle | cs2pr"
+    name: "Static Analysis"
+    uses: "doctrine/.github/.github/workflows/static-analysis.yml@1.1.1"
