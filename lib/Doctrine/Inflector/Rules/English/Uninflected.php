@@ -151,8 +151,6 @@ final class Uninflected
         yield new Pattern('progress');
         yield new Pattern('rabies');
         yield new Pattern('rain');
-        yield new Pattern('recommended');
-        yield new Pattern('related');
         yield new Pattern('research');
         yield new Pattern('rhinoceros');
         yield new Pattern('rice');
