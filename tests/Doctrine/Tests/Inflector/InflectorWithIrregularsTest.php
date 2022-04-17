@@ -21,6 +21,7 @@ class InflectorWithIrregularsTest extends TestCase
         self::assertSame($expected, $this->inflector->pluralize($word));
         self::assertSame($word, $this->inflector->singularize($expected));
     }
+
     /**
      * @dataProvider dataRegulars
      */
@@ -57,12 +58,12 @@ class InflectorWithIrregularsTest extends TestCase
         // In the format array('word', 'expected')
         return [
             ['foobar', 'barfoo'],
-            ['test', 'testz']
+            ['test', 'testz'],
         ];
     }
 
     protected function setUp(): void
-    {        
+    {
         $this->inflector = InflectorFactory::create()->withIrregulars($this->dataIrregulars())->build();
     }
 }

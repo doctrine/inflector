@@ -29,11 +29,12 @@ interface LanguageInflectorFactory
     /**
      * Applies custom rules for irregular words
      *
-     * @param bool $reset If true, will unset default inflections for all new rules
+     * @param mixed[][] $irregulars Array of arrays of strings in the format [['singular', 'plural'], ...]
+     * @param bool      $reset      If true, will unset default inflections for all new rules
      *
      * @return $this
      */
-    public function withIrregulars(array $irregulars, bool $reset = false): self;
+    public function withIrregulars(?array $irregulars, bool $reset = false): self;
 
     /**
      * Builds the inflector instance with all applicable rules
