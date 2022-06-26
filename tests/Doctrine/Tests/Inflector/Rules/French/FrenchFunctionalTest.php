@@ -53,6 +53,7 @@ class FrenchFunctionalTest extends LanguageFunctionalTest
             ['monsieur', 'messieurs'],
             ['madame', 'mesdames'],
             ['mademoiselle', 'mesdemoiselles'],
+            ['sans', 'sans'],
         ];
     }
 
