@@ -3,3 +3,5 @@
 phpunit.xml.dist export-ignore
 phpcs.xml.dist export-ignore
 composer.lock export-ignore
+phpstan.neon.dist export-ignore
+psalm.xml export-ignore
