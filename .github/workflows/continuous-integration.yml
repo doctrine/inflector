@@ -22,4 +22,6 @@ jobs:
 
   phpunit:
     name: "PHPUnit"
-    uses: "doctrine/.github/.github/workflows/continuous-integration.yml@1.1.1"
+    uses: "doctrine/.github/.github/workflows/continuous-integration.yml@1.5.1"
+    with:
+      php-versions: '["7.2", "7.3", "7.4", "8.0", "8.1"]'
