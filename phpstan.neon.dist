@@ -9,5 +9,5 @@ parameters:
       - lib
       - tests
 
-    excludes_analyse:
+    excludePaths:
         - %rootDir%/../../../tests/Doctrine/Tests/Common/*

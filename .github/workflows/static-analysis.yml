@@ -12,4 +12,6 @@ on:
 jobs:
   static-analysis-phpstan:
     name: "Static Analysis"
-    uses: "doctrine/.github/.github/workflows/static-analysis.yml@1.1.1"
+    uses: "doctrine/.github/.github/workflows/static-analysis.yml@1.5.1"
+    with:
+      php-version: "8.1"

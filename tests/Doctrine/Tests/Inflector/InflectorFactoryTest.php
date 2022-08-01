@@ -26,6 +26,7 @@ class InflectorFactoryTest extends TestCase
 
     /**
      * @phpstan-param class-string<LanguageInflectorFactory> $expectedClass
+     *
      * @dataProvider provideLanguages
      */
     public function testCreateForLanguageWithCustomLanguage(string $expectedClass, string $language): void

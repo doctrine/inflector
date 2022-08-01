@@ -8,9 +8,8 @@ on:
 jobs:
   release:
     name: "Git tag, release & create merge-up PR"
-    uses: "doctrine/.github/.github/workflows/release-on-milestone-closed.yml@1.1.1"
+    uses: "doctrine/.github/.github/workflows/release-on-milestone-closed.yml@1.5.1"
     secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
       GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
       ORGANIZATION_ADMIN_TOKEN: ${{ secrets.ORGANIZATION_ADMIN_TOKEN }}
