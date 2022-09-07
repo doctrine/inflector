@@ -64,6 +64,7 @@ final class Uninflected
         yield new Pattern('butter');
         yield new Pattern('cantus');
         yield new Pattern('carp');
+        yield new Pattern('cattle');
         yield new Pattern('chassis');
         yield new Pattern('clippers');
         yield new Pattern('clothing');
@@ -111,6 +112,7 @@ final class Uninflected
         yield new Pattern('jackanapes');
         yield new Pattern('jeans');
         yield new Pattern('jedi');
+        yield new Pattern('kin');
         yield new Pattern('kiplingese');
         yield new Pattern('knowledge');
         yield new Pattern('kongoese');
