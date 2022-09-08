@@ -278,6 +278,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['scissors', 'scissors'],
             ['scratch', 'scratches'],
             ['sea-bass', 'sea-bass'],
+            ['sea bass', 'sea bass'],
             ['search', 'searches'],
             ['series', 'series'],
             ['sex', 'sexes'],
