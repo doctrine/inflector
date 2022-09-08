@@ -11,14 +11,10 @@ use function sprintf;
 
 abstract class LanguageFunctionalTest extends TestCase
 {
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     abstract public function dataSampleWords(): array;
 
-    /**
-     * @dataProvider dataSampleWords
-     */
+    /** @dataProvider dataSampleWords */
     public function testInflectingSingulars(string $singular, string $plural): void
     {
         self::assertSame(
@@ -28,9 +24,7 @@ abstract class LanguageFunctionalTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider dataSampleWords
-     */
+    /** @dataProvider dataSampleWords */
     public function testInflectingPlurals(string $singular, string $plural): void
     {
         self::assertSame(

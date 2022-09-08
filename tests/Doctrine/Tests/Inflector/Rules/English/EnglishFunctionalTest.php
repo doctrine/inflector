@@ -13,9 +13,7 @@ use function sprintf;
 
 class EnglishFunctionalTest extends LanguageFunctionalTest
 {
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public function dataSampleWords(): array
     {
         return [
@@ -469,9 +467,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
         ];
     }
 
-    /**
-     * @dataProvider dataSingularsUninflectedWhenSingularized
-     */
+    /** @dataProvider dataSingularsUninflectedWhenSingularized */
     public function testSingularsWhenSingularizedShouldBeUninflected(string $singular, string $notEquals): void
     {
         self::assertNotSame(
@@ -495,9 +491,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
         ];
     }
 
-    /**
-     * @dataProvider dataPluralUninflectedWhenPluralized
-     */
+    /** @dataProvider dataPluralUninflectedWhenPluralized */
     public function testPluralsWhenPluralizedShouldBeUninflected(string $plural): void
     {
         $pluralized = $this->createInflector()->pluralize($plural);
