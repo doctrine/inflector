@@ -287,6 +287,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['shoe', 'shoes'],
             ['shorts', 'shorts'],
             ['siemens', 'siemens'],
+            ['sieve', 'sieves'],
             ['silk', 'silk'],
             ['sku', 'skus'],
             ['slice', 'slices'],
