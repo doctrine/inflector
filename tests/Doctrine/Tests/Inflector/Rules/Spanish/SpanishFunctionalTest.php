@@ -11,9 +11,7 @@ use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTest;
 
 class SpanishFunctionalTest extends LanguageFunctionalTest
 {
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public function dataSampleWords(): array
     {
         return [

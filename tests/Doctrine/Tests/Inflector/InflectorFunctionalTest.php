@@ -26,9 +26,7 @@ class InflectorFunctionalTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider dataStringsTableize
-     */
+    /** @dataProvider dataStringsTableize */
     public function testTableize(string $expected, string $word): void
     {
         self::assertSame($expected, $this->createInflector()->tableize($word));
@@ -49,9 +47,7 @@ class InflectorFunctionalTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider dataStringsClassify
-     */
+    /** @dataProvider dataStringsClassify */
     public function testClassify(string $expected, string $word): void
     {
         self::assertSame($expected, $this->createInflector()->classify($word));
@@ -75,9 +71,7 @@ class InflectorFunctionalTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider dataStringsCamelize
-     */
+    /** @dataProvider dataStringsCamelize */
     public function testCamelize(string $expected, string $word): void
     {
         self::assertSame($expected, $this->createInflector()->camelize($word));

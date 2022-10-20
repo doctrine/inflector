@@ -12,6 +12,4 @@ on:
 jobs:
   coding-standards:
     name: "Coding Standards"
-    uses: "doctrine/.github/.github/workflows/coding-standards.yml@1.5.1"
-    with:
-      php-version: '8.1'
+    uses: "doctrine/.github/.github/workflows/coding-standards.yml@2.1.0"

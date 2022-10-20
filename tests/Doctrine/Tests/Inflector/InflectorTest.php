@@ -62,9 +62,7 @@ class InflectorTest extends TestCase
         self::assertSame('telephone', $this->inflector->unaccent('telephone'));
     }
 
-    /**
-     * @dataProvider dataStringsUrlize
-     */
+    /** @dataProvider dataStringsUrlize */
     public function testUrlize(string $expected, string $string): void
     {
         self::assertSame(

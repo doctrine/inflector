@@ -34,9 +34,7 @@ class InflectorFactoryTest extends TestCase
         self::assertInstanceOf($expectedClass, InflectorFactory::createForLanguage($language));
     }
 
-    /**
-     * @phpstan-return Generator<string, array{class-string<LanguageInflectorFactory>, Language::*}>
-     */
+    /** @phpstan-return Generator<string, array{class-string<LanguageInflectorFactory>, Language::*}> */
     public static function provideLanguages(): Generator
     {
         yield 'English' => [EnglishInflectorFactory::class, Language::ENGLISH];
