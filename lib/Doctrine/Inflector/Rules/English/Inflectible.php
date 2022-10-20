@@ -148,6 +148,7 @@ class Inflectible
         yield new Substitution(new Word('runner-up'), new Word('runners-up'));
         yield new Substitution(new Word('safe'), new Word('safes'));
         yield new Substitution(new Word('sex'), new Word('sexes'));
+        yield new Substitution(new Word('sieve'), new Word('sieves'));
         yield new Substitution(new Word('soliloquy'), new Word('soliloquies'));
         yield new Substitution(new Word('son-in-law'), new Word('sons-in-law'));
         yield new Substitution(new Word('syllabus'), new Word('syllabi'));
