@@ -169,6 +169,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['information', 'information'],
             ['innings', 'innings'],
             ['iris', 'irises'],
+            ['is', 'are'],
             ['jackanapes', 'jackanapes'],
             ['jeans', 'jeans'],
             ['jedi', 'jedi'],
