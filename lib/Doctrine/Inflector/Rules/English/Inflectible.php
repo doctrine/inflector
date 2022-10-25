@@ -122,6 +122,7 @@ class Inflectible
         yield new Substitution(new Word('hoof'), new Word('hoofs'));
         yield new Substitution(new Word('human'), new Word('humans'));
         yield new Substitution(new Word('iris'), new Word('irises'));
+        yield new Substitution(new Word('is'), new Word('are'));
         yield new Substitution(new Word('larva'), new Word('larvae'));
         yield new Substitution(new Word('leaf'), new Word('leaves'));
         yield new Substitution(new Word('lens'), new Word('lenses'));
