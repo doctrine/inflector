@@ -83,6 +83,7 @@ final class Uninflected
         yield new Pattern('equipment');
         yield new Pattern('evidence');
         yield new Pattern('faroese');
+        yield new Pattern('feet');
         yield new Pattern('feedback');
         yield new Pattern('fish');
         yield new Pattern('flounder');
