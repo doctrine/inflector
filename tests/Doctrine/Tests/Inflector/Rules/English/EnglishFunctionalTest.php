@@ -121,6 +121,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['experience', 'experiences'],
             ['family', 'families'],
             ['faroese', 'faroese'],
+            ['foot', 'feet'],
             ['fax', 'faxes'],
             ['feedback', 'feedback'],
             ['fish', 'fish'],
