@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Doctrine\Inflector;
 
 use Doctrine\Inflector\Rules\English;
+use Doctrine\Inflector\Rules\Esperanto;
 use Doctrine\Inflector\Rules\French;
 use Doctrine\Inflector\Rules\NorwegianBokmal;
 use Doctrine\Inflector\Rules\Portuguese;
@@ -26,6 +27,9 @@ final class InflectorFactory
         switch ($language) {
             case Language::ENGLISH:
                 return new English\InflectorFactory();
+
+            case Language::ESPERANTO:
+                return new Esperanto\InflectorFactory();
 
             case Language::FRENCH:
                 return new French\InflectorFactory();
