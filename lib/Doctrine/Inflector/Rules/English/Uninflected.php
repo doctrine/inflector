@@ -118,7 +118,6 @@ final class Uninflected
         yield new Pattern('countryside');
         yield new Pattern('courage');
         yield new Pattern('crockery');
-        yield new Pattern('currency');
         yield new Pattern('cutlery');
         yield new Pattern('damage');
         yield new Pattern('dancing');
@@ -148,7 +147,6 @@ final class Uninflected
         yield new Pattern('elk');
         yield new Pattern('emoji');
         yield new Pattern('employment');
-        yield new Pattern('energy');
         yield new Pattern('engineering');
         yield new Pattern('entertainment');
         yield new Pattern('enthusiasm');
@@ -161,7 +159,6 @@ final class Uninflected
         yield new Pattern('evolution');
         yield new Pattern('existence');
         yield new Pattern('expense');
-        yield new Pattern('experience');
         yield new Pattern('failure');
         yield new Pattern('faith');
         yield new Pattern('fame');
@@ -431,7 +428,6 @@ final class Uninflected
         yield new Pattern('wisdom');
         yield new Pattern('wood');
         yield new Pattern('wool');
-        yield new Pattern('work');
         yield new Pattern('yeast');
         yield new Pattern('yengeese');
         yield new Pattern('yoga');
