@@ -150,7 +150,6 @@ final class Uninflected
         yield new Pattern('engineering');
         yield new Pattern('entertainment');
         yield new Pattern('enthusiasm');
-        yield new Pattern('environment');
         yield new Pattern('envy');
         yield new Pattern('equipment');
         yield new Pattern('ethics');
