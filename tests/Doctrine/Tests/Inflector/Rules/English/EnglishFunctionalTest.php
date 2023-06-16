@@ -61,6 +61,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['canvas', 'canvases'],
             ['carp', 'carp'],
             ['case', 'cases'],
+            ['cave', 'caves'],
             ['categoria', 'categorias'],
             ['category', 'categories'],
             ['cattle', 'cattle'],
