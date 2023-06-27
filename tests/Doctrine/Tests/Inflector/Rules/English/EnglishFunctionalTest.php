@@ -117,6 +117,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['emphasis', 'emphases'],
             ['employee-child', 'employee-children'],
             ['energy', 'energies'],
+            ['epoch', 'epochs'],
             ['equipment', 'equipment'],
             ['evidence', 'evidence'],
             ['experience', 'experiences'],
