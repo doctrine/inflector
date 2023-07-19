@@ -362,6 +362,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['yengeese', 'yengeese'],
             ['zombie', 'zombies'],
             ['|ice', '|ices'],
+            ['rave', 'raves'],
         ];
     }
 
