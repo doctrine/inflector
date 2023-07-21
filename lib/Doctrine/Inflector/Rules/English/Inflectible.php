@@ -92,6 +92,7 @@ class Inflectible
     /** @return Substitution[] */
     public static function getIrregular(): iterable
     {
+        yield new Substitution(new Word('alga'), new Word('algae'));
         yield new Substitution(new Word('atlas'), new Word('atlases'));
         yield new Substitution(new Word('axe'), new Word('axes'));
         yield new Substitution(new Word('beef'), new Word('beefs'));
