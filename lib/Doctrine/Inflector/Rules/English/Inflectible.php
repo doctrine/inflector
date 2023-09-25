@@ -109,6 +109,7 @@ class Inflectible
         yield new Substitution(new Word('criterion'), new Word('criteria'));
         yield new Substitution(new Word('curriculum'), new Word('curricula'));
         yield new Substitution(new Word('demo'), new Word('demos'));
+        yield new Substitution(new Word('die'), new Word('dice'));
         yield new Substitution(new Word('domino'), new Word('dominoes'));
         yield new Substitution(new Word('echo'), new Word('echoes'));
         yield new Substitution(new Word('epoch'), new Word('epochs'));
