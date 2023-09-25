@@ -99,6 +99,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['debris', 'debris'],
             ['deer', 'deer'],
             ['demo', 'demos'],
+            ['die', 'dice'],
             ['diabetes', 'diabetes'],
             ['diagnosis', 'diagnoses'],
             ['diagnosis_a', 'diagnosis_as'],
