@@ -104,6 +104,7 @@ class Inflectible
         yield new Substitution(new Word('child'), new Word('children'));
         yield new Substitution(new Word('canvas'), new Word('canvases'));
         yield new Substitution(new Word('cookie'), new Word('cookies'));
+        yield new Substitution(new Word('brownie'), new Word('brownies'));
         yield new Substitution(new Word('corpus'), new Word('corpuses'));
         yield new Substitution(new Word('cow'), new Word('cows'));
         yield new Substitution(new Word('criterion'), new Word('criteria'));
