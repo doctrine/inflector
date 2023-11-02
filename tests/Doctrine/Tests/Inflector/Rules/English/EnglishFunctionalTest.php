@@ -83,6 +83,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['congoese', 'congoese'],
             ['contretemps', 'contretemps'],
             ['cookie', 'cookies'],
+            ['brownie', 'brownies'],
             ['copy', 'copies'],
             ['coreopsis', 'coreopsis'],
             ['corps', 'corps'],
