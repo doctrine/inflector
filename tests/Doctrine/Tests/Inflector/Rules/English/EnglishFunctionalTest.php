@@ -390,6 +390,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['fascia', 'fascium'],
             ['status', 'statu'],
             ['campus', 'campu'],
+            ['axis', 'axes'],
         ];
     }
 
