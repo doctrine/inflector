@@ -93,6 +93,7 @@ class Inflectible
     public static function getIrregular(): iterable
     {
         yield new Substitution(new Word('atlas'), new Word('atlases'));
+        yield new Substitution(new Word('axis'), new Word('axes'));
         yield new Substitution(new Word('axe'), new Word('axes'));
         yield new Substitution(new Word('beef'), new Word('beefs'));
         yield new Substitution(new Word('blouse'), new Word('blouses'));
@@ -104,6 +105,7 @@ class Inflectible
         yield new Substitution(new Word('child'), new Word('children'));
         yield new Substitution(new Word('canvas'), new Word('canvases'));
         yield new Substitution(new Word('cookie'), new Word('cookies'));
+        yield new Substitution(new Word('brownie'), new Word('brownies'));
         yield new Substitution(new Word('corpus'), new Word('corpuses'));
         yield new Substitution(new Word('cow'), new Word('cows'));
         yield new Substitution(new Word('criterion'), new Word('criteria'));
@@ -111,6 +113,7 @@ class Inflectible
         yield new Substitution(new Word('demo'), new Word('demos'));
         yield new Substitution(new Word('domino'), new Word('dominoes'));
         yield new Substitution(new Word('echo'), new Word('echoes'));
+        yield new Substitution(new Word('epoch'), new Word('epochs'));
         yield new Substitution(new Word('foot'), new Word('feet'));
         yield new Substitution(new Word('fungus'), new Word('fungi'));
         yield new Substitution(new Word('ganglion'), new Word('ganglions'));
