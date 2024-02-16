@@ -392,6 +392,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['sepia', 'sepium'],
             ['mafia', 'mafium'],
             ['regatta', 'regattum'],
+            ['regattas', 'regattum'],
             ['pactum', 'pactums'],
             ['fascia', 'fascium'],
             ['status', 'statu'],
