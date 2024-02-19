@@ -4,9 +4,15 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector;
 
+use Doctrine\Inflector\Rules\Patterns;
 use Doctrine\Inflector\Rules\Ruleset;
+use Doctrine\Inflector\Rules\Substitution;
+use Doctrine\Inflector\Rules\Substitutions;
+use Doctrine\Inflector\Rules\Transformations;
+use Doctrine\Inflector\Rules\Word;
 
 use function array_unshift;
+use function is_array;
 
 abstract class GenericLanguageInflectorFactory implements LanguageInflectorFactory
 {
@@ -55,6 +61,33 @@ abstract class GenericLanguageInflectorFactory implements LanguageInflectorFacto
 
         if ($pluralRules instanceof Ruleset) {
             array_unshift($this->pluralRulesets, $pluralRules);
+        }
+
+        return $this;
+    }
+
+    final public function withIrregulars(?array $irregulars, bool $reset = false): LanguageInflectorFactory
+    {
+        if ($reset) {
+            $this->pluralRulesets   = [];
+            $this->singularRulesets = [];
+        }
+
+        if (is_array($irregulars)) {
+            $newIrregulars = [];
+            foreach ($irregulars as $irregular) {
+                $newIrregulars[] = new Substitution(new Word($irregular[0]), new Word($irregular[1]));
+            }
+
+            $transf   = new Transformations();
+            $patterns = new Patterns();
+            $substs   = new Substitutions(...$newIrregulars);
+
+            $plural   = new Ruleset($transf, $patterns, $substs);
+            $singular = new Ruleset($transf, $patterns, $substs->getFlippedSubstitutions());
+
+            array_unshift($this->pluralRulesets, $plural);
+            array_unshift($this->singularRulesets, $singular);
         }
 
         return $this;

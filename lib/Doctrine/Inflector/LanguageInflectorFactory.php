@@ -27,6 +27,16 @@ interface LanguageInflectorFactory
     public function withPluralRules(?Ruleset $pluralRules, bool $reset = false): self;
 
     /**
+     * Applies custom rules for irregular words
+     *
+     * @param mixed[][] $irregulars Array of arrays of strings in the format [['singular', 'plural'], ...]
+     * @param bool      $reset      If true, will unset default inflections for all new rules
+     *
+     * @return $this
+     */
+    public function withIrregulars(?array $irregulars, bool $reset = false): self;
+
+    /**
      * Builds the inflector instance with all applicable rules
      */
     public function build(): Inflector;
