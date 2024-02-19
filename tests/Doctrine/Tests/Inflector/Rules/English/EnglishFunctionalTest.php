@@ -25,6 +25,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['advice', 'advice'],
             ['agency', 'agencies'],
             ['aircraft', 'aircraft'],
+            ['alga', 'algae'],
             ['alias', 'aliases'],
             ['alumnus', 'alumni'],
             ['amoyese', 'amoyese'],
