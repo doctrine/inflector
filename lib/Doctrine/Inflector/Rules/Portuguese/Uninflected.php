@@ -23,10 +23,8 @@ final class Uninflected
     /** @return Pattern[] */
     private static function getDefault(): iterable
     {
-        yield new Pattern('tórax');
         yield new Pattern('tênis');
         yield new Pattern('ônibus');
         yield new Pattern('lápis');
-        yield new Pattern('fênix');
     }
 }
