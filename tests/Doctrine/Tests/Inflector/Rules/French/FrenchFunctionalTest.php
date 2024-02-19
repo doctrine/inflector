@@ -55,6 +55,7 @@ class FrenchFunctionalTest extends LanguageFunctionalTest
             ['carnaval', 'carnavals'],
             ['festival', 'festivals'],
             ['récital', 'récitals'],
+            ['sans', 'sans'],
         ];
     }
 
