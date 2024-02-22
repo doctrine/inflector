@@ -6,6 +6,7 @@ namespace Doctrine\Inflector;
 
 use Doctrine\Inflector\Rules\English;
 use Doctrine\Inflector\Rules\French;
+use Doctrine\Inflector\Rules\Italian;
 use Doctrine\Inflector\Rules\NorwegianBokmal;
 use Doctrine\Inflector\Rules\Portuguese;
 use Doctrine\Inflector\Rules\Spanish;
@@ -29,6 +30,9 @@ final class InflectorFactory
 
             case Language::FRENCH:
                 return new French\InflectorFactory();
+
+            case Language::ITALIAN:
+                return new Italian\InflectorFactory();
 
             case Language::NORWEGIAN_BOKMAL:
                 return new NorwegianBokmal\InflectorFactory();
