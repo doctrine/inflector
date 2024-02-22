@@ -6,12 +6,12 @@ namespace Doctrine\Inflector;
 
 use Doctrine\Inflector\Rules\English;
 use Doctrine\Inflector\Rules\French;
+use Doctrine\Inflector\Rules\Italian;
 use Doctrine\Inflector\Rules\NorwegianBokmal;
 use Doctrine\Inflector\Rules\Portuguese;
 use Doctrine\Inflector\Rules\Spanish;
 use Doctrine\Inflector\Rules\Turkish;
 use InvalidArgumentException;
-
 use function sprintf;
 
 final class InflectorFactory
@@ -41,6 +41,9 @@ final class InflectorFactory
 
             case Language::TURKISH:
                 return new Turkish\InflectorFactory();
+
+            case Language::ITALIAN:
+                return new Italian\InflectorFactory();
 
             default:
                 throw new InvalidArgumentException(sprintf(
