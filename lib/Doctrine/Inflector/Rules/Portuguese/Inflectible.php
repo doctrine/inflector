@@ -50,7 +50,7 @@ class Inflectible
         yield new Transformation(new Pattern('/el$/i'), 'eis');
         yield new Transformation(new Pattern('/al$/i'), 'ais');
         yield new Transformation(new Pattern('/(z|r)$/i'), '\1es');
-        yield new Transformation(new Pattern('/(s)$/i'), '\1');
+        yield new Transformation(new Pattern('/(s|x)$/i'), '\1');
         yield new Transformation(new Pattern('/$/'), 's');
     }
 
