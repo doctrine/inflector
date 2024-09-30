@@ -12,4 +12,4 @@ on:
 jobs:
   coding-standards:
     name: "Coding Standards"
-    uses: "doctrine/.github/.github/workflows/coding-standards.yml@5.0.1"
+    uses: "doctrine/.github/.github/workflows/coding-standards.yml@5.1.0"

@@ -15,4 +15,4 @@ on:
 jobs:
   composer-lint:
     name: "Composer Lint"
-    uses: "doctrine/.github/.github/workflows/composer-lint.yml@5.0.1"
+    uses: "doctrine/.github/.github/workflows/composer-lint.yml@5.1.0"
