@@ -12,4 +12,4 @@ on:
 jobs:
   static-analysis-phpstan:
     name: "Static Analysis"
-    uses: "doctrine/.github/.github/workflows/phpstan.yml@7.1.0"
+    uses: "doctrine/.github/.github/workflows/phpstan.yml@7.2.0"
