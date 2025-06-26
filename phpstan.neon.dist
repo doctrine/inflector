@@ -6,8 +6,5 @@ includes:
 parameters:
     level: 7
     paths:
-      - lib
+      - src
       - tests
-
-    excludePaths:
-        - %rootDir%/../../../tests/Doctrine/Tests/Common/*

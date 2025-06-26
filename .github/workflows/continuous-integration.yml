@@ -14,7 +14,7 @@ jobs:
     name: "Roave BC Check"
     runs-on: ubuntu-latest
     steps:
-      - uses: "actions/checkout@v3"
+      - uses: "actions/checkout@v4"
         with:
           fetch-depth: 0
 
@@ -31,6 +31,8 @@ jobs:
 
   phpunit:
     name: "PHPUnit"
-    uses: "doctrine/.github/.github/workflows/continuous-integration.yml@2.1.0"
+    uses: "doctrine/.github/.github/workflows/continuous-integration.yml@7.2.1"
     with:
       php-versions: '["7.2", "7.3", "7.4", "8.0", "8.1", "8.2"]'
+    secrets:
+      CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"

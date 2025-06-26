@@ -92,28 +92,33 @@ class Inflectible
     /** @return Substitution[] */
     public static function getIrregular(): iterable
     {
+        yield new Substitution(new Word('abuse'), new Word('abuses'));
         yield new Substitution(new Word('atlas'), new Word('atlases'));
+        yield new Substitution(new Word('avalanche'), new Word('avalanches'));
         yield new Substitution(new Word('axis'), new Word('axes'));
         yield new Substitution(new Word('axe'), new Word('axes'));
         yield new Substitution(new Word('beef'), new Word('beefs'));
         yield new Substitution(new Word('blouse'), new Word('blouses'));
         yield new Substitution(new Word('brother'), new Word('brothers'));
+        yield new Substitution(new Word('brownie'), new Word('brownies'));
+        yield new Substitution(new Word('cache'), new Word('caches'));
         yield new Substitution(new Word('cafe'), new Word('cafes'));
+        yield new Substitution(new Word('canvas'), new Word('canvases'));
         yield new Substitution(new Word('cave'), new Word('caves'));
         yield new Substitution(new Word('chateau'), new Word('chateaux'));
-        yield new Substitution(new Word('niveau'), new Word('niveaux'));
         yield new Substitution(new Word('child'), new Word('children'));
-        yield new Substitution(new Word('canvas'), new Word('canvases'));
         yield new Substitution(new Word('cookie'), new Word('cookies'));
-        yield new Substitution(new Word('brownie'), new Word('brownies'));
         yield new Substitution(new Word('corpus'), new Word('corpuses'));
         yield new Substitution(new Word('cow'), new Word('cows'));
         yield new Substitution(new Word('criterion'), new Word('criteria'));
         yield new Substitution(new Word('curriculum'), new Word('curricula'));
+        yield new Substitution(new Word('curve'), new Word('curves'));
         yield new Substitution(new Word('demo'), new Word('demos'));
         yield new Substitution(new Word('domino'), new Word('dominoes'));
         yield new Substitution(new Word('echo'), new Word('echoes'));
+        yield new Substitution(new Word('emphasis'), new Word('emphases'));
         yield new Substitution(new Word('epoch'), new Word('epochs'));
+        yield new Substitution(new Word('foe'), new Word('foes'));
         yield new Substitution(new Word('foot'), new Word('feet'));
         yield new Substitution(new Word('fungus'), new Word('fungi'));
         yield new Substitution(new Word('ganglion'), new Word('ganglions'));
@@ -122,7 +127,9 @@ class Inflectible
         yield new Substitution(new Word('genus'), new Word('genera'));
         yield new Substitution(new Word('goose'), new Word('geese'));
         yield new Substitution(new Word('graffito'), new Word('graffiti'));
+        yield new Substitution(new Word('grave'), new Word('graves'));
         yield new Substitution(new Word('hippopotamus'), new Word('hippopotami'));
+        yield new Substitution(new Word('hoax'), new Word('hoaxes'));
         yield new Substitution(new Word('hoof'), new Word('hoofs'));
         yield new Substitution(new Word('human'), new Word('humans'));
         yield new Substitution(new Word('iris'), new Word('irises'));
@@ -138,9 +145,12 @@ class Inflectible
         yield new Substitution(new Word('motto'), new Word('mottoes'));
         yield new Substitution(new Word('move'), new Word('moves'));
         yield new Substitution(new Word('mythos'), new Word('mythoi'));
+        yield new Substitution(new Word('neurosis'), new Word('neuroses'));
         yield new Substitution(new Word('niche'), new Word('niches'));
+        yield new Substitution(new Word('niveau'), new Word('niveaux'));
         yield new Substitution(new Word('nucleus'), new Word('nuclei'));
         yield new Substitution(new Word('numen'), new Word('numina'));
+        yield new Substitution(new Word('oasis'), new Word('oases'));
         yield new Substitution(new Word('occiput'), new Word('occiputs'));
         yield new Substitution(new Word('octopus'), new Word('octopuses'));
         yield new Substitution(new Word('opus'), new Word('opuses'));
@@ -151,10 +161,12 @@ class Inflectible
         yield new Substitution(new Word('plateau'), new Word('plateaux'));
         yield new Substitution(new Word('runner-up'), new Word('runners-up'));
         yield new Substitution(new Word('safe'), new Word('safes'));
+        yield new Substitution(new Word('save'), new Word('saves'));
         yield new Substitution(new Word('sex'), new Word('sexes'));
         yield new Substitution(new Word('sieve'), new Word('sieves'));
         yield new Substitution(new Word('soliloquy'), new Word('soliloquies'));
         yield new Substitution(new Word('son-in-law'), new Word('sons-in-law'));
+        yield new Substitution(new Word('stadium'), new Word('stadiums'));
         yield new Substitution(new Word('syllabus'), new Word('syllabi'));
         yield new Substitution(new Word('testis'), new Word('testes'));
         yield new Substitution(new Word('thief'), new Word('thieves'));
@@ -163,22 +175,9 @@ class Inflectible
         yield new Substitution(new Word('trilby'), new Word('trilbys'));
         yield new Substitution(new Word('turf'), new Word('turfs'));
         yield new Substitution(new Word('valve'), new Word('valves'));
+        yield new Substitution(new Word('valve'), new Word('valves')); // Duplicate
         yield new Substitution(new Word('volcano'), new Word('volcanoes'));
-        yield new Substitution(new Word('abuse'), new Word('abuses'));
-        yield new Substitution(new Word('avalanche'), new Word('avalanches'));
-        yield new Substitution(new Word('cache'), new Word('caches'));
-        yield new Substitution(new Word('criterion'), new Word('criteria'));
-        yield new Substitution(new Word('curve'), new Word('curves'));
-        yield new Substitution(new Word('emphasis'), new Word('emphases'));
-        yield new Substitution(new Word('foe'), new Word('foes'));
-        yield new Substitution(new Word('grave'), new Word('graves'));
-        yield new Substitution(new Word('hoax'), new Word('hoaxes'));
-        yield new Substitution(new Word('medium'), new Word('media'));
-        yield new Substitution(new Word('neurosis'), new Word('neuroses'));
-        yield new Substitution(new Word('save'), new Word('saves'));
         yield new Substitution(new Word('wave'), new Word('waves'));
-        yield new Substitution(new Word('oasis'), new Word('oases'));
-        yield new Substitution(new Word('valve'), new Word('valves'));
         yield new Substitution(new Word('zombie'), new Word('zombies'));
     }
 }

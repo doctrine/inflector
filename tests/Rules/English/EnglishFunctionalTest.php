@@ -310,7 +310,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['spouse', 'spouses'],
             ['spy', 'spies'],
             ['stack', 'stacks'],
-            ['stadium', 'stadia'],
+            ['stadium', 'stadiums'],
             ['staff', 'staff'],
             ['status', 'statuses'],
             ['status_code', 'status_codes'],
