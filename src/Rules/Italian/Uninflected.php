@@ -37,8 +37,11 @@ final class Uninflected
             'crisi',
             'crocevia',
             'dopocena',
+            'eta',
             'film',
             'foto',
+            'foto',
+            'fuchsia',
             'fuchsia',
             'gnu',
             'gorilla',
@@ -69,8 +72,6 @@ final class Uninflected
             'virtù',
             'virus',
             'yogurt',
-            'foto',
-            'fuchsia',
         ];
 
         foreach ($invariables as $word) {

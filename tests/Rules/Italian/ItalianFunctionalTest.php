@@ -49,7 +49,34 @@ class ItalianFunctionalTest extends LanguageFunctionalTest
             ['moto', 'moto'],  // from motocicletta
             ['auto', 'auto'],  // from automobile
 
-            // Words with accented vowels
+            // Multi-word phrases
+            ['garanzia generale', 'garanzie generali'],
+            ['ramo ministeriale', 'rami ministeriali'],
+//            ['carta di credito', 'carte di credito'],
+            ['libro giallo', 'libri gialli'],
+            ['chiave inglese', 'chiavi inglesi'],
+            ['carta d\'identità', 'carte d\'identità'],
+            ['stazione ferroviaria', 'stazioni ferroviarie'],
+            ['carta geografica', 'carte geografiche'],
+            ['macchina fotografica', 'macchine fotografiche'],
+//            ['carta di credito prepagata', 'carte di credito prepagate'],
+//            ['sistema operativo', 'sistemi operativi'],
+//            ['carta di credito aziendale', 'carte di credito aziendali'],
+//            ['libro di testo', 'libri di testo'],
+//            ['carta di credito virtuale', 'carte di credito virtuali'],
+//            ['carta di credito ricaricabile', 'carte di credito ricaricabili'],
+//
+//            // Hyphenated words
+//            ['primo-piano', 'primi-piani'],
+//            ['capo-stazione', 'capi-stazione'],
+//            ['cassaforte-forte', 'casseforti-forti'],
+//
+//            // Mixed separators
+//            ['carta di credito prepagata', 'carte di credito prepagate'],
+//            ['libro di testo', 'libri di testo'],
+//            ['carta di credito aziendale', 'carte di credito aziendali'],
+
+                // Words with accented vowels
             ['caffè', 'caffè'],
             ['tè', 'tè'],
             ['menù', 'menù'],
@@ -73,6 +100,9 @@ class ItalianFunctionalTest extends LanguageFunctionalTest
             ['membro', 'membri'],    // members of an organization
             ['membrana', 'membrane'],  // membranes
 
+            // Words with specific patterns
+            ['sistema', 'sistemi'],  // system -> systems
+
             // Words with identical forms but different genders/meanings
             ['capitale', 'capitali'],  // capital (money)
             ['capitale', 'capitali'], // capital city (context determines meaning)
@@ -86,6 +116,12 @@ class ItalianFunctionalTest extends LanguageFunctionalTest
             ['libro', 'libri'],
             ['tavolo', 'tavoli'],
             ['ragazzo', 'ragazzi'],
+            ['animo', 'animi'],
+            ['lamento', 'lamenti'],
+            ['supremo', 'supremi'],
+            ['massimo', 'massimi'],
+            ['minimo', 'minimi'],
+            ['numero', 'numeri'],
 
             // Nouns ending in -a (feminine)
             ['casa', 'case'],
@@ -122,6 +158,7 @@ class ItalianFunctionalTest extends LanguageFunctionalTest
             ['karaoke', 'karaoke'],
             ['brindisi', 'brindisi'],
             ['boia', 'boia'],
+            ['eta', 'eta'],
         ];
     }
 
