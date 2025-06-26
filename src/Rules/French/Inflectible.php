@@ -16,7 +16,7 @@ class Inflectible
     {
         yield new Transformation(new Pattern('/(b|cor|ém|gemm|soupir|trav|vant|vitr)aux$/'), '\1ail');
         yield new Transformation(new Pattern('/ails$/'), 'ail');
-        yield new Transformation(new Pattern('/(journ|chev)aux$/'), '\1al');
+        yield new Transformation(new Pattern('/(journ|chev|loc)aux$/'), '\1al');
         yield new Transformation(new Pattern('/(bijou|caillou|chou|genou|hibou|joujou|pou|au|eu|eau)x$/'), '\1');
         yield new Transformation(new Pattern('/s$/'), '');
     }

@@ -10,19 +10,14 @@ use function preg_match;
 
 class Patterns
 {
-    /** @var Pattern[] */
-    private $patterns;
-
     /** @var string */
     private $regex;
 
     public function __construct(Pattern ...$patterns)
     {
-        $this->patterns = $patterns;
-
         $patterns = array_map(static function (Pattern $pattern): string {
             return $pattern->getPattern();
-        }, $this->patterns);
+        }, $patterns);
 
         $this->regex = '/^(?:' . implode('|', $patterns) . ')$/i';
     }

@@ -39,6 +39,7 @@ class FrenchFunctionalTest extends LanguageFunctionalTest
             ['pneu', 'pneus'],
             ['sarrau', 'sarraus'],
             ['journal', 'journaux'],
+            ['local', 'locaux'],
             ['détail', 'détails'],
             ['bail', 'baux'],
             ['corail', 'coraux'],
@@ -55,6 +56,8 @@ class FrenchFunctionalTest extends LanguageFunctionalTest
             ['carnaval', 'carnavals'],
             ['festival', 'festivals'],
             ['récital', 'récitals'],
+            ['bois', 'bois'],
+            ['mas', 'mas'],
         ];
     }
 
