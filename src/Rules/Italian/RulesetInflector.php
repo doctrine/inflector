@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector\Rules\Italian;
 
+use Doctrine\Inflector\MultiWordInflector;
+
 use function implode;
 use function preg_split;
 use function strpos;
@@ -21,7 +23,9 @@ class RulesetInflector extends \Doctrine\Inflector\RulesetInflector
         }
 
         // Split the phrase into words and process each one
-        $words = preg_split('/([ -])/', $word, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
+        $regex = '/([' . implode('', MultiWordInflector::WORD_SEPARATORS) . '])/';
+        $words = preg_split($regex, $word, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
+
         if ($words === false) {
             return parent::inflect($word);
         }

@@ -52,6 +52,11 @@ class ItalianFunctionalTest extends LanguageFunctionalTest
             // Multi-word phrases
             ['garanzia generale', 'garanzie generali'],
             ['ramo ministeriale', 'rami ministeriali'],
+            ['questionario', 'questionari'],
+            ['cimelio', 'cimeli'],
+            ['fascia', 'fasce'],
+            ['fascio', 'fasci'],
+            ['targa', 'targhe'],
 //            ['carta di credito', 'carte di credito'],
             ['libro giallo', 'libri gialli'],
             ['chiave inglese', 'chiavi inglesi'],
@@ -60,17 +65,17 @@ class ItalianFunctionalTest extends LanguageFunctionalTest
             ['carta geografica', 'carte geografiche'],
             ['macchina fotografica', 'macchine fotografiche'],
 //            ['carta di credito prepagata', 'carte di credito prepagate'],
-//            ['sistema operativo', 'sistemi operativi'],
+            ['sistema operativo', 'sistemi operativi'],
 //            ['carta di credito aziendale', 'carte di credito aziendali'],
 //            ['libro di testo', 'libri di testo'],
 //            ['carta di credito virtuale', 'carte di credito virtuali'],
 //            ['carta di credito ricaricabile', 'carte di credito ricaricabili'],
 //
 //            // Hyphenated words
-//            ['primo-piano', 'primi-piani'],
-//            ['capo-stazione', 'capi-stazione'],
-//            ['cassaforte-forte', 'casseforti-forti'],
-//
+            ['primo-piano', 'primi-piani'],
+            ['capo-stazione', 'capi-stazioni'],
+            ['cassaforte-forte', 'casseforti-forti'],
+
 //            // Mixed separators
 //            ['carta di credito prepagata', 'carte di credito prepagate'],
 //            ['libro di testo', 'libri di testo'],

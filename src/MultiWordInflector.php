@@ -15,7 +15,7 @@ use function preg_match;
  */
 class MultiWordInflector implements WordInflector
 {
-    private const WORD_SEPARATORS = [' ', '-'];
+    public const WORD_SEPARATORS = [' ', '-'];
 
     /** @var WordInflector */
     private $wordInflector;
