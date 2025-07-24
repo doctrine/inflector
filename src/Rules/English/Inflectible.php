@@ -150,6 +150,7 @@ class Inflectible
         yield new Substitution(new Word('niveau'), new Word('niveaux'));
         yield new Substitution(new Word('nucleus'), new Word('nuclei'));
         yield new Substitution(new Word('numen'), new Word('numina'));
+        yield new Substitution(new Word('nursery'), new Word('nurseries'));
         yield new Substitution(new Word('oasis'), new Word('oases'));
         yield new Substitution(new Word('occiput'), new Word('occiputs'));
         yield new Substitution(new Word('octopus'), new Word('octopuses'));
@@ -175,7 +176,6 @@ class Inflectible
         yield new Substitution(new Word('trilby'), new Word('trilbys'));
         yield new Substitution(new Word('turf'), new Word('turfs'));
         yield new Substitution(new Word('valve'), new Word('valves'));
-        yield new Substitution(new Word('valve'), new Word('valves')); // Duplicate
         yield new Substitution(new Word('volcano'), new Word('volcanoes'));
         yield new Substitution(new Word('wave'), new Word('waves'));
         yield new Substitution(new Word('zombie'), new Word('zombies'));

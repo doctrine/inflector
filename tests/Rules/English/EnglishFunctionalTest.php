@@ -225,6 +225,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['node_child', 'node_children'],
             ['nodemedia', 'nodemedia'],
             ['nucleus', 'nuclei'],
+            ['nursery', 'nurseries'],
             ['nutrition', 'nutrition'],
             ['oasis', 'oases'],
             ['octopus', 'octopuses'],
