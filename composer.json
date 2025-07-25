@@ -43,9 +43,9 @@
     },
     "require-dev": {
         "doctrine/coding-standard": "^12.0 || ^13.0",
-        "phpstan/phpstan": "^1.8",
-        "phpstan/phpstan-phpunit": "^1.1",
-        "phpstan/phpstan-strict-rules": "^1.3",
+        "phpstan/phpstan": "^1.12 || ^2.0",
+        "phpstan/phpstan-phpunit": "^1.4 || ^2.0",
+        "phpstan/phpstan-strict-rules": "^1.6 || ^2.0",
         "phpunit/phpunit": "^8.5 || ^9.5"
     },
     "autoload": {
