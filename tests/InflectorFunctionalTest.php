@@ -6,6 +6,7 @@ namespace Doctrine\Tests\Inflector;
 
 use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class InflectorFunctionalTest extends TestCase
@@ -27,6 +28,7 @@ class InflectorFunctionalTest extends TestCase
     }
 
     /** @dataProvider dataStringsTableize */
+    #[DataProvider('dataStringsTableize')]
     public function testTableize(string $expected, string $word): void
     {
         self::assertSame($expected, $this->createInflector()->tableize($word));
@@ -37,7 +39,7 @@ class InflectorFunctionalTest extends TestCase
      *
      * @return string[][]
      */
-    public function dataStringsTableize(): array
+    public static function dataStringsTableize(): array
     {
         // In the format array('expected', 'word')
         return [
@@ -48,6 +50,7 @@ class InflectorFunctionalTest extends TestCase
     }
 
     /** @dataProvider dataStringsClassify */
+    #[DataProvider('dataStringsClassify')]
     public function testClassify(string $expected, string $word): void
     {
         self::assertSame($expected, $this->createInflector()->classify($word));
@@ -58,7 +61,7 @@ class InflectorFunctionalTest extends TestCase
      *
      * @return string[][]
      */
-    public function dataStringsClassify(): array
+    public static function dataStringsClassify(): array
     {
         // In the format array('expected', 'word')
         return [
@@ -72,6 +75,7 @@ class InflectorFunctionalTest extends TestCase
     }
 
     /** @dataProvider dataStringsCamelize */
+    #[DataProvider('dataStringsCamelize')]
     public function testCamelize(string $expected, string $word): void
     {
         self::assertSame($expected, $this->createInflector()->camelize($word));
@@ -82,7 +86,7 @@ class InflectorFunctionalTest extends TestCase
      *
      * @return string[][]
      */
-    public function dataStringsCamelize(): array
+    public static function dataStringsCamelize(): array
     {
         // In the format array('expected', 'word')
         return [
