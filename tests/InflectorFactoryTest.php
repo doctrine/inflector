@@ -15,6 +15,7 @@ use Doctrine\Inflector\Rules\Spanish\InflectorFactory as SpanishInflectorFactory
 use Doctrine\Inflector\Rules\Turkish\InflectorFactory as TurkishInflectorFactory;
 use Generator;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class InflectorFactoryTest extends TestCase
@@ -29,6 +30,7 @@ class InflectorFactoryTest extends TestCase
      *
      * @dataProvider provideLanguages
      */
+    #[DataProvider('provideLanguages')]
     public function testCreateForLanguageWithCustomLanguage(string $expectedClass, string $language): void
     {
         self::assertInstanceOf($expectedClass, InflectorFactory::createForLanguage($language));

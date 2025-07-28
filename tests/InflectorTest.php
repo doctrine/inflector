@@ -6,6 +6,7 @@ namespace Doctrine\Tests\Inflector;
 
 use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\WordInflector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -63,6 +64,7 @@ class InflectorTest extends TestCase
     }
 
     /** @dataProvider dataStringsUrlize */
+    #[DataProvider('dataStringsUrlize')]
     public function testUrlize(string $expected, string $string): void
     {
         self::assertSame(
@@ -76,7 +78,7 @@ class InflectorTest extends TestCase
      *
      * @return string[][]
      */
-    public function dataStringsUrlize(): array
+    public static function dataStringsUrlize(): array
     {
         return [
             [
