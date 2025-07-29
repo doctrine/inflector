@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class CachedWordInflectorTest extends TestCase
 {
-    /** @var WordInflector|MockObject */
+    /** @var WordInflector&MockObject */
     private $wordInflector;
 
     /** @var CachedWordInflector */
