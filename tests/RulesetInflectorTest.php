@@ -17,10 +17,10 @@ use PHPUnit\Framework\TestCase;
 
 class RulesetInflectorTest extends TestCase
 {
-    /** @var Ruleset|MockObject */
+    /** @var Ruleset&MockObject */
     private $firstRuleset;
 
-    /** @var Ruleset|MockObject */
+    /** @var Ruleset&MockObject */
     private $secondRuleset;
 
     /** @var RulesetInflector */
