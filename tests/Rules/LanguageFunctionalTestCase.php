@@ -5,16 +5,18 @@ declare(strict_types=1);
 namespace Doctrine\Tests\Inflector\Rules;
 
 use Doctrine\Inflector\Inflector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 use function sprintf;
 
-abstract class LanguageFunctionalTest extends TestCase
+abstract class LanguageFunctionalTestCase extends TestCase
 {
     /** @return string[][] */
-    abstract public function dataSampleWords(): array;
+    abstract public static function dataSampleWords(): array;
 
     /** @dataProvider dataSampleWords */
+    #[DataProvider('dataSampleWords')]
     public function testInflectingSingulars(string $singular, string $plural): void
     {
         self::assertSame(
@@ -25,6 +27,7 @@ abstract class LanguageFunctionalTest extends TestCase
     }
 
     /** @dataProvider dataSampleWords */
+    #[DataProvider('dataSampleWords')]
     public function testInflectingPlurals(string $singular, string $plural): void
     {
         self::assertSame(

@@ -7,14 +7,15 @@ namespace Doctrine\Tests\Inflector\Rules\English;
 use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
-use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTest;
+use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use function sprintf;
 
-class EnglishFunctionalTest extends LanguageFunctionalTest
+class EnglishFunctionalTest extends LanguageFunctionalTestCase
 {
     /** @return string[][] */
-    public function dataSampleWords(): array
+    public static function dataSampleWords(): array
     {
         return [
             ['', ''],
@@ -25,6 +26,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['advice', 'advice'],
             ['agency', 'agencies'],
             ['aircraft', 'aircraft'],
+            ['alga', 'algae'],
             ['alias', 'aliases'],
             ['alumnus', 'alumni'],
             ['amoyese', 'amoyese'],
@@ -100,6 +102,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['debris', 'debris'],
             ['deer', 'deer'],
             ['demo', 'demos'],
+            ['die', 'dice'],
             ['diabetes', 'diabetes'],
             ['diagnosis', 'diagnoses'],
             ['diagnosis_a', 'diagnosis_as'],
@@ -225,6 +228,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
             ['node_child', 'node_children'],
             ['nodemedia', 'nodemedia'],
             ['nucleus', 'nuclei'],
+            ['nursery', 'nurseries'],
             ['nutrition', 'nutrition'],
             ['oasis', 'oases'],
             ['octopus', 'octopuses'],
@@ -379,7 +383,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
      *
      * @return string[][]
      */
-    public function dataSingularsUninflectedWhenSingularized(): array
+    public static function dataSingularsUninflectedWhenSingularized(): array
     {
         // In the format array('singular', 'notEquals')
         return [
@@ -404,6 +408,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
     }
 
     /** @dataProvider dataSingularsUninflectedWhenSingularized */
+    #[DataProvider('dataSingularsUninflectedWhenSingularized')]
     public function testSingularsWhenSingularizedShouldBeUninflected(string $singular, string $notEquals): void
     {
         self::assertNotSame(
@@ -420,7 +425,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
      *
      * @return string[][]
      */
-    public function dataPluralUninflectedWhenPluralized(): array
+    public static function dataPluralUninflectedWhenPluralized(): array
     {
         return [
             ['media'],
@@ -428,6 +433,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTest
     }
 
     /** @dataProvider dataPluralUninflectedWhenPluralized */
+    #[DataProvider('dataPluralUninflectedWhenPluralized')]
     public function testPluralsWhenPluralizedShouldBeUninflected(string $plural): void
     {
         $pluralized = $this->createInflector()->pluralize($plural);

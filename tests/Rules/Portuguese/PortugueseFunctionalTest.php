@@ -7,12 +7,12 @@ namespace Doctrine\Tests\Inflector\Rules\Portuguese;
 use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
-use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTest;
+use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTestCase;
 
-class PortugueseFunctionalTest extends LanguageFunctionalTest
+class PortugueseFunctionalTest extends LanguageFunctionalTestCase
 {
     /** @return string[][] */
-    public function dataSampleWords(): array
+    public static function dataSampleWords(): array
     {
         return [
             ['livro', 'livros'],
