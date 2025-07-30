@@ -4,10 +4,7 @@ includes:
     - vendor/phpstan/phpstan-strict-rules/rules.neon
 
 parameters:
-    level: 7
+    level: 10
     paths:
-      - lib
+      - src
       - tests
-
-    excludes_analyse:
-        - %rootDir%/../../../tests/Doctrine/Tests/Common/*

@@ -4,21 +4,20 @@
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          colors="true"
          beStrictAboutOutputDuringTests="true"
-         beStrictAboutTodoAnnotatedTests="true"
          failOnRisky="true"
          failOnWarning="true"
 >
     <testsuites>
         <testsuite name="Doctrine Inflector Test Suite">
-            <directory>./tests/Doctrine/</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist>
-            <directory>./lib/Doctrine/</directory>
-        </whitelist>
-    </filter>
+    <source>
+        <include>
+            <directory>src</directory>
+        </include>
+    </source>
 
     <groups>
         <exclude>

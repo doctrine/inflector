@@ -1,0 +1,21 @@
+
+name: "Website config validation"
+
+on:
+  pull_request:
+    branches:
+      - "*.x"
+    paths:
+      - ".doctrine-project.json"
+      - ".github/workflows/website-schema.yml"
+  push:
+    branches:
+      - "*.x"
+    paths:
+      - ".doctrine-project.json"
+      - ".github/workflows/website-schema.yml"
+
+jobs:
+  json-validate:
+    name: "Validate JSON schema"
+    uses: "doctrine/.github/.github/workflows/website-schema.yml@7.3.0"

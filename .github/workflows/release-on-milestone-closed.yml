@@ -1,0 +1,16 @@
+name: "Automatic Releases"
+
+on:
+  milestone:
+    types:
+      - "closed"
+
+jobs:
+  release:
+    name: "Git tag, release & create merge-up PR"
+    uses: "doctrine/.github/.github/workflows/release-on-milestone-closed.yml@7.3.0"
+    secrets:
+      GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
+      GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
+      ORGANIZATION_ADMIN_TOKEN: ${{ secrets.ORGANIZATION_ADMIN_TOKEN }}
+      SIGNING_SECRET_KEY: ${{ secrets.SIGNING_SECRET_KEY }}
