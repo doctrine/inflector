@@ -13,13 +13,13 @@ use PHPUnit\Framework\TestCase;
 
 class RulesetTest extends TestCase
 {
-    /** @var Transformations|MockObject */
+    /** @var Transformations&MockObject */
     private $regular;
 
-    /** @var Patterns|MockObject */
+    /** @var Patterns&MockObject */
     private $uninflected;
 
-    /** @var Substitutions|MockObject */
+    /** @var Substitutions&MockObject */
     private $irregular;
 
     /** @var Ruleset */
