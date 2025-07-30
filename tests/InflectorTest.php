@@ -12,10 +12,10 @@ use PHPUnit\Framework\TestCase;
 
 class InflectorTest extends TestCase
 {
-    /** @var WordInflector|MockObject */
+    /** @var WordInflector&MockObject */
     private $singularInflector;
 
-    /** @var WordInflector|MockObject */
+    /** @var WordInflector&MockObject */
     private $pluralInflector;
 
     /** @var Inflector */
