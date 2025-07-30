@@ -11,22 +11,10 @@
     <!-- Ignore warnings, show progress of the run and show sniff names -->
     <arg value="nps"/>
 
-    <config name="php_version" value="70200"/>
+    <config name="php_version" value="80400"/>
 
     <file>src</file>
     <file>tests</file>
 
     <rule ref="Doctrine" />
-
-    <rule ref="SlevomatCodingStandard.TypeHints.PropertyTypeHint">
-        <properties>
-            <property name="enableNativeTypeHint" value="false" />
-            <property name="traversableTypeHints" type="array">
-                <element value="Traversable"/>
-                <element value="Iterator"/>
-                <element value="IteratorAggregate"/>
-                <element value="Doctrine\Common\Collections\Collection"/>
-            </property>
-        </properties>
-    </rule>
 </ruleset>

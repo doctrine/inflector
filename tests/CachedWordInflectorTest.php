@@ -11,11 +11,9 @@ use PHPUnit\Framework\TestCase;
 
 class CachedWordInflectorTest extends TestCase
 {
-    /** @var WordInflector&MockObject */
-    private $wordInflector;
+    private WordInflector&MockObject $wordInflector;
 
-    /** @var CachedWordInflector */
-    private $cachedWordInflector;
+    private CachedWordInflector $cachedWordInflector;
 
     public function testInflect(): void
     {
@@ -33,7 +31,7 @@ class CachedWordInflectorTest extends TestCase
         $this->wordInflector = $this->createMock(WordInflector::class);
 
         $this->cachedWordInflector = new CachedWordInflector(
-            $this->wordInflector
+            $this->wordInflector,
         );
     }
 }

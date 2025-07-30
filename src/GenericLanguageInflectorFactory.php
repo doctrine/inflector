@@ -11,10 +11,10 @@ use function array_unshift;
 abstract class GenericLanguageInflectorFactory implements LanguageInflectorFactory
 {
     /** @var Ruleset[] */
-    private $singularRulesets = [];
+    private array $singularRulesets = [];
 
     /** @var Ruleset[] */
-    private $pluralRulesets = [];
+    private array $pluralRulesets = [];
 
     final public function __construct()
     {
@@ -26,15 +26,15 @@ abstract class GenericLanguageInflectorFactory implements LanguageInflectorFacto
     {
         return new Inflector(
             new CachedWordInflector(new RulesetInflector(
-                ...$this->singularRulesets
+                ...$this->singularRulesets,
             )),
             new CachedWordInflector(new RulesetInflector(
-                ...$this->pluralRulesets
-            ))
+                ...$this->pluralRulesets,
+            )),
         );
     }
 
-    final public function withSingularRules(?Ruleset $singularRules, bool $reset = false): LanguageInflectorFactory
+    final public function withSingularRules(Ruleset|null $singularRules, bool $reset = false): LanguageInflectorFactory
     {
         if ($reset) {
             $this->singularRulesets = [];
@@ -47,7 +47,7 @@ abstract class GenericLanguageInflectorFactory implements LanguageInflectorFacto
         return $this;
     }
 
-    final public function withPluralRules(?Ruleset $pluralRules, bool $reset = false): LanguageInflectorFactory
+    final public function withPluralRules(Ruleset|null $pluralRules, bool $reset = false): LanguageInflectorFactory
     {
         if ($reset) {
             $this->pluralRulesets = [];

@@ -53,7 +53,7 @@ final class InflectorFactory
             default:
                 throw new InvalidArgumentException(sprintf(
                     'Language "%s" is not supported.',
-                    $language
+                    $language,
                 ));
         }
     }

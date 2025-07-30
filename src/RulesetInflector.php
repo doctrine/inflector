@@ -20,7 +20,7 @@ use function array_merge;
 class RulesetInflector implements WordInflector
 {
     /** @var Ruleset[] */
-    private $rulesets;
+    private array $rulesets;
 
     public function __construct(Ruleset $ruleset, Ruleset ...$rulesets)
     {

@@ -9,7 +9,7 @@ use Doctrine\Inflector\WordInflector;
 class Transformations implements WordInflector
 {
     /** @var Transformation[] */
-    private $transformations;
+    private array $transformations;
 
     public function __construct(Transformation ...$transformations)
     {

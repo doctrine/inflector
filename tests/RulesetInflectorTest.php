@@ -17,14 +17,11 @@ use PHPUnit\Framework\TestCase;
 
 class RulesetInflectorTest extends TestCase
 {
-    /** @var Ruleset&MockObject */
-    private $firstRuleset;
+    private Ruleset&MockObject $firstRuleset;
 
-    /** @var Ruleset&MockObject */
-    private $secondRuleset;
+    private Ruleset&MockObject $secondRuleset;
 
-    /** @var RulesetInflector */
-    private $rulesetInflector;
+    private RulesetInflector $rulesetInflector;
 
     public function testInflectIrregularUsesFirstMatch(): void
     {
@@ -55,13 +52,13 @@ class RulesetInflectorTest extends TestCase
         $firstRuleset = new Ruleset(
             new Transformations(),
             new Patterns(),
-            new Substitutions()
+            new Substitutions(),
         );
 
         $secondRuleset = new Ruleset(
             new Transformations(),
             new Patterns(),
-            new Substitutions(new Substitution(new Word('in'), new Word('second')))
+            new Substitutions(new Substitution(new Word('in'), new Word('second'))),
         );
 
         $inflector = new RulesetInflector($firstRuleset, $secondRuleset);

@@ -15,7 +15,7 @@ interface LanguageInflectorFactory
      *
      * @return $this
      */
-    public function withSingularRules(?Ruleset $singularRules, bool $reset = false): self;
+    public function withSingularRules(Ruleset|null $singularRules, bool $reset = false): self;
 
     /**
      * Applies custom rules for pluralisation
@@ -24,7 +24,7 @@ interface LanguageInflectorFactory
      *
      * @return $this
      */
-    public function withPluralRules(?Ruleset $pluralRules, bool $reset = false): self;
+    public function withPluralRules(Ruleset|null $pluralRules, bool $reset = false): self;
 
     /**
      * Builds the inflector instance with all applicable rules

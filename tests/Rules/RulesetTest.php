@@ -13,17 +13,13 @@ use PHPUnit\Framework\TestCase;
 
 class RulesetTest extends TestCase
 {
-    /** @var Transformations&MockObject */
-    private $regular;
+    private Transformations&MockObject $regular;
 
-    /** @var Patterns&MockObject */
-    private $uninflected;
+    private Patterns&MockObject $uninflected;
 
-    /** @var Substitutions&MockObject */
-    private $irregular;
+    private Substitutions&MockObject $irregular;
 
-    /** @var Ruleset */
-    private $ruleset;
+    private Ruleset $ruleset;
 
     public function testGetRegular(): void
     {
@@ -49,7 +45,7 @@ class RulesetTest extends TestCase
         $this->ruleset = new Ruleset(
             $this->regular,
             $this->uninflected,
-            $this->irregular
+            $this->irregular,
         );
     }
 }

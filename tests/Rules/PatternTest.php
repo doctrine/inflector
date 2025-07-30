@@ -9,8 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class PatternTest extends TestCase
 {
-    /** @var Pattern */
-    private $pattern;
+    private Pattern $pattern;
 
     public function testGetPattern(): void
     {

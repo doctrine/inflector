@@ -10,8 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class PatternsTest extends TestCase
 {
-    /** @var Patterns */
-    private $patterns;
+    private Patterns $patterns;
 
     public function testMatches(): void
     {

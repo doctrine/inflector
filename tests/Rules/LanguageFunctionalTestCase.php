@@ -22,7 +22,7 @@ abstract class LanguageFunctionalTestCase extends TestCase
         self::assertSame(
             $singular,
             $this->createInflector()->singularize($plural),
-            sprintf("'%s' should be singularized to '%s'", $plural, $singular)
+            sprintf("'%s' should be singularized to '%s'", $plural, $singular),
         );
     }
 
@@ -33,7 +33,7 @@ abstract class LanguageFunctionalTestCase extends TestCase
         self::assertSame(
             $plural,
             $this->createInflector()->pluralize($singular),
-            sprintf("'%s' should be pluralized to '%s'", $singular, $plural)
+            sprintf("'%s' should be pluralized to '%s'", $singular, $plural),
         );
     }
 

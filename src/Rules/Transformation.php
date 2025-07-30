@@ -10,16 +10,8 @@ use function preg_replace;
 
 final class Transformation implements WordInflector
 {
-    /** @var Pattern */
-    private $pattern;
-
-    /** @var string */
-    private $replacement;
-
-    public function __construct(Pattern $pattern, string $replacement)
+    public function __construct(private Pattern $pattern, private string $replacement)
     {
-        $this->pattern     = $pattern;
-        $this->replacement = $replacement;
     }
 
     public function getPattern(): Pattern

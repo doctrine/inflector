@@ -414,7 +414,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTestCase
         self::assertNotSame(
             $notEquals,
             $this->createInflector()->singularize($singular),
-            sprintf("'%s' should not be singularized to '%s'", $singular, $notEquals)
+            sprintf("'%s' should not be singularized to '%s'", $singular, $notEquals),
         );
     }
 
@@ -441,7 +441,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTestCase
         self::assertSame(
             $plural,
             $pluralized,
-            sprintf("'%s' should not be pluralized to '%s'", $plural, $pluralized)
+            sprintf("'%s' should not be pluralized to '%s'", $plural, $pluralized),
         );
     }
 
