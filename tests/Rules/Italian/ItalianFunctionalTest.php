@@ -7,12 +7,12 @@ namespace Doctrine\Tests\Inflector\Rules\Italian;
 use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
-use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTest;
+use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTestCase;
 
-class ItalianFunctionalTest extends LanguageFunctionalTest
+class ItalianFunctionalTest extends LanguageFunctionalTestCase
 {
     /** @return string[][] */
-    public function dataSampleWords(): array
+    public static function dataSampleWords(): array
     {
         return [
             // Empty string and edge cases
