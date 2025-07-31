@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector\Rules;
 
-final class Substitution
+final readonly class Substitution
 {
     public function __construct(private Word $from, private Word $to)
     {

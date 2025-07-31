@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector\Rules;
 
-class Ruleset
+readonly class Ruleset
 {
     public function __construct(
         private Transformations $regular,

@@ -16,7 +16,7 @@ use InvalidArgumentException;
 
 use function sprintf;
 
-final class InflectorFactory
+final readonly class InflectorFactory
 {
     public static function create(): LanguageInflectorFactory
     {
