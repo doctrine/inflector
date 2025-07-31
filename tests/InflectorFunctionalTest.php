@@ -15,7 +15,7 @@ class InflectorFunctionalTest extends TestCase
     {
         self::assertSame(
             'Top-O-The-Morning To All_of_you!',
-            $this->createInflector()->capitalize('top-o-the-morning to all_of_you!')
+            $this->createInflector()->capitalize('top-o-the-morning to all_of_you!'),
         );
     }
 
@@ -23,7 +23,7 @@ class InflectorFunctionalTest extends TestCase
     {
         self::assertSame(
             'Top-O-The-Morning To All_Of_You!',
-            $this->createInflector()->capitalize('top-o-the-morning to all_of_you!', '-_ ')
+            $this->createInflector()->capitalize('top-o-the-morning to all_of_you!', '-_ '),
         );
     }
 

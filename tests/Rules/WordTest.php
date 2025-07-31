@@ -9,8 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class WordTest extends TestCase
 {
-    /** @var Word */
-    private $word;
+    private Word $word;
 
     public function testGetWord(): void
     {

@@ -39,14 +39,14 @@
     ],
     "homepage": "https://www.doctrine-project.org/projects/inflector.html",
     "require": {
-        "php": "^7.2 || ^8.0"
+        "php": "^8.4"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^12.0 || ^13.0",
-        "phpstan/phpstan": "^1.12 || ^2.0",
-        "phpstan/phpstan-phpunit": "^1.4 || ^2.0",
-        "phpstan/phpstan-strict-rules": "^1.6 || ^2.0",
-        "phpunit/phpunit": "^8.5 || ^12.2"
+        "doctrine/coding-standard": "^13.0",
+        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0",
+        "phpunit/phpunit": "^12.2"
     },
     "autoload": {
         "psr-4": {

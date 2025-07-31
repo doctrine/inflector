@@ -9,8 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class NoopWordInflectorTest extends TestCase
 {
-    /** @var NoopWordInflector */
-    private $inflector;
+    private NoopWordInflector $inflector;
 
     public function testInflect(): void
     {

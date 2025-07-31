@@ -10,8 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class SubstitutionTest extends TestCase
 {
-    /** @var Substitution */
-    private $substitution;
+    private Substitution $substitution;
 
     public function testGetFrom(): void
     {

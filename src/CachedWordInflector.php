@@ -6,15 +6,11 @@ namespace Doctrine\Inflector;
 
 class CachedWordInflector implements WordInflector
 {
-    /** @var WordInflector */
-    private $wordInflector;
-
     /** @var string[] */
-    private $cache = [];
+    private array $cache = [];
 
-    public function __construct(WordInflector $wordInflector)
+    public function __construct(private WordInflector $wordInflector)
     {
-        $this->wordInflector = $wordInflector;
     }
 
     public function inflect(string $word): string

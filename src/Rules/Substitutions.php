@@ -13,7 +13,7 @@ use function substr;
 class Substitutions implements WordInflector
 {
     /** @var Substitution[] */
-    private $substitutions;
+    private array $substitutions;
 
     public function __construct(Substitution ...$substitutions)
     {
@@ -29,7 +29,7 @@ class Substitutions implements WordInflector
         foreach ($this->substitutions as $substitution) {
             $substitutions[] = new Substitution(
                 $substitution->getTo(),
-                $substitution->getFrom()
+                $substitution->getFrom(),
             );
         }
 

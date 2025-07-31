@@ -10,8 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class TransformationTest extends TestCase
 {
-    /** @var Transformation */
-    private $transformation;
+    private Transformation $transformation;
 
     public function testGetPattern(): void
     {

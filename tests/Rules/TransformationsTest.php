@@ -11,8 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class TransformationsTest extends TestCase
 {
-    /** @var Transformations */
-    private $transformations;
+    private Transformations $transformations;
 
     public function testInflect(): void
     {

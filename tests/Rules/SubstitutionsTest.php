@@ -12,10 +12,9 @@ use PHPUnit\Framework\TestCase;
 class SubstitutionsTest extends TestCase
 {
     /** @var Substitution[] */
-    private $substitutions;
+    private array $substitutions;
 
-    /** @var Substitutions */
-    private $irregular;
+    private Substitutions $irregular;
 
     public function testGetFlippedSubstitutions(): void
     {

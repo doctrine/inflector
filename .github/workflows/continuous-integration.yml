@@ -21,7 +21,7 @@ jobs:
       - name: Install PHP with extensions.
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.2"
+          php-version: "8.4"
 
       - name: Install roave/backward-compatibility-check.
         run: composer require --dev roave/backward-compatibility-check
@@ -33,6 +33,6 @@ jobs:
     name: "PHPUnit"
     uses: "doctrine/.github/.github/workflows/continuous-integration.yml@7.3.0"
     with:
-      php-versions: '["7.2", "7.3", "7.4", "8.0", "8.1", "8.2"]'
+      php-versions: '["8.4"]'
     secrets:
       CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"

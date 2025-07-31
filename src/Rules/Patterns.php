@@ -10,8 +10,7 @@ use function preg_match;
 
 class Patterns
 {
-    /** @var string */
-    private $regex;
+    private string $regex;
 
     public function __construct(Pattern ...$patterns)
     {

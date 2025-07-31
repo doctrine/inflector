@@ -12,14 +12,11 @@ use PHPUnit\Framework\TestCase;
 
 class InflectorTest extends TestCase
 {
-    /** @var WordInflector&MockObject */
-    private $singularInflector;
+    private WordInflector&MockObject $singularInflector;
 
-    /** @var WordInflector&MockObject */
-    private $pluralInflector;
+    private WordInflector&MockObject $pluralInflector;
 
-    /** @var Inflector */
-    private $inflector;
+    private Inflector $inflector;
 
     public function testTableize(): void
     {
@@ -46,7 +43,7 @@ class InflectorTest extends TestCase
     {
         self::assertSame(
             'Top-O-The-Morning To All_of_you!',
-            $this->inflector->capitalize('top-o-the-morning to all_of_you!')
+            $this->inflector->capitalize('top-o-the-morning to all_of_you!'),
         );
     }
 
@@ -69,7 +66,7 @@ class InflectorTest extends TestCase
     {
         self::assertSame(
             $expected,
-            $this->inflector->urlize($string)
+            $this->inflector->urlize($string),
         );
     }
 

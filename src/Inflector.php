@@ -23,7 +23,7 @@ use function ucwords;
 
 class Inflector
 {
-    private const ACCENTED_CHARACTERS = [
+    private const array ACCENTED_CHARACTERS = [
         'À' => 'A',
         'Á' => 'A',
         'Â' => 'A',
@@ -214,16 +214,8 @@ class Inflector
         '£' => '',
     ];
 
-    /** @var WordInflector */
-    private $singularizer;
-
-    /** @var WordInflector */
-    private $pluralizer;
-
-    public function __construct(WordInflector $singularizer, WordInflector $pluralizer)
+    public function __construct(private WordInflector $singularizer, private WordInflector $pluralizer)
     {
-        $this->singularizer = $singularizer;
-        $this->pluralizer   = $pluralizer;
     }
 
     /**
@@ -236,7 +228,7 @@ class Inflector
         if ($tableized === null) {
             throw new RuntimeException(sprintf(
                 'preg_replace returned null for value "%s"',
-                $word
+                $word,
             ));
         }
 
@@ -471,7 +463,7 @@ class Inflector
             if ($replaced === null) {
                 throw new RuntimeException(sprintf(
                     'preg_replace returned null for value "%s"',
-                    $urlized
+                    $urlized,
                 ));
             }
 
