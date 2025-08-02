@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector\Rules;
 
-class Word
+final readonly class Word
 {
     public function __construct(private string $word)
     {

@@ -9,7 +9,7 @@ use Doctrine\Inflector\Rules\Substitution;
 use Doctrine\Inflector\Rules\Transformation;
 use Doctrine\Inflector\Rules\Word;
 
-class Inflectible
+final class Inflectible
 {
     /** @return iterable<Transformation> */
     public static function getSingular(): iterable

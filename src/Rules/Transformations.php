@@ -6,7 +6,7 @@ namespace Doctrine\Inflector\Rules;
 
 use Doctrine\Inflector\WordInflector;
 
-class Transformations implements WordInflector
+readonly class Transformations implements WordInflector
 {
     /** @var Transformation[] */
     private array $transformations;

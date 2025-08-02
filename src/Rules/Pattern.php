@@ -6,7 +6,7 @@ namespace Doctrine\Inflector\Rules;
 
 use function preg_match;
 
-final class Pattern
+final readonly class Pattern
 {
     private string $regex;
 

@@ -21,7 +21,7 @@ use function strtr;
 use function trim;
 use function ucwords;
 
-class Inflector
+final readonly class Inflector
 {
     private const array ACCENTED_CHARACTERS = [
         'À' => 'A',

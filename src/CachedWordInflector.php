@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector;
 
-class CachedWordInflector implements WordInflector
+final class CachedWordInflector implements WordInflector
 {
     /** @var string[] */
     private array $cache = [];
 
-    public function __construct(private WordInflector $wordInflector)
+    public function __construct(private readonly WordInflector $wordInflector)
     {
     }
 
