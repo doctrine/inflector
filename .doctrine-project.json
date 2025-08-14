@@ -5,24 +5,24 @@
     "docsSlug": "doctrine-inflector",
     "versions": [
         {
-            "name": "2.1",
-            "branchName": "2.1.x",
-            "slug": "2.1",
+            "name": "2.2",
+            "branchName": "2.2.x",
+            "slug": "2.2",
             "upcoming": true
         },
         {
+            "name": "2.1",
+            "branchName": "2.1.x",
+            "slug": "2.1",
+            "current": true
+        },
+        {
             "name": "2.0",
-            "branchName": "2.0.x",
             "slug": "2.0",
-            "current": true,
-            "aliases": [
-                "current",
-                "stable"
-            ]
+            "maintained": false
         },
         {
             "name": "1.4",
-            "branchName": "1.4.x",
             "slug": "1.4",
             "maintained": false
         },
