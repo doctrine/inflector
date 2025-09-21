@@ -375,6 +375,65 @@ class EnglishFunctionalTest extends LanguageFunctionalTestCase
         ];
     }
 
+    /** @return string[][] */
+    public static function dataAcronymWords(): array
+    {
+        return [
+            ['CD', 'CDs'],
+            ['DVD', 'DVDs'],
+            ['NLP', 'NLPs'],
+            ['LMS', 'LMSs'],
+            ['CMS', 'CMSs'],
+            ['DNS', 'DNSs'],
+        ];
+    }
+
+    /** @dataProvider dataAcronymWords */
+    #[DataProvider('dataAcronymWords')]
+    public function testAcronymWords(string $singular, string $plural): void
+    {
+        $inflector = $this->createInflector();
+
+        self::assertSame(
+            $plural,
+            $inflector->pluralize($singular),
+            sprintf("'%s' should be pluralized to '%s'", $singular, $plural)
+        );
+    }
+
+    /** @return string[][] */
+    public static function dataAcronymEdgeCases(): array
+    {
+        return [
+            ['A', 'As'],
+            ['UPS', 'UPS'],
+            ['GPS', 'GPS'],
+            ['SMS', 'SMS'],
+            ['U.S.', 'U.S.s'],
+            ['U-S', 'U-Ss'],
+            ['APIKey', 'APIKeys'],
+            ['CDPlayer', 'CDPlayers'],
+            ['SMS', 'SMS'],
+            ['NEWS', 'NEWS'],
+            ['US', 'US'],
+            ['cms', 'cms'],
+        ];
+    }
+
+    /** @dataProvider dataAcronymEdgeCases */
+    #[DataProvider('dataAcronymEdgeCases')]
+    public function testAcronymEdgeCases(string $singular, string $plural): void
+    {
+        $inflector = $this->createInflector();
+
+        self::assertSame(
+            $plural,
+            $inflector->pluralize($singular),
+            sprintf("'%s' should be pluralized to '%s'", $singular, $plural)
+        );
+    }
+
+
     /**
      * Singulars as Plural test data.
      *

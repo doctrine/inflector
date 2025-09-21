@@ -160,6 +160,8 @@ final class Uninflected
         yield new Pattern('siemens');
         yield new Pattern('silk');
         yield new Pattern('sms');
+        yield new Pattern('gps');
+        yield new Pattern('ups');
         yield new Pattern('soap');
         yield new Pattern('social media');
         yield new Pattern('spam');
