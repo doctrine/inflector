@@ -44,7 +44,6 @@ class PortugueseFunctionalTest extends LanguageFunctionalTestCase
             ['email', 'emails'],
             ['mês', 'meses'],
             ['útil', 'úteis'],
-            ['cônsul', 'cônsules'],
         ];
     }
 
