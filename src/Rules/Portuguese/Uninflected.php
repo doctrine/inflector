@@ -28,5 +28,19 @@ final class Uninflected
         yield new Pattern('ônibus');
         yield new Pattern('lápis');
         yield new Pattern('fênix');
+        yield new Pattern('vírus');
+        yield new Pattern('pires');
+        yield new Pattern('atlas');
+        yield new Pattern('oásis');
+        yield new Pattern('cais');
+        yield new Pattern('ônus');
+        yield new Pattern('guarda-chuva');
+        yield new Pattern('guarda-roupa');
+        yield new Pattern('pára-brisa');
+        yield new Pattern('pára-choque');
+        yield new Pattern('porta-malas');
+        yield new Pattern('porta-voz');
+        yield new Pattern('bate-papo');
+        yield new Pattern('sem-terra');
     }
 }
