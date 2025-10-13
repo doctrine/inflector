@@ -71,7 +71,7 @@ class Inflectible
         yield new Substitution(new Word('chão'), new Word('chãos'));
         yield new Substitution(new Word('charlatão'), new Word('charlatães'));
         yield new Substitution(new Word('cidadão'), new Word('cidadãos'));
-        yield new Substitution(new Word('consul'), new Word('consules'));
+        yield new Substitution(new Word('cônsul'), new Word('cônsules'));
         yield new Substitution(new Word('cristão'), new Word('cristãos'));
         yield new Substitution(new Word('difícil'), new Word('difíceis'));
         yield new Substitution(new Word('email'), new Word('emails'));
@@ -85,6 +85,7 @@ class Inflectible
         yield new Substitution(new Word('liquens'), new Word('liquen'));
         yield new Substitution(new Word('mal'), new Word('males'));
         yield new Substitution(new Word('mão'), new Word('mãos'));
+        yield new Substitution(new Word('mês'), new Word('meses'));
         yield new Substitution(new Word('orfão'), new Word('orfãos'));
         yield new Substitution(new Word('país'), new Word('países'));
         yield new Substitution(new Word('pai'), new Word('pais'));
@@ -94,5 +95,6 @@ class Inflectible
         yield new Substitution(new Word('sacristão'), new Word('sacristães'));
         yield new Substitution(new Word('sotão'), new Word('sotãos'));
         yield new Substitution(new Word('tabelião'), new Word('tabeliães'));
+        yield new Substitution(new Word('útil'), new Word('úteis'));
     }
 }
