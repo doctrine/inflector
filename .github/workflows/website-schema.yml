@@ -18,4 +18,4 @@ on:
 jobs:
   json-validate:
     name: "Validate JSON schema"
-    uses: "doctrine/.github/.github/workflows/website-schema.yml@8.0.0"
+    uses: "doctrine/.github/.github/workflows/website-schema.yml@10.1.0"
