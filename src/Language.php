@@ -13,6 +13,7 @@ final class Language
     public const NORWEGIAN_BOKMAL = 'norwegian-bokmal';
     public const PORTUGUESE       = 'portuguese';
     public const SPANISH          = 'spanish';
+    public const SWEDISH          = 'swedish';
     public const TURKISH          = 'turkish';
 
     private function __construct()

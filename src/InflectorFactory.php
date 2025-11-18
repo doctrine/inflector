@@ -11,6 +11,7 @@ use Doctrine\Inflector\Rules\Italian;
 use Doctrine\Inflector\Rules\NorwegianBokmal;
 use Doctrine\Inflector\Rules\Portuguese;
 use Doctrine\Inflector\Rules\Spanish;
+use Doctrine\Inflector\Rules\Swedish;
 use Doctrine\Inflector\Rules\Turkish;
 use InvalidArgumentException;
 
@@ -46,6 +47,9 @@ final class InflectorFactory
 
             case Language::SPANISH:
                 return new Spanish\InflectorFactory();
+
+            case Language::SWEDISH:
+                return new Swedish\InflectorFactory();
 
             case Language::TURKISH:
                 return new Turkish\InflectorFactory();
