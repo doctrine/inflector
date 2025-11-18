@@ -41,6 +41,7 @@ The supported languages are as follows:
 - ``Language::ENGLISH``
 - ``Language::ESPERANTO``
 - ``Language::FRENCH``
+- ``Language::ITALIAN``
 - ``Language::NORWEGIAN_BOKMAL``
 - ``Language::PORTUGUESE``
 - ``Language::SPANISH``
