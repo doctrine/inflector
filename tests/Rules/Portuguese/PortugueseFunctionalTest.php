@@ -38,10 +38,12 @@ class PortugueseFunctionalTest extends LanguageFunctionalTestCase
             ['chão', 'chãos'],
             ['charlatão', 'charlatães'],
             ['cidadão', 'cidadãos'],
-            ['consul', 'consules'],
+            ['cônsul', 'cônsules'],
             ['cristão', 'cristãos'],
             ['difícil', 'difíceis'],
             ['email', 'emails'],
+            ['mês', 'meses'],
+            ['útil', 'úteis'],
         ];
     }
 
