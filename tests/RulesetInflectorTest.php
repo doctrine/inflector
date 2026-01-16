@@ -9,6 +9,7 @@ use Doctrine\Inflector\Rules\Patterns;
 use Doctrine\Inflector\Rules\Ruleset;
 use Doctrine\Inflector\Rules\Substitution;
 use Doctrine\Inflector\Rules\Substitutions;
+use Doctrine\Inflector\Rules\Transformation;
 use Doctrine\Inflector\Rules\Transformations;
 use Doctrine\Inflector\Rules\Word;
 use Doctrine\Inflector\RulesetInflector;
@@ -28,8 +29,8 @@ class RulesetInflectorTest extends TestCase
 
     public function testInflectIrregularUsesFirstMatch(): void
     {
-        $firstIrregular  = $this->createMock(Substitutions::class);
-        $secondIrregular = $this->createMock(Substitutions::class);
+        $firstIrregular  = new Substitutions(new Substitution(new Word('in'), new Word('first')));
+        $secondIrregular = new Substitutions(new Substitution(new Word('in'), new Word('second')));
 
         $this->firstRuleset
             ->method('getIrregular')
@@ -38,14 +39,6 @@ class RulesetInflectorTest extends TestCase
         $this->secondRuleset
             ->method('getIrregular')
             ->willReturn($secondIrregular);
-
-        $firstIrregular->expects(self::once())
-            ->method('inflect')
-            ->with('in')
-            ->willReturn('first');
-
-        $secondIrregular->expects(self::never())
-            ->method('inflect');
 
         self::assertSame('first', $this->rulesetInflector->inflect('in'));
     }
@@ -111,7 +104,7 @@ class RulesetInflectorTest extends TestCase
 
     public function testInflectRegularUsesFirstMatch(): void
     {
-        $irregular = $this->createMock(Substitutions::class);
+        $irregular = new Substitutions();
 
         $this->firstRuleset
             ->method('getIrregular')
@@ -120,11 +113,6 @@ class RulesetInflectorTest extends TestCase
         $this->secondRuleset
             ->method('getIrregular')
             ->willReturn($irregular);
-
-        $irregular
-            ->method('inflect')
-            ->with('in')
-            ->willReturn('in');
 
         $uninflected = $this->createMock(Patterns::class);
 
@@ -141,8 +129,12 @@ class RulesetInflectorTest extends TestCase
             ->with('in')
             ->willReturn(false);
 
-        $firstRegular  = $this->createMock(Transformations::class);
-        $secondRegular = $this->createMock(Transformations::class);
+        $firstRegular  = new Transformations(
+            new Transformation(new Pattern('in'), 'first')
+        );
+        $secondRegular = new Transformations(
+            new Transformation(new Pattern('in'), 'second')
+        );
 
         $this->firstRuleset
             ->method('getRegular')
@@ -151,21 +143,13 @@ class RulesetInflectorTest extends TestCase
         $this->secondRuleset
             ->method('getRegular')
             ->willReturn($secondRegular);
-
-        $firstRegular->expects(self::once())
-            ->method('inflect')
-            ->with('in')
-            ->willReturn('first');
-
-        $secondRegular->expects(self::never())
-            ->method('inflect');
 
         self::assertSame('first', $this->rulesetInflector->inflect('in'));
     }
 
     public function testInflectRegularContinuesIfFirstRulesetReturnsOriginalValue(): void
     {
-        $irregular = $this->createMock(Substitutions::class);
+        $irregular = new Substitutions();
 
         $this->firstRuleset
             ->method('getIrregular')
@@ -174,11 +158,6 @@ class RulesetInflectorTest extends TestCase
         $this->secondRuleset
             ->method('getIrregular')
             ->willReturn($irregular);
-
-        $irregular
-            ->method('inflect')
-            ->with('in')
-            ->willReturn('in');
 
         $uninflected = $this->createMock(Patterns::class);
 
@@ -195,8 +174,12 @@ class RulesetInflectorTest extends TestCase
             ->with('in')
             ->willReturn(false);
 
-        $firstRegular  = $this->createMock(Transformations::class);
-        $secondRegular = $this->createMock(Transformations::class);
+        $firstRegular  = new Transformations(
+            new Transformation(new Pattern('nomatch'), 'first')
+        );
+        $secondRegular = new Transformations(
+            new Transformation(new Pattern('in'), 'second')
+        );
 
         $this->firstRuleset
             ->method('getRegular')
@@ -206,22 +189,12 @@ class RulesetInflectorTest extends TestCase
             ->method('getRegular')
             ->willReturn($secondRegular);
 
-        $firstRegular->expects(self::once())
-            ->method('inflect')
-            ->with('in')
-            ->willReturn('in');
-
-        $secondRegular->expects(self::once())
-            ->method('inflect')
-            ->with('in')
-            ->willReturn('second');
-
         self::assertSame('second', $this->rulesetInflector->inflect('in'));
     }
 
     public function testInflectReturnsOriginalValueOnNoMatches(): void
     {
-        $irregular = $this->createMock(Substitutions::class);
+        $irregular = new Substitutions();
 
         $this->firstRuleset
             ->method('getIrregular')
@@ -230,11 +203,6 @@ class RulesetInflectorTest extends TestCase
         $this->secondRuleset
             ->method('getIrregular')
             ->willReturn($irregular);
-
-        $irregular
-            ->method('inflect')
-            ->with('in')
-            ->willReturn('in');
 
         $uninflected = $this->createMock(Patterns::class);
 
@@ -251,7 +219,9 @@ class RulesetInflectorTest extends TestCase
             ->with('in')
             ->willReturn(false);
 
-        $regular = $this->createMock(Transformations::class);
+        $regular = new Transformations(
+            new Transformation(new Pattern('nomatch'), 'replaced')
+        );
 
         $this->firstRuleset
             ->method('getRegular')
@@ -260,11 +230,6 @@ class RulesetInflectorTest extends TestCase
         $this->secondRuleset
             ->method('getRegular')
             ->willReturn($regular);
-
-        $regular
-            ->method('inflect')
-            ->with('in')
-            ->willReturn('in');
 
         self::assertSame('in', $this->rulesetInflector->inflect('in'));
     }
