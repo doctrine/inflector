@@ -6,6 +6,7 @@ namespace Doctrine\Inflector\Rules;
 
 use Doctrine\Inflector\WordInflector;
 
+/** @final */
 class Transformations implements WordInflector
 {
     /** @var Transformation[] */

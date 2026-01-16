@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector\Rules;
 
+/** @final */
 class Ruleset
 {
     /** @var Transformations */
