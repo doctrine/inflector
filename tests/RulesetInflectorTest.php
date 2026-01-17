@@ -13,13 +13,28 @@ use Doctrine\Inflector\Rules\Transformation;
 use Doctrine\Inflector\Rules\Transformations;
 use Doctrine\Inflector\Rules\Word;
 use Doctrine\Inflector\RulesetInflector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class RulesetInflectorTest extends TestCase
 {
-    public function testInflectIrregularUsesFirstMatch(): void
+    /** @dataProvider rulesetProvider */
+    #[DataProvider('rulesetProvider')]
+    public function testInflect(
+        Ruleset $firstRuleset,
+        Ruleset $secondRuleset,
+        string $input,
+        string $expected
+    ): void {
+        $inflector = new RulesetInflector($firstRuleset, $secondRuleset);
+
+        self::assertSame($expected, $inflector->inflect($input));
+    }
+
+    /** @return iterable<string, array{Ruleset, Ruleset, string, string}> */
+    public static function rulesetProvider(): iterable
     {
-        $inflector = new RulesetInflector(
+        yield 'irregular uses first match' => [
             new Ruleset(
                 new Transformations(),
                 new Patterns(),
@@ -29,15 +44,12 @@ class RulesetInflectorTest extends TestCase
                 new Transformations(),
                 new Patterns(),
                 new Substitutions(new Substitution(new Word('in'), new Word('second')))
-            )
-        );
+            ),
+            'in',
+            'first',
+        ];
 
-        self::assertSame('first', $inflector->inflect('in'));
-    }
-
-    public function testInflectIrregularContinuesIfFirstRulesetReturnsOriginalValue(): void
-    {
-        $inflector = new RulesetInflector(
+        yield 'irregular continues if first ruleset returns original value' => [
             new Ruleset(
                 new Transformations(),
                 new Patterns(),
@@ -47,15 +59,12 @@ class RulesetInflectorTest extends TestCase
                 new Transformations(),
                 new Patterns(),
                 new Substitutions(new Substitution(new Word('in'), new Word('second')))
-            )
-        );
+            ),
+            'in',
+            'second',
+        ];
 
-        self::assertSame('second', $inflector->inflect('in'));
-    }
-
-    public function testInflectUninflectedSkipsOnFirstMatch(): void
-    {
-        $inflector = new RulesetInflector(
+        yield 'uninflected skips on first match' => [
             new Ruleset(
                 new Transformations(),
                 new Patterns(new Pattern('in')),
@@ -65,15 +74,12 @@ class RulesetInflectorTest extends TestCase
                 new Transformations(new Transformation(new Pattern('in'), 'should-not-reach')),
                 new Patterns(),
                 new Substitutions()
-            )
-        );
+            ),
+            'in',
+            'in',
+        ];
 
-        self::assertSame('in', $inflector->inflect('in'));
-    }
-
-    public function testIrregularIsInflectedEvenIfLaterRulesetIgnores(): void
-    {
-        $inflector = new RulesetInflector(
+        yield 'irregular is inflected even if later ruleset ignores' => [
             new Ruleset(
                 new Transformations(),
                 new Patterns(),
@@ -83,15 +89,12 @@ class RulesetInflectorTest extends TestCase
                 new Transformations(),
                 new Patterns(new Pattern('travel')),
                 new Substitutions()
-            )
-        );
+            ),
+            'travel',
+            'travels',
+        ];
 
-        self::assertSame('travels', $inflector->inflect('travel'));
-    }
-
-    public function testInflectRegularUsesFirstMatch(): void
-    {
-        $inflector = new RulesetInflector(
+        yield 'regular uses first match' => [
             new Ruleset(
                 new Transformations(new Transformation(new Pattern('in'), 'first')),
                 new Patterns(),
@@ -102,14 +105,11 @@ class RulesetInflectorTest extends TestCase
                 new Patterns(),
                 new Substitutions()
             ),
-        );
+            'in',
+            'first',
+        ];
 
-        self::assertSame('first', $inflector->inflect('in'));
-    }
-
-    public function testInflectRegularContinuesIfFirstRulesetReturnsOriginalValue(): void
-    {
-        $inflector = new RulesetInflector(
+        yield 'regular continues if first ruleset returns original value' => [
             new Ruleset(
                 new Transformations(new Transformation(new Pattern('nomatch'), 'first')),
                 new Patterns(),
@@ -119,15 +119,12 @@ class RulesetInflectorTest extends TestCase
                 new Transformations(new Transformation(new Pattern('in'), 'second')),
                 new Patterns(),
                 new Substitutions()
-            )
-        );
+            ),
+            'in',
+            'second',
+        ];
 
-        self::assertSame('second', $inflector->inflect('in'));
-    }
-
-    public function testInflectReturnsOriginalValueOnNoMatches(): void
-    {
-        $inflector = new RulesetInflector(
+        yield 'returns original value on no matches' => [
             new Ruleset(
                 new Transformations(new Transformation(new Pattern('nomatch'), 'replaced')),
                 new Patterns(),
@@ -137,9 +134,9 @@ class RulesetInflectorTest extends TestCase
                 new Transformations(new Transformation(new Pattern('nomatch'), 'replaced')),
                 new Patterns(),
                 new Substitutions()
-            )
-        );
-
-        self::assertSame('in', $inflector->inflect('in'));
+            ),
+            'in',
+            'in',
+        ];
     }
 }
