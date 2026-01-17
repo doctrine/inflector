@@ -42,11 +42,11 @@
         "php": "^8.4"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^13.0",
+        "doctrine/coding-standard": "^14.0",
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0",
-        "phpunit/phpunit": "^12.2"
+        "phpunit/phpunit": "^12.5.6"
     },
     "autoload": {
         "psr-4": {
