@@ -16,6 +16,8 @@ use function array_merge;
  * - The first ruleset that returns a different value for an irregular word wins
  * - The first ruleset that returns a different value for a regular word wins
  * - If none of the above match, the word is left as-is
+ *
+ * @final
  */
 class RulesetInflector implements WordInflector
 {
