@@ -12,7 +12,6 @@ use Doctrine\Inflector\Rules\Substitutions;
 use Doctrine\Inflector\Rules\Transformation;
 use Doctrine\Inflector\Rules\Transformations;
 use Doctrine\Inflector\Rules\Word;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class RulesetTest extends TestCase
@@ -20,7 +19,7 @@ class RulesetTest extends TestCase
     /** @var Transformations */
     private $regular;
 
-    /** @var Patterns&MockObject */
+    /** @var Patterns */
     private $uninflected;
 
     /** @var Substitutions */
@@ -49,7 +48,7 @@ class RulesetTest extends TestCase
         $this->regular     = new Transformations(
             new Transformation(new Pattern('test'), 'tests')
         );
-        $this->uninflected = $this->createMock(Patterns::class);
+        $this->uninflected = new Patterns(new Pattern('uninflected'));
         $this->irregular   = new Substitutions(
             new Substitution(new Word('test'), new Word('tests'))
         );
