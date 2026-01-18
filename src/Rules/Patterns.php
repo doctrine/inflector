@@ -8,7 +8,7 @@ use function array_map;
 use function implode;
 use function preg_match;
 
-readonly class Patterns
+final readonly class Patterns
 {
     private string $regex;
 

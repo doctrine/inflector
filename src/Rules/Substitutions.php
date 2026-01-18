@@ -10,7 +10,7 @@ use function strtolower;
 use function strtoupper;
 use function substr;
 
-class Substitutions implements WordInflector
+final class Substitutions implements WordInflector
 {
     /** @var Substitution[] */
     private array $substitutions;
