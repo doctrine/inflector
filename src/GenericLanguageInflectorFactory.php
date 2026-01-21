@@ -16,6 +16,16 @@ abstract class GenericLanguageInflectorFactory implements LanguageInflectorFacto
     /** @var Ruleset[] */
     private $pluralRulesets = [];
 
+    /** @var class-string<WordInflector>|null */
+    protected $rulesetInflector = null;
+
+    protected function createRulesetInflector(Ruleset $ruleset, Ruleset ...$rulesets): WordInflector
+    {
+        $class = $this->rulesetInflector ?? RulesetInflector::class;
+
+        return new $class($ruleset, ...$rulesets);
+    }
+
     final public function __construct()
     {
         $this->singularRulesets[] = $this->getSingularRuleset();
@@ -25,10 +35,10 @@ abstract class GenericLanguageInflectorFactory implements LanguageInflectorFacto
     final public function build(): Inflector
     {
         return new Inflector(
-            new CachedWordInflector(new RulesetInflector(
+            new CachedWordInflector($this->createRulesetInflector(
                 ...$this->singularRulesets
             )),
-            new CachedWordInflector(new RulesetInflector(
+            new CachedWordInflector($this->createRulesetInflector(
                 ...$this->pluralRulesets
             ))
         );

@@ -15,83 +15,41 @@ class Inflectible
     /** @return iterable<Transformation> */
     public static function getSingular(): iterable
     {
-        // Reverse of -sce → -scia (fasce → fascia)
-        yield new Transformation(new Pattern('([aeiou])sce$'), '\\1scia');
+        // Advanced ending rules
+        yield new Transformation(new Pattern('sce'), 'scia');  // fasce → fascia
+        yield new Transformation(new Pattern('sci$'), 'scio');  // fasci → fascio
+        yield new Transformation(new Pattern('chi$'), 'co');  // bachi → baco
+        yield new Transformation(new Pattern('che$'), 'ca');  // fotografiche → fotografica
+        yield new Transformation(new Pattern('ghi$'), 'go');  // laghi → lago
+        yield new Transformation(new Pattern('ghe$'), 'ga');  // targhe → targa
+        yield new Transformation(new Pattern('esi$'), 'ese');  // paesi → paese
+        yield new Transformation(new Pattern('ali$'), 'ale');  // ministeriali → ministeriale
+        yield new Transformation(new Pattern('ari$'), 'ario');  // questionari → questionario
+        yield new Transformation(new Pattern('eri$'), 'ero');  // numeri → numero
+        yield new Transformation(new Pattern('li$'), 'lio');  // cimeli → cimelio
 
-        // Reverse of -cie → -cia (farmacia → farmacie)
-        yield new Transformation(new Pattern('cie$'), 'cia');
-
-        // Reverse of -gie → -gia (bugia → bugie)
-        yield new Transformation(new Pattern('gie$'), 'gia');
-
-        // Reverse of -ce → -cia (arance → arancia)
-        yield new Transformation(new Pattern('([^aeiou])ce$'), '\1cia');
-
-        // Reverse of -ge → -gia (valige → valigia)
-        yield new Transformation(new Pattern('([^aeiou])ge$'), '\1gia');
-
-        // Reverse of -chi → -co (bachi → baco)
-        yield new Transformation(new Pattern('([bcdfghjklmnpqrstvwxyz][aeiou])chi$'), '\1co');
-
-        // Reverse of -ghi → -go (laghi → lago)
-        yield new Transformation(new Pattern('([bcdfghjklmnpqrstvwxyz][aeiou])ghi$'), '\1go');
-
-        // Reverse of -ci → -co (medici → medico)
-        yield new Transformation(new Pattern('([aeiou][bcdfghjklmnpqrstvwxyz])ci$'), '\1co');
-
-        // Reverse of -gi → -go (psicologi → psicologo)
-        yield new Transformation(new Pattern('([aeiou][bcdfghjklmnpqrstvwxyz])gi$'), '\1go');
-
-        // Reverse of -i → -io (zii → zio, negozi → negozio)
-        // This is more complex due to Italian's stress patterns, but we'll handle the basic case
-        yield new Transformation(new Pattern('([^aeiou])i$'), '\1io');
-
-        // Handle words that end with -i but should go to -co/-go (amici → amico, not amice)
-        yield new Transformation(new Pattern('([^aeiou])ci$'), '\1co');
-        yield new Transformation(new Pattern('([^aeiou])gi$'), '\1go');
-
-        // Reverse of -a → -e
-        yield new Transformation(new Pattern('e$'), 'a');
-
-        // Reverse of -e → -i
-        yield new Transformation(new Pattern('i$'), 'e');
-
-        // Reverse of -o → -i
-        yield new Transformation(new Pattern('i$'), 'o');
+        // Standard ending rules
+        yield new Transformation(new Pattern('e$'), 'a'); // case → casa
+        yield new Transformation(new Pattern('i$'), 'o'); // libri → libro
+        yield new Transformation(new Pattern('i$'), 'e'); // studenti → studente
     }
 
     /** @return iterable<Transformation> */
     public static function getPlural(): iterable
     {
-        // Words ending in -scia without stress on 'i' become -sce (e.g. fascia → fasce)
-        yield new Transformation(new Pattern('([aeiou])scia$'), '\\1sce');
-
-        // Words ending in -cia/gia with stress on 'i' keep the 'i' in plural
-        yield new Transformation(new Pattern('cia$'), 'cie'); // e.g. farmacia → farmacie
-        yield new Transformation(new Pattern('gia$'), 'gie'); // e.g. bugia → bugie
-
-        // Words ending in -cia/gia without stress on 'i' lose the 'i' in plural
-        yield new Transformation(new Pattern('([^aeiou])cia$'), '\\1ce'); // e.g. arancia → arance
-        yield new Transformation(new Pattern('([^aeiou])gia$'), '\\1ge'); // e.g. valigia → valige
-
-        // Words ending in -co/-go with stress on 'o' become -chi/-ghi
-        yield new Transformation(new Pattern('([bcdfghjklmnpqrstvwxyz][aeiou])co$'), '\\1chi'); // e.g. baco → bachi
-        yield new Transformation(new Pattern('([bcdfghjklmnpqrstvwxyz][aeiou])go$'), '\\1ghi'); // e.g. lago → laghi
-
-        // Words ending in -co/-go with stress on the penultimate syllable become -ci/-gi
-        yield new Transformation(new Pattern('([aeiou][bcdfghjklmnpqrstvwxyz])co$'), '\\1ci'); // e.g. medico → medici
-        yield new Transformation(new Pattern('([aeiou][bcdfghjklmnpqrstvwxyz])go$'), '\\1gi'); // e.g. psicologo → psicologi
-
-        // Words ending in -io with stress on 'i' keep the 'i' in plural
-        yield new Transformation(new Pattern('([^aeiou])io$'), '\\1i'); // e.g. zio → zii
-
-        // Words ending in -io with stress on 'o' lose the 'i' in plural
-        yield new Transformation(new Pattern('([aeiou])io$'), '\\1i'); // e.g. negozio → negozi
+        // Advanced ending rules
+        yield new Transformation(new Pattern('scia$'), 'sce');  // fascia → fasce
+        yield new Transformation(new Pattern('scio$'), 'sci');  // fascio → fasci
+        yield new Transformation(new Pattern('co$'), 'chi');  // baco → bachi
+        yield new Transformation(new Pattern('ca$'), 'che');  // fotografica → fotografiche
+        yield new Transformation(new Pattern('go$'), 'ghi');  // lago → laghi
+        yield new Transformation(new Pattern('ga$'), 'ghe');  // targa → targhe
+        yield new Transformation(new Pattern('io$'), 'i');  // cimelio → cimeli
 
         // Standard ending rules
-        yield new Transformation(new Pattern('a$'), 'e');  // -a → -e
-        yield new Transformation(new Pattern('e$'), 'i');  // -e → -i
-        yield new Transformation(new Pattern('o$'), 'i');  // -o → -i
+        yield new Transformation(new Pattern('a$'), 'e');  // casa → case
+        yield new Transformation(new Pattern('o$'), 'i');  // libro → libri
+        yield new Transformation(new Pattern('e$'), 'i');  // studente → studenti
     }
 
     /** @return iterable<Substitution> */
@@ -119,6 +77,7 @@ class Inflectible
             'capitale' => 'capitali',
             'carcere' => 'carceri',
             'casa' => 'case',
+            'cassaforte' => 'casseforti',
             'cavaliere' => 'cavalieri',
             'centinaio' => 'centinaia',
             'cerchio' => 'cerchia',
@@ -135,9 +94,11 @@ class Inflectible
             'dito' => 'dita',
             'dottore' => 'dottori',
             'fiore' => 'fiori',
+            'forte' => 'forti',
             'fratello' => 'fratelli',
             'fuoco' => 'fuochi',
             'gamba' => 'gambe',
+            'giallo' => 'gialli',
             'ginocchio' => 'ginocchia',
             'gioco' => 'giochi',
             'giornale' => 'giornali',
@@ -189,6 +150,7 @@ class Inflectible
             'scuola' => 'scuole',
             'serie' => 'serie',
             'serramento' => 'serramenta',
+            'sistema' => 'sistemi',
             'sorella' => 'sorelle',
             'specie' => 'specie',
             'staio' => 'staia',
@@ -199,6 +161,7 @@ class Inflectible
             'suo' => 'suoi',
             'superficie' => 'superfici',
             'tavolo' => 'tavoli',
+            'tema' => 'temi',
             'tempio' => 'templi',
             'treno' => 'treni',
             'tuo' => 'tuoi',
