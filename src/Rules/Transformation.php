@@ -8,7 +8,7 @@ use Doctrine\Inflector\WordInflector;
 
 use function preg_replace;
 
-final class Transformation implements WordInflector
+final readonly class Transformation implements WordInflector
 {
     public function __construct(private Pattern $pattern, private string $replacement)
     {
