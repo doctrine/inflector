@@ -16,7 +16,7 @@ final class Rules
         return new Ruleset(
             new Transformations(...Inflectible::getSingular()),
             new Patterns(...Uninflected::getSingular()),
-            (new Substitutions(...Inflectible::getIrregular()))->getFlippedSubstitutions(),
+            new Substitutions(...Inflectible::getIrregular())->getFlippedSubstitutions(),
         );
     }
 

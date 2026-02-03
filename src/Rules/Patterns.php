@@ -14,9 +14,7 @@ final readonly class Patterns
 
     public function __construct(Pattern ...$patterns)
     {
-        $patterns = array_map(static function (Pattern $pattern): string {
-            return $pattern->getPattern();
-        }, $patterns);
+        $patterns = array_map(static fn (Pattern $pattern): string => $pattern->getPattern(), $patterns);
 
         $this->regex = '/^(?:' . implode('|', $patterns) . ')$/i';
     }
