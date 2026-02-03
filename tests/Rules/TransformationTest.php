@@ -6,6 +6,7 @@ namespace Doctrine\Tests\Inflector\Rules;
 
 use Doctrine\Inflector\Rules\Pattern;
 use Doctrine\Inflector\Rules\Transformation;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 class TransformationTest extends TestCase
@@ -27,6 +28,7 @@ class TransformationTest extends TestCase
         self::assertSame('test', $this->transformation->inflect('tests'));
     }
 
+    #[Override]
     protected function setUp(): void
     {
         $this->transformation = new Transformation(new Pattern('s$'), '');

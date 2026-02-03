@@ -8,10 +8,12 @@ use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
 use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTestCase;
+use Override;
 
 class TurkishFunctionalTest extends LanguageFunctionalTestCase
 {
     /** @return string[][] */
+    #[Override]
     public static function dataSampleWords(): array
     {
         return [
@@ -27,6 +29,7 @@ class TurkishFunctionalTest extends LanguageFunctionalTestCase
         ];
     }
 
+    #[Override]
     protected function createInflector(): Inflector
     {
         return InflectorFactory::createForLanguage(Language::TURKISH)->build();

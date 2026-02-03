@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Doctrine\Tests\Inflector;
 
 use Doctrine\Inflector\NoopWordInflector;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 class NoopWordInflectorTest extends TestCase
@@ -17,6 +18,7 @@ class NoopWordInflectorTest extends TestCase
         self::assertSame('bar', $this->inflector->inflect('bar'));
     }
 
+    #[Override]
     protected function setUp(): void
     {
         $this->inflector = new NoopWordInflector();

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Doctrine\Inflector\Rules;
 
 use Doctrine\Inflector\WordInflector;
+use Override;
 
 final readonly class Transformations implements WordInflector
 {
@@ -16,6 +17,7 @@ final readonly class Transformations implements WordInflector
         $this->transformations = $transformations;
     }
 
+    #[Override]
     public function inflect(string $word): string
     {
         foreach ($this->transformations as $transformation) {

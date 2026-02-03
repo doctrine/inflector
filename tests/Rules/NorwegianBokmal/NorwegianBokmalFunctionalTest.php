@@ -8,10 +8,12 @@ use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
 use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTestCase;
+use Override;
 
 class NorwegianBokmalFunctionalTest extends LanguageFunctionalTestCase
 {
     /** @return string[][] */
+    #[Override]
     public static function dataSampleWords(): array
     {
         return [
@@ -29,6 +31,7 @@ class NorwegianBokmalFunctionalTest extends LanguageFunctionalTestCase
         ];
     }
 
+    #[Override]
     protected function createInflector(): Inflector
     {
         return InflectorFactory::createForLanguage(Language::NORWEGIAN_BOKMAL)->build();

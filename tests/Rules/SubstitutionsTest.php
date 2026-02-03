@@ -7,6 +7,7 @@ namespace Doctrine\Tests\Inflector\Rules;
 use Doctrine\Inflector\Rules\Substitution;
 use Doctrine\Inflector\Rules\Substitutions;
 use Doctrine\Inflector\Rules\Word;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 class SubstitutionsTest extends TestCase
@@ -28,6 +29,7 @@ class SubstitutionsTest extends TestCase
         self::assertSame('spinor', $this->irregular->inflect('spins'));
     }
 
+    #[Override]
     protected function setUp(): void
     {
         $this->substitutions = [

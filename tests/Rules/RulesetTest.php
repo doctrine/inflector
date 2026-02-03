@@ -12,6 +12,7 @@ use Doctrine\Inflector\Rules\Substitutions;
 use Doctrine\Inflector\Rules\Transformation;
 use Doctrine\Inflector\Rules\Transformations;
 use Doctrine\Inflector\Rules\Word;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 class RulesetTest extends TestCase
@@ -39,6 +40,7 @@ class RulesetTest extends TestCase
         self::assertSame($this->irregular, $this->ruleset->getIrregular());
     }
 
+    #[Override]
     protected function setUp(): void
     {
         $this->regular     = new Transformations(
