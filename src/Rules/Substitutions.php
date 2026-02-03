@@ -6,20 +6,26 @@ namespace Doctrine\Inflector\Rules;
 
 use Doctrine\Inflector\WordInflector;
 
+use function array_combine;
+use function array_map;
 use function strtolower;
 use function strtoupper;
 use function substr;
 
-final class Substitutions implements WordInflector
+final readonly class Substitutions implements WordInflector
 {
     /** @var Substitution[] */
     private array $substitutions;
 
     public function __construct(Substitution ...$substitutions)
     {
-        foreach ($substitutions as $substitution) {
-            $this->substitutions[$substitution->getFrom()->getWord()] = $substitution;
-        }
+        $this->substitutions = array_combine(
+            array_map(
+                static fn (Substitution $substitution): string => $substitution->getFrom()->getWord(),
+                $substitutions,
+            ),
+            $substitutions,
+        );
     }
 
     public function getFlippedSubstitutions(): Substitutions
