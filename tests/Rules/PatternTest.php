@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Doctrine\Tests\Inflector\Rules;
 
 use Doctrine\Inflector\Rules\Pattern;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 class PatternTest extends TestCase
@@ -33,6 +34,7 @@ class PatternTest extends TestCase
         self::assertTrue($this->pattern->matches('test'));
     }
 
+    #[Override]
     protected function setUp(): void
     {
         $this->pattern = new Pattern('test');

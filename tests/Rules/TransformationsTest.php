@@ -7,6 +7,7 @@ namespace Doctrine\Tests\Inflector\Rules;
 use Doctrine\Inflector\Rules\Pattern;
 use Doctrine\Inflector\Rules\Transformation;
 use Doctrine\Inflector\Rules\Transformations;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 class TransformationsTest extends TestCase
@@ -18,6 +19,7 @@ class TransformationsTest extends TestCase
         self::assertSame('customizables', $this->transformations->inflect('custom'));
     }
 
+    #[Override]
     protected function setUp(): void
     {
         $this->transformations = new Transformations(new Transformation(new Pattern('/^(custom)$/i'), '\1izables'));

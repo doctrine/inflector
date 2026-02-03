@@ -6,6 +6,7 @@ namespace Doctrine\Tests\Inflector;
 
 use Doctrine\Inflector\CachedWordInflector;
 use Doctrine\Inflector\WordInflector;
+use Override;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -26,6 +27,7 @@ class CachedWordInflectorTest extends TestCase
         self::assertSame('out', $this->cachedWordInflector->inflect('in'));
     }
 
+    #[Override]
     protected function setUp(): void
     {
         $this->wordInflector = $this->createMock(WordInflector::class);

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Doctrine\Inflector\Rules;
 
 use Doctrine\Inflector\WordInflector;
+use Override;
 
 use function array_combine;
 use function array_map;
@@ -42,6 +43,7 @@ final readonly class Substitutions implements WordInflector
         return new Substitutions(...$substitutions);
     }
 
+    #[Override]
     public function inflect(string $word): string
     {
         $lowerWord = strtolower($word);

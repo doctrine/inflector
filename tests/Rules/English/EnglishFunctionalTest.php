@@ -8,6 +8,7 @@ use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\InflectorFactory;
 use Doctrine\Inflector\Language;
 use Doctrine\Tests\Inflector\Rules\LanguageFunctionalTestCase;
+use Override;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 use function sprintf;
@@ -15,6 +16,7 @@ use function sprintf;
 class EnglishFunctionalTest extends LanguageFunctionalTestCase
 {
     /** @return string[][] */
+    #[Override]
     public static function dataSampleWords(): array
     {
         return [
@@ -445,6 +447,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTestCase
         );
     }
 
+    #[Override]
     protected function createInflector(): Inflector
     {
         return InflectorFactory::createForLanguage(Language::ENGLISH)->build();

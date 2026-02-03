@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Doctrine\Inflector;
 
 use Doctrine\Inflector\Rules\Ruleset;
+use Override;
 
 use function array_unshift;
 
@@ -22,6 +23,7 @@ abstract class GenericLanguageInflectorFactory implements LanguageInflectorFacto
         $this->pluralRulesets[]   = $this->getPluralRuleset();
     }
 
+    #[Override]
     final public function build(): Inflector
     {
         return new Inflector(
@@ -34,6 +36,7 @@ abstract class GenericLanguageInflectorFactory implements LanguageInflectorFacto
         );
     }
 
+    #[Override]
     final public function withSingularRules(Ruleset|null $singularRules, bool $reset = false): LanguageInflectorFactory
     {
         if ($reset) {
@@ -47,6 +50,7 @@ abstract class GenericLanguageInflectorFactory implements LanguageInflectorFacto
         return $this;
     }
 
+    #[Override]
     final public function withPluralRules(Ruleset|null $pluralRules, bool $reset = false): LanguageInflectorFactory
     {
         if ($reset) {

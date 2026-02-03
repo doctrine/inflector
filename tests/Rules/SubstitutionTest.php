@@ -6,6 +6,7 @@ namespace Doctrine\Tests\Inflector\Rules;
 
 use Doctrine\Inflector\Rules\Substitution;
 use Doctrine\Inflector\Rules\Word;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 class SubstitutionTest extends TestCase
@@ -22,6 +23,7 @@ class SubstitutionTest extends TestCase
         self::assertSame('to', $this->substitution->getTo()->getWord());
     }
 
+    #[Override]
     protected function setUp(): void
     {
         $this->substitution = new Substitution(new Word('from'), new Word('to'));

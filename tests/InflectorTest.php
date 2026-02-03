@@ -6,6 +6,7 @@ namespace Doctrine\Tests\Inflector;
 
 use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\WordInflector;
+use Override;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -133,6 +134,7 @@ class InflectorTest extends TestCase
         self::assertSame('out', $this->inflector->singularize('in'));
     }
 
+    #[Override]
     protected function setUp(): void
     {
         $this->singularInflector = $this->createMock(WordInflector::class);
