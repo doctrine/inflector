@@ -163,6 +163,7 @@ class PersianFunctionalTest extends LanguageFunctionalTestCase
         ];
     }
 
+    /** @dataProvider dataMixedPluralShouldBeConvertedToSingular */
     #[DataProvider('dataMixedPluralShouldBeConvertedToSingular')]
     public function testMixedPluralShouldBeConvertedToSingular(string $mixedPlural, string $singular): void
     {
@@ -193,6 +194,7 @@ class PersianFunctionalTest extends LanguageFunctionalTestCase
         ];
     }
 
+    /** @dataProvider dataSpaceSeparatedHa */
     #[DataProvider('dataSpaceSeparatedHa')]
     public function testSpaceSeparatedHaSingularizes(string $plural, string $singular): void
     {
@@ -225,6 +227,7 @@ class PersianFunctionalTest extends LanguageFunctionalTestCase
         ];
     }
 
+    /** @dataProvider dataLiteraryPluralSingularizes */
     #[DataProvider('dataLiteraryPluralSingularizes')]
     public function testLiteraryPluralSingularizes(string $plural, string $singular): void
     {
@@ -247,6 +250,7 @@ class PersianFunctionalTest extends LanguageFunctionalTestCase
         ];
     }
 
+    /** @dataProvider dataPluralUninflectedWhenPluralized */
     #[DataProvider('dataPluralUninflectedWhenPluralized')]
     public function testPluralsWhenPluralizedShouldBeUninflected(string $plural): void
     {
@@ -288,6 +292,7 @@ class PersianFunctionalTest extends LanguageFunctionalTestCase
         ];
     }
 
+    /** @dataProvider dataSingularsThatMustNotBeMangled */
     #[DataProvider('dataSingularsThatMustNotBeMangled')]
     public function testSingularsThatMustNotBeMangled(string $singular): void
     {
@@ -316,6 +321,7 @@ class PersianFunctionalTest extends LanguageFunctionalTestCase
         ];
     }
 
+    /** @dataProvider dataSilentHeInanimatesUseHa */
     #[DataProvider('dataSilentHeInanimatesUseHa')]
     public function testSilentHeInanimatesUseHa(string $singular): void
     {
