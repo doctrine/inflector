@@ -11,6 +11,7 @@ final class Language
     public const FRENCH           = 'french';
     public const ITALIAN          = 'italian';
     public const NORWEGIAN_BOKMAL = 'norwegian-bokmal';
+    public const PERSIAN          = 'persian';
     public const PORTUGUESE       = 'portuguese';
     public const SPANISH          = 'spanish';
     public const TURKISH          = 'turkish';
