@@ -37,11 +37,9 @@ class Inflectible
         yield new Transformation(new Pattern('(s)eries$'), '\1\2eries');
         yield new Transformation(new Pattern('([^aeiouy]|qu)ies$'), '\1y');
         yield new Transformation(new Pattern('([lr])ves$'), '\1f');
-        yield new Transformation(new Pattern('(tive)s$'), '\1');
-        yield new Transformation(new Pattern('(hive)s$'), '\1');
-        yield new Transformation(new Pattern('(drive)s$'), '\1');
-        yield new Transformation(new Pattern('(dive)s$'), '\1');
-        yield new Transformation(new Pattern('(olive)s$'), '\1');
+        yield new Transformation(new Pattern('(kni|wi)ves$'), '\1fe');
+        yield new Transformation(new Pattern('(^|[^aeiou])lives$'), '\1life');
+        yield new Transformation(new Pattern('(ive)s$'), '\1');
         yield new Transformation(new Pattern('([^fo])ves$'), '\1fe');
         yield new Transformation(new Pattern('(^analy)ses$'), '\1sis');
         yield new Transformation(new Pattern('(analy|diagno|^ba|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$'), '\1\2sis');
