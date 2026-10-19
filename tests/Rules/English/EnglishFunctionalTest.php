@@ -269,6 +269,7 @@ class EnglishFunctionalTest extends LanguageFunctionalTestCase
             ['rabies', 'rabies'],
             ['radius', 'radii'],
             ['rain', 'rain'],
+            ['rave', 'raves'],
             ['reflex', 'reflexes'],
             ['regatta', 'regattas'],
             ['research', 'research'],

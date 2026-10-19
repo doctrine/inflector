@@ -162,6 +162,7 @@ class Inflectible
         yield new Substitution(new Word('penis'), new Word('penises'));
         yield new Substitution(new Word('person'), new Word('people'));
         yield new Substitution(new Word('plateau'), new Word('plateaux'));
+        yield new Substitution(new Word('rave'), new Word('raves'));
         yield new Substitution(new Word('runner-up'), new Word('runners-up'));
         yield new Substitution(new Word('safe'), new Word('safes'));
         yield new Substitution(new Word('save'), new Word('saves'));
