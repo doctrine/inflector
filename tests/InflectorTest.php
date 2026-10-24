@@ -63,6 +63,13 @@ class InflectorTest extends TestCase
         self::assertSame('telephone', $this->inflector->unaccent('telephone'));
     }
 
+    public function testUnaccentCyrillicDiaeresisCharacters(): void
+    {
+        self::assertSame('ЕеІі', $this->inflector->unaccent('ЁёЇї'));
+        self::assertSame('Ежик і іжак', $this->inflector->unaccent('Ёжик і їжак'));
+        self::assertSame('EЕжик, cafe і іжак', $this->inflector->unaccent('ÉЁжик, café і їжак'));
+    }
+
     /** @dataProvider dataStringsUrlize */
     #[DataProvider('dataStringsUrlize')]
     public function testUrlize(string $expected, string $string): void
