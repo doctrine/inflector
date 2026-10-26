@@ -7,15 +7,15 @@ namespace Doctrine\Tests\Inflector;
 use Doctrine\Inflector\Inflector;
 use Doctrine\Inflector\WordInflector;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 class InflectorTest extends TestCase
 {
-    /** @var WordInflector&MockObject */
+    /** @var WordInflector&Stub */
     private $singularInflector;
 
-    /** @var WordInflector&MockObject */
+    /** @var WordInflector&Stub */
     private $pluralInflector;
 
     /** @var Inflector */
@@ -61,6 +61,13 @@ class InflectorTest extends TestCase
     {
         self::assertSame('telefono', $this->inflector->unaccent('teléfono'));
         self::assertSame('telephone', $this->inflector->unaccent('telephone'));
+    }
+
+    public function testUnaccentCyrillicDiaeresisCharacters(): void
+    {
+        self::assertSame('ЕеІі', $this->inflector->unaccent('ЁёЇї'));
+        self::assertSame('Ежик і іжак', $this->inflector->unaccent('Ёжик і їжак'));
+        self::assertSame('EЕжик, cafe і іжак', $this->inflector->unaccent('ÉЁжик, café і їжак'));
     }
 
     /** @dataProvider dataStringsUrlize */
@@ -118,28 +125,35 @@ class InflectorTest extends TestCase
 
     public function testPluralize(): void
     {
-        $this->pluralInflector->expects(self::once())
+        $pluralInflector = $this->createMock(WordInflector::class);
+
+        $pluralInflector->expects(self::once())
             ->method('inflect')
             ->with('in')
             ->willReturn('out');
 
-        self::assertSame('out', $this->inflector->pluralize('in'));
+        $inflector = new Inflector($this->singularInflector, $pluralInflector);
+
+        self::assertSame('out', $inflector->pluralize('in'));
     }
 
     public function testSingularize(): void
     {
-        $this->singularInflector->expects(self::once())
+        $singularInflector = $this->createMock(WordInflector::class);
+
+        $inflector = new Inflector($singularInflector, $this->pluralInflector);
+        $singularInflector->expects(self::once())
             ->method('inflect')
             ->with('in')
             ->willReturn('out');
 
-        self::assertSame('out', $this->inflector->singularize('in'));
+        self::assertSame('out', $inflector->singularize('in'));
     }
 
     protected function setUp(): void
     {
-        $this->singularInflector = $this->createMock(WordInflector::class);
-        $this->pluralInflector   = $this->createMock(WordInflector::class);
+        $this->singularInflector = self::createStub(WordInflector::class);
+        $this->pluralInflector   = self::createStub(WordInflector::class);
 
         $this->inflector = new Inflector($this->singularInflector, $this->pluralInflector);
     }

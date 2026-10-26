@@ -211,6 +211,10 @@ class Inflector implements CaseConverter, Unaccenter, Slugifier, Pluralization
         'Ž' => 'Z',
         'ž' => 'z',
         'ſ' => 's',
+        'Ё' => 'Е',
+        'Ї' => 'І',
+        'ё' => 'е',
+        'ї' => 'і',
         '€' => 'E',
         '£' => '',
     ];
