@@ -23,6 +23,7 @@ final class Uninflected
         yield new Pattern('militia');
         yield new Pattern('pants');
         yield new Pattern('petunia');
+        yield new Pattern('radius');
         yield new Pattern('sepia');
         yield new Pattern('trivia');
         yield new Pattern('utopia');

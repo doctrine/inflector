@@ -418,6 +418,15 @@ class EnglishFunctionalTest extends LanguageFunctionalTestCase
         );
     }
 
+    public function testRadiusRemainsUnchangedWhenSingularized(): void
+    {
+        $inflector = $this->createInflector();
+
+        self::assertSame('radius', $inflector->singularize('radius'));
+        self::assertSame('Radius', $inflector->singularize('Radius'));
+        self::assertSame('RADIUS', $inflector->singularize('RADIUS'));
+    }
+
     /**
      * Words without plural test data.
      *
