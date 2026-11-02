@@ -11,6 +11,7 @@ use Doctrine\Inflector\Rules\English\InflectorFactory as EnglishInflectorFactory
 use Doctrine\Inflector\Rules\Esperanto\InflectorFactory as EsperantoInflectorFactory;
 use Doctrine\Inflector\Rules\French\InflectorFactory as FrenchInflectorFactory;
 use Doctrine\Inflector\Rules\NorwegianBokmal\InflectorFactory as NorwegianBokmalInflectorFactory;
+use Doctrine\Inflector\Rules\Persian\InflectorFactory as PersianInflectorFactory;
 use Doctrine\Inflector\Rules\Portuguese\InflectorFactory as PortugueseInflectorFactory;
 use Doctrine\Inflector\Rules\Spanish\InflectorFactory as SpanishInflectorFactory;
 use Doctrine\Inflector\Rules\Turkish\InflectorFactory as TurkishInflectorFactory;
@@ -44,6 +45,7 @@ class InflectorFactoryTest extends TestCase
         yield 'Esperanto' => [EsperantoInflectorFactory::class, Language::ESPERANTO];
         yield 'French' => [FrenchInflectorFactory::class, Language::FRENCH];
         yield 'Norwegian Bokmal' => [NorwegianBokmalInflectorFactory::class, Language::NORWEGIAN_BOKMAL];
+        yield 'Persian' => [PersianInflectorFactory::class, Language::PERSIAN];
         yield 'Portuguese' => [PortugueseInflectorFactory::class, Language::PORTUGUESE];
         yield 'Spanish' => [SpanishInflectorFactory::class, Language::SPANISH];
         yield 'Turkish' => [TurkishInflectorFactory::class, Language::TURKISH];
