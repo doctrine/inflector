@@ -1,0 +1,27 @@
+name: "Check target branch"
+
+on:
+  pull_request_target:
+    types:
+      - "opened"
+      - "reopened"
+      - "labeled"
+      - "unlabeled"
+      - "edited"
+
+concurrency:
+  group: "check-target-branch-${{ github.event.pull_request.number }}"
+  cancel-in-progress: true
+
+# This workflow runs with a write token against pull requests from forks, so it
+# must never check out or execute the pull request head.
+jobs:
+  check:
+    name: "Labels match target branch"
+    uses: "doctrine/.github/.github/workflows/check-target-branch.yml@16.1.0"
+    permissions:
+      contents: "read"
+      issues: "write"
+      pull-requests: "write"
+    with:
+      fail-on-mismatch: false
