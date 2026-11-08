@@ -9,6 +9,7 @@ use Doctrine\Inflector\Rules\Esperanto;
 use Doctrine\Inflector\Rules\French;
 use Doctrine\Inflector\Rules\Italian;
 use Doctrine\Inflector\Rules\NorwegianBokmal;
+use Doctrine\Inflector\Rules\Persian;
 use Doctrine\Inflector\Rules\Portuguese;
 use Doctrine\Inflector\Rules\Spanish;
 use Doctrine\Inflector\Rules\Turkish;
@@ -40,6 +41,9 @@ final class InflectorFactory
 
             case Language::NORWEGIAN_BOKMAL:
                 return new NorwegianBokmal\InflectorFactory();
+
+            case Language::PERSIAN:
+                return new Persian\InflectorFactory();
 
             case Language::PORTUGUESE:
                 return new Portuguese\InflectorFactory();
