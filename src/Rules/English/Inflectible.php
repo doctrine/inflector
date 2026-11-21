@@ -84,7 +84,7 @@ class Inflectible
         yield new Transformation(new Pattern('us$'), 'uses');
         yield new Transformation(new Pattern('(alias)$'), '\1es');
         yield new Transformation(new Pattern('(analys|ax|cris|test|thes)is$'), '\1es');
-        yield new Transformation(new Pattern('s$'), 's');
+        yield new Transformation(new Pattern('(?-i:s$)'), 's');
         yield new Transformation(new Pattern('^$'), '');
         yield new Transformation(new Pattern('$'), 's');
     }
