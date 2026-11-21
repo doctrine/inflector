@@ -43,6 +43,7 @@ The supported languages are as follows:
 - ``Language::FRENCH``
 - ``Language::ITALIAN``
 - ``Language::NORWEGIAN_BOKMAL``
+- ``Language::PERSIAN``
 - ``Language::PORTUGUESE``
 - ``Language::SPANISH``
 - ``Language::TURKISH``
