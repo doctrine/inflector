@@ -1,6 +1,8 @@
-/tests export-ignore
-.* export-ignore
-phpunit.xml.dist export-ignore
-phpcs.xml.dist export-ignore
-composer.lock export-ignore
-phpstan.neon.dist export-ignore
+/* export-ignore
+/src -export-ignore
+/src/** -export-ignore
+/docs -export-ignore
+/docs/** -export-ignore
+/LICENSE -export-ignore
+/*.md -export-ignore
+/composer.json -export-ignore
